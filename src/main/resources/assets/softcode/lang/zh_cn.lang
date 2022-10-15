@@ -1,0 +1,29 @@
+# InWorldCrafting
+gui.inworldcrafting.recipe_category.burn_item=点燃物品
+gui.inworldcrafting.recipe_category.burn_item.recipe_time=燃烧时间：%d刻
+gui.inworldcrafting.recipe_category.explode_block=方块爆破
+gui.inworldcrafting.recipe_category.explode_block.success_chance=成功概率：%d%%
+gui.inworldcrafting.recipe_category.explode_item=物品爆破
+gui.inworldcrafting.recipe_category.explode_item.success_chance=成功概率：%d%%
+gui.inworldcrafting.recipe_category.fluid_to_fluid=流体间转化
+gui.inworldcrafting.recipe_category.fluid_to_fluid.consumes_item=消耗物品：
+gui.inworldcrafting.recipe_category.fluid_to_fluid.consumes_item.yes=是
+gui.inworldcrafting.recipe_category.fluid_to_fluid.consumes_item.no=否
+gui.inworldcrafting.recipe_category.fluid_to_item=流体转化为物品
+gui.inworldcrafting.recipe_category.fluid_to_item.consumes_fluid=消耗流体：
+gui.inworldcrafting.recipe_category.fluid_to_item.consumes_fluid.yes=是
+gui.inworldcrafting.recipe_category.fluid_to_item.consumes_fluid.no=否
+
+# Ex Nihilo Creatio
+material.exnihilocreatio.iron=铁
+material.exnihilocreatio.gold=金
+
+gui.exnihilocreatio.recipe_category.compost=堆肥
+gui.exnihilocreatio.recipe_category.fluid_item_transform=流体转换为物品
+gui.exnihilocreatio.recipe_category.fluid_on_top=流体间转换
+gui.exnihilocreatio.recipe_category.fluid_transform=流体转换
+gui.exnihilocreatio.recipe_category.crook=钩子
+gui.exnihilocreatio.recipe_category.crucible_heat_source=坩埚热源
+gui.exnihilocreatio.recipe_category.crucible=坩埚
+gui.exnihilocreatio.recipe_category.hammer=锤子
+gui.exnihilocreatio.recipe_category.sieve=筛子

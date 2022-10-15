@@ -1,0 +1,19 @@
+[
+  {
+    "modid": "softcode",
+    "name": "Softcode",
+    "description": "",
+    "version": "${version}",
+    "mcversion": "1.12.2",
+    "url": "",
+    "updateUrl": "https://github.com/Lyaiya/Softcode",
+    "authorList": [
+      "Lyaiya"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": [
+    ]
+  }
+]

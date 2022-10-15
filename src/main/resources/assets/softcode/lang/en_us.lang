@@ -1,0 +1,29 @@
+# InWorldCrafting
+gui.inworldcrafting.recipe_category.burn_item=Burning Items
+gui.inworldcrafting.recipe_category.burn_item.recipe_time=Recipe time: %d ticks
+gui.inworldcrafting.recipe_category.explode_block=Exploding Blocks
+gui.inworldcrafting.recipe_category.explode_block.success_chance=Success chance: %d%%
+gui.inworldcrafting.recipe_category.explode_item=Exploding Items
+gui.inworldcrafting.recipe_category.explode_item.success_chance=Success chance: %d%%
+gui.inworldcrafting.recipe_category.fluid_to_fluid=Fluid to Fluid Transformation
+gui.inworldcrafting.recipe_category.fluid_to_fluid.consumes_item=Consumes Item: 
+gui.inworldcrafting.recipe_category.fluid_to_fluid.consumes_item.yes=Yes
+gui.inworldcrafting.recipe_category.fluid_to_fluid.consumes_item.no=No
+gui.inworldcrafting.recipe_category.fluid_to_item=Fluid to Item Transformation
+gui.inworldcrafting.recipe_category.fluid_to_item.consumes_fluid=Consumes Fluid: 
+gui.inworldcrafting.recipe_category.fluid_to_item.consumes_fluid.yes=Yes
+gui.inworldcrafting.recipe_category.fluid_to_item.consumes_fluid.no=No
+
+# Ex Nihilo Creatio
+material.exnihilocreatio.iron=Iron
+material.exnihilocreatio.gold=Gold
+
+gui.exnihilocreatio.recipe_category.compost=Compost
+gui.exnihilocreatio.recipe_category.fluid_item_transform=Fluid Item Transform
+gui.exnihilocreatio.recipe_category.fluid_on_top=Fluid On Top
+gui.exnihilocreatio.recipe_category.fluid_transform=Fluid Transform
+gui.exnihilocreatio.recipe_category.crook=Crook
+gui.exnihilocreatio.recipe_category.crucible_heat_source=Crucible Heat Source
+gui.exnihilocreatio.recipe_category.crucible=Crucible
+gui.exnihilocreatio.recipe_category.hammer=Hammer
+gui.exnihilocreatio.recipe_category.sieve=Sieve

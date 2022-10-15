@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "com.lyaiya.softcode.mixin.inworldcrafting",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.softcode.refmap.json",
+  "target": "@env(DEFAULT)",
+  "client": [
+    "MixinRecipeCategory",
+    "MixinBurnItemRecipeWrapper",
+    "MixinExplodeBlockRecipeWrapper",
+    "MixinExplodeItemRecipeWrapper",
+    "MixinFluidToFluidRecipeWrapper",
+    "MixinFluidToItemRecipeWrapper"
+  ],
+  "setSourceFile": true,
+  "minVersion": "0.8"
+}
