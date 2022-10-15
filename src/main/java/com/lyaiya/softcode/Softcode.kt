@@ -6,7 +6,7 @@ import org.apache.logging.log4j.*
 
 @Mod(
     modid = Softcode.MOD_ID,
-    dependencies = "required-after:forge@[14.23.5.2847,);required-after:forgelin_continuous",
+    dependencies = "required-after:forge@[14.23.5.2847,);required-after:forgelin_continuous;required-after:mixinbooter",
     modLanguageAdapter = "io.github.chaosunity.forgelin.KotlinAdapter",
     useMetadata = true
 )
