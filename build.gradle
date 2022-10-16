@@ -140,6 +140,19 @@ dependencies {
     runtimeOnly fg.deobf(curse("shadowfacts-forgelin", 248453L, 2785465L))
     // JEI
     compileOnly fg.deobf("mezz.jei:jei_1.12.2:4.16.+:api")
+
+    // Thaumic JEI v1.6.0-27
+    def thaumicjei_denpendency = curse("thaumic-jei", 285492L, 2705304L)
+    compileOnly fg.deobf(thaumicjei_denpendency)
+    runtimeOnly fg.deobf(thaumicjei_denpendency)
+    // Thaumcraft v6.1.BETA26
+    def thaumcraft_denpendency = curse("thaumcraft", 223628L, 2629023L)
+    compileOnly fg.deobf(thaumcraft_denpendency)
+    runtimeOnly fg.deobf(thaumcraft_denpendency)
+    // Baubles v1.5.2
+    def baubles_denpendency = curse("baubles", 227083L, 2518667L)
+    compileOnly fg.deobf(baubles_denpendency)
+    runtimeOnly fg.deobf(baubles_denpendency)
 }
 
 fancyGradle {

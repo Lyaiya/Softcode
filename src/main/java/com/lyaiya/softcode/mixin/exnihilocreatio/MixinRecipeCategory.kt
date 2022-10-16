@@ -24,7 +24,11 @@ import org.spongepowered.asm.mixin.injection.callback.*
     remap = false
 )
 abstract class MixinRecipeCategory {
-    @Inject(method = ["getTitle"], at = [At("RETURN")], cancellable = true)
+    @Inject(
+        method = ["getTitle"],
+        at = [At("RETURN")],
+        cancellable = true
+    )
     private fun injectGetTitle(cir: CallbackInfoReturnable<String>) {
         cir.returnValue = I18n.format(javaClass.getReplacedTranslationKey(ModId.EX_NIHILO_CREATIO, ClassConstants.RECIPE_CATEGORY))
     }

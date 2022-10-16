@@ -12,7 +12,9 @@ abstract class MixinExplodeItemRecipeWrapper {
     private lateinit var recipe: ExplodeItemRecipe
 
     @ModifyArg(
-        method = ["drawInfo"], at = At(value = "INVOKE", target = "drawStringWithShadow(Ljava/lang/String;FFI)I"), index = 0
+        method = ["drawInfo"],
+        at = At(value = "INVOKE", target = "drawStringWithShadow(Ljava/lang/String;FFI)I"),
+        index = 0
     )
     private fun modifyArgDrawStringWithShadow(text: String): String {
         return I18n.format("${javaClass.recipeWrapperKey}.success_chance", recipe.surviveChance)

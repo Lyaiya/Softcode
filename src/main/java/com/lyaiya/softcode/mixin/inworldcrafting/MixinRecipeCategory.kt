@@ -9,12 +9,18 @@ import org.spongepowered.asm.mixin.injection.callback.*
 import xt9.inworldcrafting.integrations.jei.*
 
 @Mixin(
-    value = [BurnItemRecipeCategory::class, ExplodeBlockRecipeCategory::class, ExplodeItemRecipeCategory::class,
-        FluidToFluidRecipeCategory::class, FluidToItemRecipeCategory::class],
+    value = [
+        BurnItemRecipeCategory::class, ExplodeBlockRecipeCategory::class, ExplodeItemRecipeCategory::class,
+        FluidToFluidRecipeCategory::class, FluidToItemRecipeCategory::class
+    ],
     remap = false
 )
 abstract class MixinRecipeCategory {
-    @Inject(method = ["getTitle"], at = [At("RETURN")], cancellable = true)
+    @Inject(
+        method = ["getTitle"],
+        at = [At("RETURN")],
+        cancellable = true
+    )
     private fun injectGetTitle(cir: CallbackInfoReturnable<String>) {
         cir.returnValue = I18n.format(javaClass.getReplacedTranslationKey(ModId.IN_WORLD_CRAFTING, ClassConstants.RECIPE_CATEGORY))
     }

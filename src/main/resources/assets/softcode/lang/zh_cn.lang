@@ -27,3 +27,13 @@ gui.exnihilocreatio.recipe_category.crucible_heat_source=坩埚热源
 gui.exnihilocreatio.recipe_category.crucible=坩埚
 gui.exnihilocreatio.recipe_category.hammer=锤子
 gui.exnihilocreatio.recipe_category.sieve=筛子
+
+# Thaumic JEI
+gui.thaumicjei.missing_research=缺失研究：
+gui.thaumicjei.vis_cost=Vis消耗
+description.thaumicjei.salis_mundis=To create Salis Mundis, take 3 Vis Crystals of different types and combine them with Redstone Dust by crafting them with a flint and a bowl.
+description.thaumicjei.triple_meat_treat=To create the Triple Meat Treat, take 3 different kinds of meat nuggets (produced by cooking meat in the Infernal Furnace) and mix them with sugar.
+
+# Thaumcraft
+key.thaumcraft.change_caster_focus=更换施术核心
+key.thaumcraft.misc_caster_toggle=切换其他核心

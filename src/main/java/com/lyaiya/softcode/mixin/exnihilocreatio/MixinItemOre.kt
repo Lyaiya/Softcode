@@ -10,12 +10,16 @@ import org.spongepowered.asm.mixin.injection.callback.*
 
 @Mixin(ItemOre::class, remap = false)
 abstract class MixinItemOre {
-    @Inject(method = ["getItemStackDisplayName"], at = [At(value = "RETURN")], cancellable = true)
+    @Inject(
+        method = ["getItemStackDisplayName"],
+        at = [At(value = "RETURN")],
+        cancellable = true
+    )
     private fun injectGetItemStackDisplayName(cir: CallbackInfoReturnable<String>) {
         val splitString = cir.returnValue.split(" ", limit = 2)
         val firstString = splitString.first().lowercase()
         val lastString = splitString.last()
-        val key = getTranslationKey(ModId.EX_NIHILO_CREATIO, TranslationKeyConstants.MATERIAL, firstString)
+        val key = getTranslationKey(ModId.EX_NIHILO_CREATIO, KeyConstants.MATERIAL, firstString)
         cir.returnValue = I18n.format(key) + lastString
     }
 }
