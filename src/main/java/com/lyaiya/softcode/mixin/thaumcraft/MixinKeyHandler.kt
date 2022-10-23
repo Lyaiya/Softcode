@@ -4,6 +4,7 @@
 package com.lyaiya.softcode.mixin.thaumcraft
 
 import com.lyaiya.softcode.*
+import com.lyaiya.softcode.constant.*
 import com.lyaiya.softcode.util.*
 import net.minecraft.client.resources.*
 import org.spongepowered.asm.mixin.*
@@ -16,7 +17,7 @@ import thaumcraft.common.lib.events.*
     constant = [Constant(stringValue = "Change Caster Focus")]
 )
 private fun modifyConstantKeyF(text: String): String {
-    return I18n.format(getTranslationKey(ModId.THAUMCRAFT, KeyConstants.KEY, "change_caster_focus"))
+    return I18n.format(getTranslationKey(ModIdConstant.THAUMCRAFT, KeyConstant.KEY, "change_caster_focus"))
 }
 
 @ModifyConstant(
@@ -24,5 +25,5 @@ private fun modifyConstantKeyF(text: String): String {
     constant = [Constant(stringValue = "Misc Caster Toggle")]
 )
 private fun modifyConstantKeyG(text: String): String {
-    return I18n.format(getTranslationKey(ModId.THAUMCRAFT, KeyConstants.KEY, "misc_caster_toggle"))
+    return I18n.format(getTranslationKey(ModIdConstant.THAUMCRAFT, KeyConstant.KEY, "misc_caster_toggle"))
 }

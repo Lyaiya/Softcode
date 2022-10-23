@@ -1,6 +1,6 @@
 package com.lyaiya.softcode.mixin.inworldcrafting
 
-import com.lyaiya.softcode.*
+import com.lyaiya.softcode.constant.*
 import com.lyaiya.softcode.util.*
 import net.minecraft.client.resources.*
 import org.spongepowered.asm.mixin.*
@@ -22,6 +22,6 @@ abstract class MixinRecipeCategory {
         cancellable = true
     )
     private fun injectGetTitle(cir: CallbackInfoReturnable<String>) {
-        cir.returnValue = I18n.format(javaClass.getReplacedTranslationKey(ModId.IN_WORLD_CRAFTING, ClassConstants.RECIPE_CATEGORY))
+        cir.returnValue = I18n.format(javaClass.getReplacedTranslationKey(ModIdConstant.IN_WORLD_CRAFTING, ClassConstant.RECIPE_CATEGORY))
     }
 }

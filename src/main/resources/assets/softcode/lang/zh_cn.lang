@@ -37,3 +37,8 @@ description.thaumicjei.triple_meat_treat=To create the Triple Meat Treat, take 3
 # Thaumcraft
 key.thaumcraft.change_caster_focus=更换施术核心
 key.thaumcraft.misc_caster_toggle=切换其他核心
+
+# Immersive Engineering
+gui.immersiveengineering.recipe_category.arc_furnace.recycling=电弧炉 - 回收
+gui.immersiveengineering.unit_per_tick= IF/t
+gui.immersiveengineering.seconds=秒

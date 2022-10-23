@@ -16,5 +16,5 @@
 
 ## 其他
 
-模板：[TemplateDevEnv fg5 分支](https://github.com/CleanroomMC/TemplateDevEnv/tree/fg5)
-[Kotlin 下 Mixin 静态的方式](https://github.com/SpongePowered/Mixin/issues/245#issuecomment-397858393)
+- 模板：[TemplateDevEnv fg5 分支](https://github.com/CleanroomMC/TemplateDevEnv/tree/fg5)
+- [Kotlin 下 Mixin 静态的方式](https://github.com/SpongePowered/Mixin/issues/245#issuecomment-397858393)

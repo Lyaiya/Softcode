@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.lyaiya.softcode.mixin.immersiveengineering",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.softcode.refmap.json",
+  "target": "@env(DEFAULT)",
+  "client": [
+    "MixinArcFurnaceRecipeCategory",
+    "MixinArcFurnaceRecipeWrapper"
+  ],
+  "setSourceFile": true,
+  "minVersion": "0.8"
+}

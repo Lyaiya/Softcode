@@ -1,6 +1,6 @@
 package com.lyaiya.softcode.mixin.exnihilocreatio
 
-import com.lyaiya.softcode.*
+import com.lyaiya.softcode.constant.*
 import com.lyaiya.softcode.util.*
 import exnihilocreatio.items.ore.*
 import net.minecraft.client.resources.*
@@ -19,7 +19,7 @@ abstract class MixinItemOre {
         val splitString = cir.returnValue.split(" ", limit = 2)
         val firstString = splitString.first().lowercase()
         val lastString = splitString.last()
-        val key = getTranslationKey(ModId.EX_NIHILO_CREATIO, KeyConstants.MATERIAL, firstString)
+        val key = getTranslationKey(ModIdConstant.EX_NIHILO_CREATIO, KeyConstant.MATERIAL, firstString)
         cir.returnValue = I18n.format(key) + lastString
     }
 }

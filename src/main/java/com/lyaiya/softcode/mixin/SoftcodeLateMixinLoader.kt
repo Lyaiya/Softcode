@@ -1,6 +1,7 @@
 package com.lyaiya.softcode.mixin
 
 import com.lyaiya.softcode.*
+import com.lyaiya.softcode.constant.*
 import net.minecraftforge.fml.common.*
 import zone.rong.mixinbooter.*
 
@@ -8,14 +9,15 @@ class SoftcodeLateMixinLoader : ILateMixinLoader {
     private inline val String.mixinJson
         get() = "mixins.${Softcode.MOD_ID}.${this}.json"
 
-    private inline val String.toMixinJsonPair
+    private inline val String.mixinJsonPair
         get() = this to this.mixinJson
 
     private val mixinJsons = mapOf(
-        ModId.IN_WORLD_CRAFTING.toMixinJsonPair,
-        ModId.EX_NIHILO_CREATIO.toMixinJsonPair,
-        ModId.THAUMCRAFT.toMixinJsonPair,
-        ModId.THAUMIC_JEI.toMixinJsonPair
+        ModIdConstant.IN_WORLD_CRAFTING.mixinJsonPair,
+        ModIdConstant.EX_NIHILO_CREATIO.mixinJsonPair,
+        ModIdConstant.THAUMCRAFT.mixinJsonPair,
+        ModIdConstant.THAUMIC_JEI.mixinJsonPair,
+        ModIdConstant.IMMERSIVE_ENGINEERING.mixinJsonPair
     )
 
     override fun getMixinConfigs(): List<String> {

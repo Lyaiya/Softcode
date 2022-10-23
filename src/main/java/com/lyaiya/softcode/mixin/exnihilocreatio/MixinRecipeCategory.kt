@@ -1,6 +1,6 @@
 package com.lyaiya.softcode.mixin.exnihilocreatio
 
-import com.lyaiya.softcode.*
+import com.lyaiya.softcode.constant.*
 import com.lyaiya.softcode.util.*
 import exnihilocreatio.compatibility.jei.barrel.compost.*
 import exnihilocreatio.compatibility.jei.barrel.fluiditemtransform.*
@@ -30,6 +30,6 @@ abstract class MixinRecipeCategory {
         cancellable = true
     )
     private fun injectGetTitle(cir: CallbackInfoReturnable<String>) {
-        cir.returnValue = I18n.format(javaClass.getReplacedTranslationKey(ModId.EX_NIHILO_CREATIO, ClassConstants.RECIPE_CATEGORY))
+        cir.returnValue = I18n.format(javaClass.getReplacedTranslationKey(ModIdConstant.EX_NIHILO_CREATIO, ClassConstant.RECIPE_CATEGORY))
     }
 }
