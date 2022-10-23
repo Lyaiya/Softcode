@@ -148,11 +148,11 @@ dependencies {
 
     // InWorldCrafting v1.2.0
     val inworldcraftingDependency = curse("inworldcrafting", 311938L, 2683267L)
-    implementation(fg.deobf(inworldcraftingDependency))
+    compileOnly(fg.deobf(inworldcraftingDependency))
 
     // Ex Nihilo: Creatio v0.4.7.2
     val exnihilocreatioDependency = curse("ex-nihilo-creatio", 274456L, 2817545L)
-    implementation(fg.deobf(exnihilocreatioDependency))
+    compileOnly(fg.deobf(exnihilocreatioDependency))
     // Shadowfacts' Forgelin v1.8.4
     val shadowfactsforgelinDependency = curse("shadowfacts-forgelin", 248453L, 2785465L)
     runtimeOnly(fg.deobf(shadowfactsforgelinDependency))
@@ -161,13 +161,13 @@ dependencies {
 
     // Thaumic JEI v1.6.0-27
     val thaumicjeiDependency = curse("thaumic-jei", 285492L, 2705304L)
-    implementation(fg.deobf(thaumicjeiDependency))
+    compileOnly(fg.deobf(thaumicjeiDependency))
     // Thaumcraft v6.1.BETA26
     val thaumcraftDependency = curse("thaumcraft", 223628L, 2629023L)
-    implementation(fg.deobf(thaumcraftDependency))
+    compileOnly(fg.deobf(thaumcraftDependency))
     // Baubles v1.5.2
     val baublesDependency = curse("baubles", 227083L, 2518667L)
-    implementation(fg.deobf(baublesDependency))
+    compileOnly(fg.deobf(baublesDependency))
 
     // Just Enough Resources v0.9.2.60
     val justenoughresourcesDependency = "curse.maven:just-enough-resources-240630:2728585-deobf-sources-api"
@@ -175,7 +175,7 @@ dependencies {
 
     // Block Drops v1.4.0
     val blockdropsDependency = curse("block-drops", 244181L, 2509046L)
-    implementation(fg.deobf(blockdropsDependency))
+    compileOnly(fg.deobf(blockdropsDependency))
 
     // Advanced Rocketry v2.0.0-13
     val advancedrocketryDependency = curse("advanced-rocketry", 236542L, 3801020L)
@@ -193,12 +193,7 @@ dependencies {
 
     // Immersive Engineering v0.12-98
     val immersiveengineeringDependency = curse("immersive-engineering", 231951L, 2974106L)
-    implementation(fg.deobf(immersiveengineeringDependency))
-
-    // Immersive Petroleum v1.1.10
-    val immersivepetroleumDependency = curse("immersive-petroleum", 268250L, 3382321L)
-    implementation(fg.deobf(immersivepetroleumDependency))
-    implementation(fg.deobf(immersivepetroleumDependency))
+    compileOnly(fg.deobf(immersiveengineeringDependency))
 }
 
 fancyGradle {

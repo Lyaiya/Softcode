@@ -13,6 +13,8 @@
 - [InWorldCrafting](https://www.curseforge.com/minecraft/mc-mods/inworldcrafting)
 - [Thaumcraft](https://www.curseforge.com/minecraft/mc-mods/thaumcraft)
 - [Thaumic JEI](https://www.curseforge.com/minecraft/mc-mods/thaumic-jei)
+- [Immersive Engineering](https://www.curseforge.com/minecraft/mc-mods/immersive-engineering)
+- [Block Drops](https://www.curseforge.com/minecraft/mc-mods/block-drops-jei-addon)
 
 ## 其他
 
