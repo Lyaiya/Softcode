@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.lyaiya.softcode.mixin.blockdrops",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.softcode.refmap.json",
+  "target": "@env(DEFAULT)",
+  "client": [
+    "MixinCategory",
+    "MixinWrapper"
+  ],
+  "setSourceFile": true,
+  "minVersion": "0.8"
+}

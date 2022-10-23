@@ -42,3 +42,9 @@ key.thaumcraft.misc_caster_toggle=切换其他核心
 gui.immersiveengineering.recipe_category.arc_furnace.recycling=电弧炉 - 回收
 gui.immersiveengineering.unit_per_tick= IF/t
 gui.immersiveengineering.seconds=秒
+
+# Block Drops
+gui.blockdrops.recipe_category.block_drops=方块掉落
+gui.blockdrops.min=最小：
+gui.blockdrops.max=最大：
+gui.blockdrops.too_many_drops=可能的掉落物过多，使用左右键来循环显示。

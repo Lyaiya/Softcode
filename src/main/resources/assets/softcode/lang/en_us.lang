@@ -42,3 +42,9 @@ key.thaumcraft.misc_caster_toggle=Misc Caster Toggle
 gui.immersiveengineering.recipe_category.arc_furnace.recycling=Arc Furnace - Recycling
 gui.immersiveengineering.unit_per_tick= IF/t
 gui.immersiveengineering.seconds= Seconds
+
+# Block Drops
+gui.blockdrops.recipe_category.block_drops=Block Drops
+gui.blockdrops.min=Min: 
+gui.blockdrops.max=Max: 
+gui.blockdrops.too_many_drops=There are too many possible drops. Use left and right key to cycle.

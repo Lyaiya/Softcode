@@ -17,7 +17,8 @@ class SoftcodeLateMixinLoader : ILateMixinLoader {
         ModIdConstant.EX_NIHILO_CREATIO.mixinJsonPair,
         ModIdConstant.THAUMCRAFT.mixinJsonPair,
         ModIdConstant.THAUMIC_JEI.mixinJsonPair,
-        ModIdConstant.IMMERSIVE_ENGINEERING.mixinJsonPair
+        ModIdConstant.IMMERSIVE_ENGINEERING.mixinJsonPair,
+        ModIdConstant.BLOCK_DROPS.mixinJsonPair
     )
 
     override fun getMixinConfigs(): List<String> {

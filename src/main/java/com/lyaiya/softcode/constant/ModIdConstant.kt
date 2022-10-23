@@ -6,4 +6,5 @@ object ModIdConstant {
     const val THAUMCRAFT = "thaumcraft"
     const val THAUMIC_JEI = "thaumicjei"
     const val IMMERSIVE_ENGINEERING = "immersiveengineering"
+    const val BLOCK_DROPS = "blockdrops"
 }
