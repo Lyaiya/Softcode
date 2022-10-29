@@ -48,3 +48,15 @@ gui.blockdrops.recipe_category.block_drops=方块掉落
 gui.blockdrops.min=最小：
 gui.blockdrops.max=最大：
 gui.blockdrops.too_many_drops=可能的掉落物过多，使用左右键来循环显示。
+
+# IC2
+key.ic2.alt_key=ALT键
+key.ic2.boost_key=提升键
+key.ic2.mode_switch_key=模式切换键
+key.ic2.side_inventory_key=侧边物品栏键
+key.ic2.hud_expand_key=HUB扩展键
+
+# Controlling
+key.controlling.default=默认
+key.controlling.a_z=A->Z
+key.controlling.z_a=Z->A

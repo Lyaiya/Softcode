@@ -1,6 +1,5 @@
-import net.minecraftforge.gradle.common.util.RunConfig
-import wtf.gofancy.fancygradle.script.extensions.curse
-import wtf.gofancy.fancygradle.script.extensions.curseForge
+import net.minecraftforge.gradle.common.util.*
+import wtf.gofancy.fancygradle.script.extensions.*
 
 val modVersion: String by extra
 val mavenGroup: String by extra
@@ -170,7 +169,7 @@ dependencies {
     compileOnly(fg.deobf(baublesDependency))
 
     // Just Enough Resources v0.9.2.60
-    val justenoughresourcesDependency = "curse.maven:just-enough-resources-240630:2728585-deobf-sources-api"
+    val justenoughresourcesDependency = "curse.maven:just-enough-resources-240630:2728585-deobf-sources"
     implementation(justenoughresourcesDependency)
 
     // Block Drops v1.4.0
@@ -194,6 +193,32 @@ dependencies {
     // Immersive Engineering v0.12-98
     val immersiveengineeringDependency = curse("immersive-engineering", 231951L, 2974106L)
     compileOnly(fg.deobf(immersiveengineeringDependency))
+
+    // Industrial Craft v2.8.222
+    val industrialcraftDependency = "curse.maven:industrial-craft-242638:3838713-deobf"
+    compileOnly(industrialcraftDependency)
+
+    // Controlling v3.0.10
+    val controllingDependency = curse("controlling", 250398L, 3025548L)
+    implementation(fg.deobf(controllingDependency))
+
+    // FTB Quests v1202.9.0.15
+    val ftbquestsDependency = "curse.maven:ftb-quests-289412:3156637-sources"
+    implementation(ftbquestsDependency)
+    // FTB Library v5.4.7.2
+    val ftblibraryDependency = "curse.maven:ftb-library-237167:2985811-sources"
+    implementation(ftblibraryDependency)
+    // Item Filters v1.0.4.2
+    val itemfiltersDependency = "curse.maven:item-filters-309674:3003364-sources"
+    implementation(itemfiltersDependency)
+
+    // AE2 Unofficial Extended Life v0.54.3
+    val ae2extendedlifeDependency = curse("ae2-extended-life", 570458L, 4035869L)
+    implementation(ae2extendedlifeDependency)
+
+    // PackagedAuto v1.0.5.19
+    val packagedautoDependency = curse("packagedauto", 308380L, 3614585L)
+    implementation(packagedautoDependency)
 }
 
 fancyGradle {

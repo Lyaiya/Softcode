@@ -48,3 +48,15 @@ gui.blockdrops.recipe_category.block_drops=Block Drops
 gui.blockdrops.min=Min: 
 gui.blockdrops.max=Max: 
 gui.blockdrops.too_many_drops=There are too many possible drops. Use left and right key to cycle.
+
+# IC2
+key.ic2.alt_key=ALT Key
+key.ic2.boost_key=Boost Key
+key.ic2.mode_switch_key=Mode Switch Key
+key.ic2.side_inventory_key=Side Inventory Key
+key.ic2.hud_expand_key=Hub Expand Key
+
+# Controlling
+key.controlling.default=Default
+key.controlling.a_z=A->Z
+key.controlling.z_a=Z->A

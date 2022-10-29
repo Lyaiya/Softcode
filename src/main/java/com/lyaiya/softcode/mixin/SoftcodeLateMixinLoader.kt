@@ -18,7 +18,9 @@ class SoftcodeLateMixinLoader : ILateMixinLoader {
         ModIdConstant.THAUMCRAFT.mixinJsonPair,
         ModIdConstant.THAUMIC_JEI.mixinJsonPair,
         ModIdConstant.IMMERSIVE_ENGINEERING.mixinJsonPair,
-        ModIdConstant.BLOCK_DROPS.mixinJsonPair
+        ModIdConstant.BLOCK_DROPS.mixinJsonPair,
+        ModIdConstant.IC2.mixinJsonPair,
+        ModIdConstant.CONTROLLING.mixinJsonPair
     )
 
     override fun getMixinConfigs(): List<String> {
@@ -37,5 +39,4 @@ class SoftcodeLateMixinLoader : ILateMixinLoader {
         }
         return false
     }
-
 }
