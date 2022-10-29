@@ -33,5 +33,4 @@ abstract class MixinFluidToFluidRecipeWrapper {
     private fun modifyArgDrawStringWithShadow2(text: String): String {
         return I18n.format("${javaClass.recipeWrapperKey}.consumes_item.no")
     }
-
 }

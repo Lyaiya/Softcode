@@ -19,5 +19,4 @@ abstract class MixinBurnItemRecipeWrapper {
     private fun modifyArgDrawStringWithShadow(text: String): String {
         return I18n.format("${javaClass.recipeWrapperKey}.recipe_time", recipe.ticks)
     }
-
 }

@@ -19,5 +19,4 @@ abstract class MixinExplodeBlockRecipeWrapper {
     private fun modifyArgDrawStringWithShadow(text: String): String {
         return I18n.format("${javaClass.recipeWrapperKey}.success_chance", recipe.itemSpawnChance)
     }
-
 }

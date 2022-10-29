@@ -1,6 +1,6 @@
 package com.lyaiya.softcode
 
-import net.minecraftforge.fml.common.Mod
+import net.minecraftforge.fml.common.*
 import net.minecraftforge.fml.common.event.*
 import org.apache.logging.log4j.*
 
@@ -36,5 +36,4 @@ object Softcode {
     fun postInit(event: FMLPostInitializationEvent) {
         LOGGER.info("postInit")
     }
-
 }

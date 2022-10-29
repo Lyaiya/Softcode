@@ -13,7 +13,7 @@ abstract class MixinEnumSortingType {
         method = ["getName"],
         constant = [Constant(stringValue = "Default")]
     )
-    private fun modifyConstantKey0(text: String): String {
+    private fun modifyConstantGetName0(text: String): String {
         return I18n.format(getTranslationKey(ModIdConstant.CONTROLLING, KeyConstant.KEY, "default"))
     }
 
@@ -21,7 +21,7 @@ abstract class MixinEnumSortingType {
         method = ["getName"],
         constant = [Constant(stringValue = "A->Z")]
     )
-    private fun modifyConstantKey1(text: String): String {
+    private fun modifyConstantGetName1(text: String): String {
         return I18n.format(getTranslationKey(ModIdConstant.CONTROLLING, KeyConstant.KEY, "a_z"))
     }
 
@@ -29,7 +29,7 @@ abstract class MixinEnumSortingType {
         method = ["getName"],
         constant = [Constant(stringValue = "Z->A")]
     )
-    private fun modifyConstantKey2(text: String): String {
+    private fun modifyConstantGetName2(text: String): String {
         return I18n.format(getTranslationKey(ModIdConstant.CONTROLLING, KeyConstant.KEY, "z_a"))
     }
 }

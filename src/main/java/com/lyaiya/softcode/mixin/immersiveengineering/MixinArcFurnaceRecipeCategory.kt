@@ -16,7 +16,10 @@ import org.spongepowered.asm.mixin.injection.callback.*
 abstract class MixinArcFurnaceRecipeCategory<T, W : IRecipeWrapper>(
     uniqueName: String, localKey: String, background: IDrawable, recipeClass: Class<T>
 ) : IERecipeCategory<T, W>(uniqueName, localKey, background, recipeClass) {
-    @Inject(method = ["<init>"], at = [At("RETURN")])
+    @Inject(
+        method = ["<init>"],
+        at = [At("RETURN")]
+    )
     private fun injectInit(ci: CallbackInfo) {
         if ("." in uniqueName) {
             val splitString = uniqueName.split(".", limit = 2)

@@ -7,6 +7,7 @@ import net.minecraft.client.resources.*
 import org.spongepowered.asm.mixin.*
 import org.spongepowered.asm.mixin.injection.*
 import org.spongepowered.asm.mixin.injection.callback.*
+import java.util.Locale
 
 @Mixin(ItemOre::class, remap = false)
 abstract class MixinItemOre {
@@ -17,7 +18,7 @@ abstract class MixinItemOre {
     )
     private fun injectGetItemStackDisplayName(cir: CallbackInfoReturnable<String>) {
         val splitString = cir.returnValue.split(" ", limit = 2)
-        val firstString = splitString.first().lowercase()
+        val firstString = splitString.first().lowercase(Locale.ENGLISH)
         val lastString = splitString.last()
         val key = getTranslationKey(ModIdConstant.EX_NIHILO_CREATIO, KeyConstant.MATERIAL, firstString)
         cir.returnValue = I18n.format(key) + lastString
