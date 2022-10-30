@@ -14,6 +14,6 @@ abstract class MixinArcaneWorkbenchWrapper {
         constant = [Constant(stringValue = "Vis Cost")]
     )
     private fun injectGetTooltipStrings(text: String): String {
-        return I18n.format(getTranslationKey(ModIdConstant.THAUMIC_JEI, KeyConstant.GUI, "vis_cost"))
+        return I18n.format(createTranslationKey(ModIdConstant.THAUMIC_JEI, KeyConstant.GUI, "vis_cost"))
     }
 }

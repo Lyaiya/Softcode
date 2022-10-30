@@ -1,6 +1,7 @@
 package com.lyaiya.softcode.mixin.libvulpes
 
 import com.lyaiya.softcode.constant.*
+import com.lyaiya.softcode.util.*
 import net.minecraft.block.*
 import net.minecraft.client.resources.*
 import net.minecraft.item.*
@@ -30,11 +31,7 @@ abstract class MixinItemOre(block: Block) : ItemBlock(block) {
         } else {
             val firstString = I18n.format("${firstSection}.name")
             val secondString = I18n.format("type.${secondSection}.name")
-            I18n.format(
-                com.lyaiya.softcode.util.getTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.FORMAT, "item_ore"),
-                firstString,
-                secondString
-            )
+            I18n.format(createTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.FORMAT, "item_ore"), firstString, secondString)
         }
     }
 }

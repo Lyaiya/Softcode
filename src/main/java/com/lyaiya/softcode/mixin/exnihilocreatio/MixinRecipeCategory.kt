@@ -30,6 +30,6 @@ abstract class MixinRecipeCategory {
         cancellable = true
     )
     private fun injectGetTitle(cir: CallbackInfoReturnable<String>) {
-        cir.returnValue = I18n.format(javaClass.getReplacedTranslationKey(ModIdConstant.EX_NIHILO_CREATIO, ClassConstant.RECIPE_CATEGORY))
+        cir.returnValue = I18n.format(javaClass.createReplacedTranslationKey(ModIdConstant.EX_NIHILO_CREATIO, ClassConstant.RECIPE_CATEGORY))
     }
 }

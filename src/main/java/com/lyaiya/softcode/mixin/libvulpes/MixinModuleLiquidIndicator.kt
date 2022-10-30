@@ -20,7 +20,7 @@ abstract class MixinModuleLiquidIndicator {
     )
     private fun modifyArgRenderForeground(textList: List<String>): List<String> {
         if ("Empty" in textList) {
-            return listOf(I18n.format(getTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.GUI, "module", "liquid_indicator", "empty")))
+            return listOf(I18n.format(createTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.GUI, "module", "liquid_indicator", "empty")))
         }
         val firstSection: String
         val secondSection: String
@@ -35,7 +35,7 @@ abstract class MixinModuleLiquidIndicator {
         }
         return listOf(
             I18n.format(
-                getTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.GUI, "module", "liquid_indicator", "not_empty"),
+                createTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.GUI, "module", "liquid_indicator", "not_empty"),
                 firstSection,
                 secondSection,
                 thirdSection

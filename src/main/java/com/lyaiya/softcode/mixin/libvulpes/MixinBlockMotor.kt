@@ -14,6 +14,6 @@ abstract class MixinBlockMotor {
         constant = [Constant(stringValue = "Machine Speed: %.2f")]
     )
     private fun modifyConstantAddInformation0(text: String): String {
-        return I18n.format(getTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.TOOLTIP, "motor", "machine_speed")) + "%.2f"
+        return I18n.format(createTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.TOOLTIP, "motor", "machine_speed")) + "%.2f"
     }
 }

@@ -14,7 +14,7 @@ abstract class MixinEnumSortingType {
         constant = [Constant(stringValue = "Default")]
     )
     private fun modifyConstantGetName0(text: String): String {
-        return I18n.format(getTranslationKey(ModIdConstant.CONTROLLING, KeyConstant.KEY, "default"))
+        return I18n.format(createTranslationKey(ModIdConstant.CONTROLLING, KeyConstant.KEY, "default"))
     }
 
     @ModifyConstant(
@@ -22,7 +22,7 @@ abstract class MixinEnumSortingType {
         constant = [Constant(stringValue = "A->Z")]
     )
     private fun modifyConstantGetName1(text: String): String {
-        return I18n.format(getTranslationKey(ModIdConstant.CONTROLLING, KeyConstant.KEY, "a_z"))
+        return I18n.format(createTranslationKey(ModIdConstant.CONTROLLING, KeyConstant.KEY, "a_z"))
     }
 
     @ModifyConstant(
@@ -30,6 +30,6 @@ abstract class MixinEnumSortingType {
         constant = [Constant(stringValue = "Z->A")]
     )
     private fun modifyConstantGetName2(text: String): String {
-        return I18n.format(getTranslationKey(ModIdConstant.CONTROLLING, KeyConstant.KEY, "z_a"))
+        return I18n.format(createTranslationKey(ModIdConstant.CONTROLLING, KeyConstant.KEY, "z_a"))
     }
 }

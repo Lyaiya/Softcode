@@ -16,6 +16,6 @@ abstract class MixinTileCoalGenerator(energy: Int, invSize: Int) : TileInventori
         index = 0
     )
     private fun injectUpdate(text: String): String {
-        return I18n.format(getTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.GUI, "coal_generator", "generating"), this.lastAmtGenerated)
+        return I18n.format(createTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.GUI, "coal_generator", "generating"), this.lastAmtGenerated)
     }
 }

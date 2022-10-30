@@ -14,7 +14,7 @@ abstract class MixinArcFurnaceRecipeWrapper {
         constant = [Constant(stringValue = " IF/t")]
     )
     private fun modifyConstantDrawInfo0(text: String): String {
-        return I18n.format(getTranslationKey(ModIdConstant.IMMERSIVE_ENGINEERING, KeyConstant.GUI, "unit_per_tick"))
+        return I18n.format(createTranslationKey(ModIdConstant.IMMERSIVE_ENGINEERING, KeyConstant.GUI, "unit_per_tick"))
     }
 
     @ModifyConstant(
@@ -22,6 +22,6 @@ abstract class MixinArcFurnaceRecipeWrapper {
         constant = [Constant(stringValue = " Seconds")]
     )
     private fun modifyConstantDrawInfo1(text: String): String {
-        return I18n.format(getTranslationKey(ModIdConstant.IMMERSIVE_ENGINEERING, KeyConstant.GUI, "seconds"))
+        return I18n.format(createTranslationKey(ModIdConstant.IMMERSIVE_ENGINEERING, KeyConstant.GUI, "seconds"))
     }
 }

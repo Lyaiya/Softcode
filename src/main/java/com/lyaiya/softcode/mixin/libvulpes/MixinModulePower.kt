@@ -27,6 +27,6 @@ abstract class MixinModulePower {
         }.last().split(" Power").also {
             secondSection = it.first()
         }
-        return listOf(I18n.format(getTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.GUI, "module", "power"), firstSection, secondSection))
+        return listOf(I18n.format(createTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.GUI, "module", "power"), firstSection, secondSection))
     }
 }

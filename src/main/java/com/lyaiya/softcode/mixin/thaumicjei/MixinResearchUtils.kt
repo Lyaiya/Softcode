@@ -8,7 +8,7 @@ import com.lyaiya.softcode.*
 import com.lyaiya.softcode.constant.*
 import com.lyaiya.softcode.util.*
 import net.minecraft.client.resources.*
-import org.spongepowered.asm.mixin.Mixin
+import org.spongepowered.asm.mixin.*
 import org.spongepowered.asm.mixin.injection.*
 
 @ModifyConstant(
@@ -16,5 +16,5 @@ import org.spongepowered.asm.mixin.injection.*
     constant = [Constant(stringValue = "Missing research:")]
 )
 private fun modifyConstantGenerateMissingResearchList(text: String): String {
-    return I18n.format(getTranslationKey(ModIdConstant.THAUMIC_JEI, KeyConstant.GUI, "missing_research"))
+    return I18n.format(createTranslationKey(ModIdConstant.THAUMIC_JEI, KeyConstant.GUI, "missing_research"))
 }

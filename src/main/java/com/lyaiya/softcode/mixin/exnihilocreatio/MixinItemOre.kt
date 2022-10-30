@@ -13,14 +13,14 @@ import java.util.Locale
 abstract class MixinItemOre {
     @Inject(
         method = ["getItemStackDisplayName"],
-        at = [At(value = "RETURN")],
+        at = [At("RETURN")],
         cancellable = true
     )
     private fun injectGetItemStackDisplayName(cir: CallbackInfoReturnable<String>) {
         val splitString = cir.returnValue.split(" ", limit = 2)
         val firstString = splitString.first().lowercase(Locale.ENGLISH)
         val lastString = splitString.last()
-        val key = getTranslationKey(ModIdConstant.EX_NIHILO_CREATIO, KeyConstant.MATERIAL, firstString)
+        val key = createTranslationKey(ModIdConstant.EX_NIHILO_CREATIO, KeyConstant.MATERIAL, firstString)
         cir.returnValue = I18n.format(key) + lastString
     }
 }

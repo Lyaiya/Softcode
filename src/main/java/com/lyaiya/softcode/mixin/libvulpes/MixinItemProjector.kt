@@ -14,7 +14,7 @@ abstract class MixinItemProjector {
         constant = [Constant(stringValue = "Shift right-click: opens machine selection interface")]
     )
     private fun modifyConstantAddInformation0(text: String): String {
-        return I18n.format(getTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.TOOLTIP, "projector", "shift_right_click"))
+        return I18n.format(createTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.TOOLTIP, "projector", "shift_right_click"))
     }
 
     @ModifyConstant(
@@ -22,6 +22,6 @@ abstract class MixinItemProjector {
         constant = [Constant(stringValue = "Shift-scroll: moves cross-section")]
     )
     private fun modifyConstantAddInformation1(text: String): String {
-        return I18n.format(getTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.TOOLTIP, "projector", "shift_scroll"))
+        return I18n.format(createTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.TOOLTIP, "projector", "shift_scroll"))
     }
 }

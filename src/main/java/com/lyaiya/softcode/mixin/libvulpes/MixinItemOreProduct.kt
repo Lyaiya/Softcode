@@ -39,7 +39,7 @@ abstract class MixinItemOreProduct : Item() {
             val firstString = I18n.format("material.${firstSection}.name")
             val secondString = I18n.format("type.${secondSection}.name")
             I18n.format(
-                com.lyaiya.softcode.util.getTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.FORMAT, "item_ore_product"),
+                com.lyaiya.softcode.util.createTranslationKey(ModIdConstant.LIB_VULPES, KeyConstant.FORMAT, "item_ore_product"),
                 firstString,
                 secondString
             )

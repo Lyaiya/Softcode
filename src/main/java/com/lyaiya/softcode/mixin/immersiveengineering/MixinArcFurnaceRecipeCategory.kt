@@ -25,7 +25,7 @@ abstract class MixinArcFurnaceRecipeCategory<T, W : IRecipeWrapper>(
             val splitString = uniqueName.split(".", limit = 2)
             val firstString = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, splitString[0])
             localizedName = I18n.format(
-                getTranslationKey(
+                createTranslationKey(
                     ModIdConstant.IMMERSIVE_ENGINEERING,
                     KeyConstant.GUI,
                     KeyConstant.RECIPE_CATEGORY,
