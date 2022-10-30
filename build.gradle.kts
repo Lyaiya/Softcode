@@ -142,8 +142,8 @@ dependencies {
     // Had Enough Item v4.24.0
     runtimeOnly(fg.deobf(curse("had-enough-items", 557549L, 3957880L)))
 
-    // Had Enough Characters v1.2.0
-    runtimeOnly(fg.deobf(curse("had-enough-characters", 640802L, 3924849L)))
+    // Had Enough Characters v1.3.0
+    runtimeOnly(fg.deobf(curse("had-enough-characters", 640802L, 4035773L)))
 
     // InWorldCrafting v1.2.0
     val inworldcraftingDependency = curse("inworldcrafting", 311938L, 2683267L)
@@ -180,8 +180,8 @@ dependencies {
     val advancedrocketryDependency = curse("advanced-rocketry", 236542L, 3801020L)
     implementation(fg.deobf(advancedrocketryDependency))
     // LibVulpes v0.4.2-25
-    val libvulpesDependency = "curse.maven:libvulpes-236541:3801015-deobf"
-    implementation(libvulpesDependency)
+    val libvulpesDependency = curse("lib-vulpes", 236541L, 3801015L)
+    implementation(fg.deobf(libvulpesDependency))
 
     // Industrial Foregoing v1.12.13-237
     // def industrialforegoing_dependency = "curse.maven:industrial-foregoing-266515:2745321-sources-api-debof"
@@ -200,7 +200,7 @@ dependencies {
 
     // Controlling v3.0.10
     val controllingDependency = curse("controlling", 250398L, 3025548L)
-    implementation(fg.deobf(controllingDependency))
+    compileOnly(fg.deobf(controllingDependency))
 
     // FTB Quests v1202.9.0.15
     val ftbquestsDependency = "curse.maven:ftb-quests-289412:3156637-sources"
@@ -211,10 +211,6 @@ dependencies {
     // Item Filters v1.0.4.2
     val itemfiltersDependency = "curse.maven:item-filters-309674:3003364-sources"
     implementation(itemfiltersDependency)
-
-    // AE2 Unofficial Extended Life v0.54.3
-    val ae2extendedlifeDependency = curse("ae2-extended-life", 570458L, 4035869L)
-    implementation(ae2extendedlifeDependency)
 
     // PackagedAuto v1.0.5.19
     val packagedautoDependency = curse("packagedauto", 308380L, 3614585L)

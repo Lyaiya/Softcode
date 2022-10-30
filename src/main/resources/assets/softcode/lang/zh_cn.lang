@@ -60,3 +60,19 @@ key.ic2.hud_expand_key=HUB扩展键
 key.controlling.default=默认
 key.controlling.a_z=A->Z
 key.controlling.z_a=Z->A
+
+# LibVulpes
+tooltip.libvulpes.motor.machine_speed=机器速率：
+tooltip.libvulpes.linker.coords_unset=未设置坐标！
+tooltip.libvulpes.linker.x=X：
+tooltip.libvulpes.linker.y=Y：
+tooltip.libvulpes.linker.z=Z：
+tooltip.libvulpes.linker.dim=维度：
+tooltip.libvulpes.projector.shift_right_click=Shift右击：打开机器选择界面
+tooltip.libvulpes.projector.shift_scroll=Shift滚动：移动横截面
+format.libvulpes.item_ore=%s%s
+format.libvulpes.item_ore_product=%s%s
+gui.libvulpes.module.liquid_indicator.not_empty=%s：%d / %d mB
+gui.libvulpes.module.liquid_indicator.empty=空
+gui.libvulpes.module.power=%d / %d 能量
+gui.libvulpes.coal_generator.generating=产能速率：%d RF/t

@@ -9,4 +9,5 @@ object ModIdConstant {
     const val BLOCK_DROPS = "blockdrops"
     const val IC2 = "ic2"
     const val CONTROLLING = "controlling"
+    const val LIB_VULPES = "libvulpes"
 }

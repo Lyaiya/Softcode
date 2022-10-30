@@ -6,4 +6,6 @@ object KeyConstant {
     const val DESCRIPTION = "description"
     const val KEY = "key"
     const val RECIPE_CATEGORY = "recipe_category"
+    const val TOOLTIP = "tooltip"
+    const val FORMAT = "format"
 }

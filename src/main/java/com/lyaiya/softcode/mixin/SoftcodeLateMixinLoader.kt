@@ -20,7 +20,8 @@ class SoftcodeLateMixinLoader : ILateMixinLoader {
         ModIdConstant.IMMERSIVE_ENGINEERING.mixinJsonPair,
         ModIdConstant.BLOCK_DROPS.mixinJsonPair,
         ModIdConstant.IC2.mixinJsonPair,
-        ModIdConstant.CONTROLLING.mixinJsonPair
+        ModIdConstant.CONTROLLING.mixinJsonPair,
+        ModIdConstant.LIB_VULPES.mixinJsonPair
     )
 
     override fun getMixinConfigs(): List<String> {

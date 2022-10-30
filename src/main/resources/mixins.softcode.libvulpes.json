@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "package": "com.lyaiya.softcode.mixin.libvulpes",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.softcode.refmap.json",
+  "target": "@env(DEFAULT)",
+  "client": [
+    "MixinBlockMotor",
+    "MixinItemLinker",
+    "MixinItemOre",
+    "MixinItemOreProduct",
+    "MixinItemProjector",
+    "MixinModuleLiquidIndicator",
+    "MixinModulePower",
+    "MixinTileCoalGenerator"
+  ],
+  "setSourceFile": true,
+  "minVersion": "0.8"
+}
