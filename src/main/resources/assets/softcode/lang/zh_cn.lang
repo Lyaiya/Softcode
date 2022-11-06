@@ -80,3 +80,11 @@ gui.libvulpes.coal_generator.generating=产能速率：%d RF/t
 # Advanced Rocketry
 gui.advancedrocketry.power=能量：%d RF/t
 gui.advancedrocketry.time=时间：%d秒
+
+# Serene Seasons
+desc.sereneseasons.fertile_seasons=丰收时刻：
+desc.sereneseasons.year_round=全年
+desc.sereneseasons.spring=春季
+desc.sereneseasons.summer=夏季
+desc.sereneseasons.autumn=秋季
+desc.sereneseasons.winter=冬季

@@ -80,3 +80,11 @@ gui.libvulpes.coal_generator.generating=Generating %d RF/t
 # Advanced Rocketry
 gui.advancedrocketry.power=Power: %d RF/t
 gui.advancedrocketry.time=Time: %d s
+
+# Serene Seasons
+desc.sereneseasons.fertile_seasons=Fertile Seasons:
+desc.sereneseasons.year_round=Year-Round
+desc.sereneseasons.spring=Spring
+desc.sereneseasons.summer=Summer
+desc.sereneseasons.autumn=Autumn
+desc.sereneseasons.winter=Winter
