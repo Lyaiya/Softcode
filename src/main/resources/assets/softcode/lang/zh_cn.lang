@@ -76,3 +76,7 @@ gui.libvulpes.module.liquid_indicator.not_empty=%s：%d / %d mB
 gui.libvulpes.module.liquid_indicator.empty=空
 gui.libvulpes.module.power=%d / %d 能量
 gui.libvulpes.coal_generator.generating=产能速率：%d RF/t
+
+# Advanced Rocketry
+gui.advancedrocketry.power=能量：%d RF/t
+gui.advancedrocketry.time=时间：%d秒

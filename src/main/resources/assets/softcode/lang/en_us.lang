@@ -72,7 +72,11 @@ tooltip.libvulpes.projector.shift_right_click=Shift right-click: opens machine s
 tooltip.libvulpes.projector.shift_scroll=Shift-scroll: moves cross-section
 format.libvulpes.item_ore=%s %s
 format.libvulpes.item_ore_product=%s %s
-gui.libvulpes.module.liquid_indicator.not_empty=%s: %d / $d mB
+gui.libvulpes.module.liquid_indicator.not_empty=%s: %d / %d mB
 gui.libvulpes.module.liquid_indicator.empty=Empty
 gui.libvulpes.module.power=%d / %d Power
 gui.libvulpes.coal_generator.generating=Generating %d RF/t
+
+# Advanced Rocketry
+gui.advancedrocketry.power=Power: %d RF/t
+gui.advancedrocketry.time=Time: %d s

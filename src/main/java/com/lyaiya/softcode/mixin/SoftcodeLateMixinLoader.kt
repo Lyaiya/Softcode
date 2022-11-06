@@ -9,20 +9,18 @@ class SoftcodeLateMixinLoader : ILateMixinLoader {
     private inline val String.mixinJson
         get() = "mixins.${Softcode.MOD_ID}.${this}.json"
 
-    private inline val String.mixinJsonPair
-        get() = this to this.mixinJson
-
-    private val mixinJsons = mapOf(
-        ModIdConstant.IN_WORLD_CRAFTING.mixinJsonPair,
-        ModIdConstant.EX_NIHILO_CREATIO.mixinJsonPair,
-        ModIdConstant.THAUMCRAFT.mixinJsonPair,
-        ModIdConstant.THAUMIC_JEI.mixinJsonPair,
-        ModIdConstant.IMMERSIVE_ENGINEERING.mixinJsonPair,
-        ModIdConstant.BLOCK_DROPS.mixinJsonPair,
-        ModIdConstant.IC2.mixinJsonPair,
-        ModIdConstant.CONTROLLING.mixinJsonPair,
-        ModIdConstant.LIB_VULPES.mixinJsonPair
-    )
+    private val mixinJsons = buildMap {
+        putMixinJson(ModIdConstant.IN_WORLD_CRAFTING)
+        putMixinJson(ModIdConstant.EX_NIHILO_CREATIO)
+        putMixinJson(ModIdConstant.THAUMCRAFT)
+        putMixinJson(ModIdConstant.THAUMIC_JEI)
+        putMixinJson(ModIdConstant.IMMERSIVE_ENGINEERING)
+        putMixinJson(ModIdConstant.BLOCK_DROPS)
+        putMixinJson(ModIdConstant.IC2)
+        putMixinJson(ModIdConstant.CONTROLLING)
+        putMixinJson(ModIdConstant.LIB_VULPES)
+        putMixinJson(ModIdConstant.ADVANCED_ROCKETRY)
+    }
 
     override fun getMixinConfigs(): List<String> {
         return mixinJsons.values.toList()
@@ -39,5 +37,9 @@ class SoftcodeLateMixinLoader : ILateMixinLoader {
             }
         }
         return false
+    }
+
+    private fun MutableMap<String, String>.putMixinJson(modid: String) {
+        this[modid] = modid.mixinJson
     }
 }

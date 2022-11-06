@@ -1,10 +1,6 @@
 import net.minecraftforge.gradle.common.util.*
 import wtf.gofancy.fancygradle.script.extensions.*
 
-val modVersion: String by extra
-val mavenGroup: String by extra
-val archivesBaseName: String by extra
-
 val buildDeobfJar: String by extra
 val buildApiJar: String by extra
 val buildSourceJar: String by extra
@@ -30,19 +26,17 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm") version "1.6.21"
-    kotlin("kapt") version "1.6.21"
-    idea
-    id("net.minecraftforge.gradle") version "5.1.+"
-    id("wtf.gofancy.fancygradle") version "1.1.+"
+    kotlin("jvm") version Version.Kotlin
+    id("net.minecraftforge.gradle") version Version.ForgeGradle
+    id("wtf.gofancy.fancygradle") version Version.FancyGradle
 }
 
 if (useMixins.toBoolean()) {
     apply(plugin = "org.spongepowered.mixin")
 }
 
-version = modVersion
-group = mavenGroup
+group = Constant.Group
+version = Version.Mod
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 
@@ -70,7 +64,7 @@ minecraft {
                 jvmArgs("-Dmixin.checks.interfaces=true")
                 jvmArgs("-Dmixin.debug=true")
             }
-            source(sourceSets["main"])
+            source(sourceSets.main.get())
         }
         create("client", clientConfig)
 
@@ -89,7 +83,7 @@ minecraft {
                 jvmArgs("-Dmixin.hotSwap=true")
                 jvmArgs("-Dmixin.checks.interfaces=true")
             }
-            source(sourceSets["main"])
+            source(sourceSets.main.get())
         }
         create("server", serverConfig)
     }
@@ -120,21 +114,22 @@ repositories {
 }
 
 dependencies {
-    minecraft("net.minecraftforge:forge:1.12.2-14.23.5.2860")
+    minecraft("net.minecraftforge:forge:1.12.2-${Version.Forge}")
+
+    implementation(fileTree("lib"))
 
     if (useMixins.toBoolean()) {
         val mixinbooterVersion = "5.0"
         compileOnly(fg.deobf("zone.rong:mixinbooter:${mixinbooterVersion}"))
         runtimeOnly("zone.rong:mixinbooter:${mixinbooterVersion}")
-        kapt("org.spongepowered:mixin:0.8.2:processor")
     }
 
-    // Kotlin
-    val kotlinVersion = "1.6.21"
-    implementation(kotlin("reflect", kotlinVersion))
-
-    // Forgelin-Continuous v1.6.21.0
-    api(curse("forgelin-continuous", 456403L, 3771384L))
+    // // Kotlin
+    // val kotlinVersion = "1.6.21"
+    // implementation(kotlin("reflect", kotlinVersion))
+    //
+    // // Forgelin-Continuous v1.6.21.0
+    // runtimeOnly(curse("forgelin-continuous", 456403L, 3771384L))
 
     // CraftTweaker
     runtimeOnly("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.+")
@@ -214,7 +209,11 @@ dependencies {
 
     // PackagedAuto v1.0.5.19
     val packagedautoDependency = curse("packagedauto", 308380L, 3614585L)
-    implementation(packagedautoDependency)
+    implementation(fg.deobf(packagedautoDependency))
+
+    // Serene Seasons v1.2.18
+    val sereneseasonsDependency = curse("serene-seasons", 291874L, 2799213L)
+    implementation(fg.deobf(sereneseasonsDependency))
 }
 
 fancyGradle {
@@ -229,7 +228,7 @@ fancyGradle {
 sourceSets {
     main {
         if (useMixins.toBoolean()) {
-            ext.set("refMap", "mixins.$archivesBaseName.refmap.json")
+            ext.set("refMap", "mixins.${Constant.ModId}.refmap.json")
         }
     }
 }
