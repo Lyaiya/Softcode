@@ -4,7 +4,7 @@
 
 前置模组：
 
-- [Forgelin-Continuous](https://www.curseforge.com/minecraft/mc-mods/forgelin-continuous)
+- [Forgelin-Continuous](https://github.com/Lyaiya/Forgelin-Continuous)
 - [MixinBooter](https://www.curseforge.com/minecraft/mc-mods/mixin-booter)
 
 ## 被干掉的模组：
@@ -15,6 +15,11 @@
 - [Thaumic JEI](https://www.curseforge.com/minecraft/mc-mods/thaumic-jei)
 - [Immersive Engineering](https://www.curseforge.com/minecraft/mc-mods/immersive-engineering)
 - [Block Drops](https://www.curseforge.com/minecraft/mc-mods/block-drops-jei-addon)
+- [Industrial Craft 2](https://www.curseforge.com/minecraft/mc-mods/industrial-craft)
+- [Controlling](https://www.curseforge.com/minecraft/mc-mods/controlling)
+- [LibVulpes](https://www.curseforge.com/minecraft/mc-mods/libvulpes)
+- [Advanced Rocketry](https://www.curseforge.com/minecraft/mc-mods/advanced-rocketry)
+- [Serene Seasons](https://www.curseforge.com/minecraft/mc-mods/serene-seasons)
 
 ## 其他
 

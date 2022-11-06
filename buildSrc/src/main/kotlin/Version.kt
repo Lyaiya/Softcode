@@ -5,7 +5,7 @@ object Version {
 
     private const val ModMajor = "1"
     private const val ModMinor = "0"
-    private const val ModPatch = "2"
+    private const val ModPatch = "3"
 
     const val Mod = "$ModMajor.$ModMinor.$ModPatch"
 
