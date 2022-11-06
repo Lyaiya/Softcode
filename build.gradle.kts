@@ -1,18 +1,6 @@
 import net.minecraftforge.gradle.common.util.*
 import wtf.gofancy.fancygradle.script.extensions.*
 
-val buildDeobfJar: String by extra
-val buildApiJar: String by extra
-val buildSourceJar: String by extra
-
-val useMixins: String by extra
-val useCoremod: String by extra
-val useAssetmover: String by extra
-val hasAccessTransformer: String by extra
-
-val includeMod: String by extra
-val coremodPluginClassName: String by extra
-
 buildscript {
     repositories {
         maven {
@@ -31,7 +19,7 @@ plugins {
     id("wtf.gofancy.fancygradle") version Version.FancyGradle
 }
 
-if (useMixins.toBoolean()) {
+if (Setting.UseMixin) {
     apply(plugin = "org.spongepowered.mixin")
 }
 
@@ -43,7 +31,7 @@ java.toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 minecraft {
     mappings("stable", "39-1.12")
 
-    if (hasAccessTransformer.toBoolean()) {
+    if (Setting.HasAccessTransformer) {
         accessTransformer("src/main/resources/META-INF/accesstransformer.cfg")
     }
 
@@ -56,10 +44,10 @@ minecraft {
                     "forge.logging.console.level" to "debug",
                 )
             )
-            if (useCoremod.toBoolean()) {
-                jvmArgs("-Dfml.coreMods.load=$coremodPluginClassName")
+            if (Setting.UseCoremod) {
+                jvmArgs("-Dfml.coreMods.load=${Constant.FMLCorePlugin}")
             }
-            if (useMixins.toBoolean()) {
+            if (Setting.UseMixin) {
                 jvmArgs("-Dmixin.hotSwap=true")
                 jvmArgs("-Dmixin.checks.interfaces=true")
                 jvmArgs("-Dmixin.debug=true")
@@ -76,10 +64,10 @@ minecraft {
                     "forge.logging.console.level" to "debug",
                 )
             )
-            if (useCoremod.toBoolean()) {
-                jvmArgs("-Dfml.coreMods.load=$coremodPluginClassName")
+            if (Setting.UseCoremod) {
+                jvmArgs("-Dfml.coreMods.load=${Constant.FMLCorePlugin}")
             }
-            if (useMixins.toBoolean()) {
+            if (Setting.UseMixin) {
                 jvmArgs("-Dmixin.hotSwap=true")
                 jvmArgs("-Dmixin.checks.interfaces=true")
             }
@@ -118,7 +106,7 @@ dependencies {
 
     implementation(fileTree("lib"))
 
-    if (useMixins.toBoolean()) {
+    if (Setting.UseMixin) {
         val mixinbooterVersion = "5.0"
         compileOnly(fg.deobf("zone.rong:mixinbooter:${mixinbooterVersion}"))
         runtimeOnly("zone.rong:mixinbooter:${mixinbooterVersion}")
@@ -173,10 +161,10 @@ dependencies {
 
     // Advanced Rocketry v2.0.0-13
     val advancedrocketryDependency = curse("advanced-rocketry", 236542L, 3801020L)
-    implementation(fg.deobf(advancedrocketryDependency))
+    compileOnly(fg.deobf(advancedrocketryDependency))
     // LibVulpes v0.4.2-25
     val libvulpesDependency = curse("lib-vulpes", 236541L, 3801015L)
-    implementation(fg.deobf(libvulpesDependency))
+    compileOnly(fg.deobf(libvulpesDependency))
 
     // Industrial Foregoing v1.12.13-237
     // def industrialforegoing_dependency = "curse.maven:industrial-foregoing-266515:2745321-sources-api-debof"
@@ -213,7 +201,7 @@ dependencies {
 
     // Serene Seasons v1.2.18
     val sereneseasonsDependency = curse("serene-seasons", 291874L, 2799213L)
-    implementation(fg.deobf(sereneseasonsDependency))
+    compileOnly(fg.deobf(sereneseasonsDependency))
 }
 
 fancyGradle {
@@ -227,14 +215,14 @@ fancyGradle {
 
 sourceSets {
     main {
-        if (useMixins.toBoolean()) {
+        if (Setting.UseMixin) {
             ext.set("refMap", "mixins.${Constant.ModId}.refmap.json")
         }
     }
 }
 
 tasks {
-    if (buildDeobfJar.toBoolean()) {
+    if (Setting.BuildDeobfJar) {
         // Create deobf dev jars
         register<Jar>("deobfJar") {
             from(sourceSets.main.get().java)
@@ -242,7 +230,7 @@ tasks {
         }
     }
 
-    if (buildApiJar.toBoolean()) {
+    if (Setting.BuildApiJar) {
         // Create API library jar
         register<Jar>("apiZip") {
             from(sourceSets.main.get().java) {
@@ -255,7 +243,7 @@ tasks {
         }
     }
 
-    if (buildSourceJar.toBoolean()) {
+    if (Setting.BuildSourceJar) {
         // Create source jar
         register<Jar>("sourcesJar") {
             from(sourceSets.main.get().allJava)
@@ -266,14 +254,14 @@ tasks {
     jar {
         manifest {
             val attributeMap = mutableMapOf<String, String>()
-            if (useCoremod.toBoolean()) {
-                attributeMap["FMLCorePlugin"] = coremodPluginClassName
-                if (includeMod.toBoolean()) {
+            if (Setting.UseCoremod) {
+                attributeMap["FMLCorePlugin"] = Constant.FMLCorePlugin
+                if (Setting.IncludeMod) {
                     attributeMap["FMLCorePluginContainsFMLMod"] = true.toString()
-                    attributeMap["ForceLoadAsMod"] = (project.gradle.startParameter.taskNames[0] == "build").toString()
+                    attributeMap["ForceLoadAsMod"] = true.toString()
                 }
             }
-            if (useMixins.toBoolean()) {
+            if (Setting.UseMixin) {
                 attributeMap["TweakClass"] = "org.spongepowered.asm.launch.MixinTweaker"
             }
             attributes(attributeMap)
@@ -285,27 +273,31 @@ tasks {
     processResources {
         duplicatesStrategy = DuplicatesStrategy.INCLUDE
         inputs.property("version", project.version)
-        filesMatching("mcmod.info") {
+        from(sourceSets.main.get().resources.srcDirs) {
+            include("mcmod.info")
             expand("version" to project.version)
+        }
+        from(sourceSets.main.get().resources.srcDirs) {
+            exclude("mcmod.info")
         }
     }
 
     compileKotlin {
         kotlinOptions {
             jvmTarget = "1.8"
-            languageVersion = "1.6"
+            languageVersion = "1.7"
         }
     }
 }
 
 artifacts {
-    if (buildDeobfJar.toBoolean()) {
+    if (Setting.BuildDeobfJar) {
         archives("deobfJar")
     }
-    if (buildApiJar.toBoolean()) {
+    if (Setting.BuildApiJar) {
         archives("apiZip")
     }
-    if (buildSourceJar.toBoolean()) {
+    if (Setting.BuildSourceJar) {
         archives("sourcesJar")
     }
 }
