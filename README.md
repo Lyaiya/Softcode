@@ -4,7 +4,7 @@
 
 前置模组：
 
-- [Forgelin-Continuous](https://github.com/Lyaiya/Forgelin-Continuous)
+- [Forgelin-Continuous](https://www.curseforge.com/minecraft/mc-mods/forgelin-continuous)
 - [MixinBooter](https://www.curseforge.com/minecraft/mc-mods/mixin-booter)
 
 ## 被干掉的模组：
@@ -23,5 +23,5 @@
 
 ## 其他
 
-- 模板：[TemplateDevEnv fg5 分支](https://github.com/CleanroomMC/TemplateDevEnv/tree/fg5)
-- [Kotlin 下 Mixin 静态的方式](https://github.com/SpongePowered/Mixin/issues/245#issuecomment-397858393)
+- 模板：[TemplateDevEnv](https://github.com/CleanroomMC/TemplateDevEnv)
+- [Kotlin 下 Mixin 静态函数的方式](https://github.com/SpongePowered/Mixin/issues/245#issuecomment-397858393)

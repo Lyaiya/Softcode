@@ -1,92 +1,106 @@
-import net.minecraftforge.gradle.common.util.*
-import wtf.gofancy.fancygradle.script.extensions.*
-
-buildscript {
-    repositories {
-        maven {
-            name = "MixinGradle"
-            url = uri("https://repo.spongepowered.org/repository/maven-public")
-        }
-    }
-    dependencies {
-        classpath("org.spongepowered:mixingradle:0.7-SNAPSHOT")
-    }
-}
+import org.jetbrains.gradle.ext.*
+import org.jetbrains.gradle.ext.Gradle
 
 plugins {
-    kotlin("jvm") version Version.Kotlin
-    id("net.minecraftforge.gradle") version Version.ForgeGradle
-    id("wtf.gofancy.fancygradle") version Version.FancyGradle
+    kotlin("jvm") version "1.9.0"
+    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7"
+    id("com.gtnewhorizons.retrofuturagradle") version "1.3.24"
 }
 
-if (Setting.UseMixin) {
-    apply(plugin = "org.spongepowered.mixin")
-}
-
+// Project properties
 group = Constant.Group
 version = Version.Mod
+base.archivesName.set(Constant.ModId)
 
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(8))
-
-minecraft {
-    mappings("stable", "39-1.12")
-
-    if (Setting.HasAccessTransformer) {
-        accessTransformer("src/main/resources/META-INF/accesstransformer.cfg")
+// Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
+        vendor.set(JvmVendorSpec.AZUL)
     }
-
-    runs {
-        val clientConfig = Action<RunConfig> {
-            workingDirectory = project.file("run/client").canonicalPath
-            properties(
-                mapOf(
-                    "forge.logging.markers" to "REGISTRIES",
-                    "forge.logging.console.level" to "debug",
-                )
-            )
-            if (Setting.UseCoremod) {
-                jvmArgs("-Dfml.coreMods.load=${Constant.FMLCorePlugin}")
-            }
-            if (Setting.UseMixin) {
-                jvmArgs("-Dmixin.hotSwap=true")
-                jvmArgs("-Dmixin.checks.interfaces=true")
-                jvmArgs("-Dmixin.debug=true")
-            }
-            source(sourceSets.main.get())
-        }
-        create("client", clientConfig)
-
-        val serverConfig = Action<RunConfig> {
-            workingDirectory = project.file("run/server").canonicalPath
-            properties(
-                mapOf(
-                    "forge.logging.markers" to "REGISTRIES",
-                    "forge.logging.console.level" to "debug",
-                )
-            )
-            if (Setting.UseCoremod) {
-                jvmArgs("-Dfml.coreMods.load=${Constant.FMLCorePlugin}")
-            }
-            if (Setting.UseMixin) {
-                jvmArgs("-Dmixin.hotSwap=true")
-                jvmArgs("-Dmixin.checks.interfaces=true")
-            }
-            source(sourceSets.main.get())
-        }
-        create("server", serverConfig)
-    }
+    // Generate sources and javadocs jars when building and publishing
+    withSourcesJar()
+    // withJavadocJar()
 }
 
+// configurations {
+//     embed
+//     implementation.extendsFrom(embed)
+// }
+
+// Most RFG configuration lives here, see the JavaDoc for com.gtnewhorizons.retrofuturagradle.MinecraftExtension
+minecraft {
+    mcVersion.set("1.12.2")
+
+    // MCP Mappings
+    mcpMappingChannel.set("stable")
+    mcpMappingVersion.set("39")
+
+    // Set username here, the UUID will be looked up automatically
+    username.set("Developer")
+
+    // Add any additional tweaker classes here
+    // extraTweakClasses.add("org.spongepowered.asm.launch.MixinTweaker")
+
+    // Add various JVM arguments here for runtime
+    val jvmArgs = buildList {
+        add("-ea:${project.group}")
+        if (Setting.UseCoremod) {
+            add("-Dfml.coreMods.load=${Constant.FMLCorePlugin}")
+        }
+        if (Setting.UseMixin) {
+            add("-Dmixin.hotSwap=true")
+            add("-Dmixin.checks.interfaces=true")
+            add("-Dmixin.debug.export=true")
+        }
+    }
+    extraRunJvmArguments.addAll(jvmArgs)
+
+    // Include and use dependencies' Access Transformer files
+    useDependencyAccessTransformers.set(true)
+
+    // Add any properties you want to swap out for a dynamic value at build time here
+    // Any properties here will be added to a class at build time, the name can be configured below
+    // Example:
+    injectedTags.put("VERSION", project.version)
+    // injectedTags.put("MOD_ID", Constant.ModId)
+}
+
+// Generates a class named rfg.examplemod.Tags with the mod version in it, you can find it at
+tasks.injectTags {
+    outputClassName.set("${project.group}.${Constant.ModId}.Tags")
+}
+
+// Create a new dependency type for runtime-only dependencies that don't get included in the maven publication
+// val runtimeOnlyNonPublishable: Configuration by configurations.creating {
+//     description = "Runtime only dependencies that are not published alongside the jar"
+//     isCanBeConsumed = false
+//     isCanBeResolved = false
+// }
+// listOf(configurations.runtimeClasspath, configurations.testRuntimeClasspath).forEach {
+//     it.configure {
+//         extendsFrom(
+//             runtimeOnlyNonPublishable
+//         )
+//     }
+// }
+
 repositories {
-    mavenCentral()
-    curseForge()
     maven {
-        name = "CleanroomMC"
+        name = "CleanroomMC Maven"
         url = uri("https://maven.cleanroommc.com")
     }
     maven {
-        name = "SpongePowered"
+        name = "SpongePowered Maven"
         url = uri("https://repo.spongepowered.org/maven")
+    }
+    maven {
+        name = "CurseMaven"
+        url = uri("https://cursemaven.com")
+        content {
+            includeGroup("curse.maven")
+        }
     }
     maven {
         name = "BlameJared Maven"
@@ -96,75 +110,74 @@ repositories {
         }
     }
     maven {
-        name = "Progwml6 maven"
-        url = uri("https://dvs1.progwml6.com/files/maven")
+        name = "ModMaven"
+        url = uri("https://modmaven.dev")
     }
 }
 
 dependencies {
-    minecraft("net.minecraftforge:forge:1.12.2-${Version.Forge}")
-
-    implementation(fileTree("lib"))
-
-    if (Setting.UseMixin) {
-        val mixinbooterVersion = "5.0"
-        compileOnly(fg.deobf("zone.rong:mixinbooter:${mixinbooterVersion}"))
-        runtimeOnly("zone.rong:mixinbooter:${mixinbooterVersion}")
+    if (Setting.UseAssetmover) {
+        implementation("com.cleanroommc:assetmover:2.5")
     }
-
-    // // Kotlin
-    // val kotlinVersion = "1.6.21"
-    // implementation(kotlin("reflect", kotlinVersion))
-    //
-    // // Forgelin-Continuous v1.6.21.0
-    // runtimeOnly(curse("forgelin-continuous", 456403L, 3771384L))
+    if (Setting.UseMixin) {
+        implementation("zone.rong:mixinbooter:8.3")
+        // Change your mixin refmap name here:
+        val mixin = modUtils.enableMixins("org.spongepowered:mixin:0.8.3", "mixins.${Constant.ModId}.refmap.json") as String
+        api(mixin) {
+            isTransitive = false
+        }
+        annotationProcessor("org.ow2.asm:asm-debug-all:5.2")
+        annotationProcessor("com.google.guava:guava:24.1.1-jre")
+        annotationProcessor("com.google.code.gson:gson:2.8.6")
+        annotationProcessor(mixin) {
+            isTransitive = false
+        }
+    }
+    // Forgelin-Continuous v1.9.0.0
+    runtimeOnly(curse("forgelin-continuous", 456403L, 4635770L))
 
     // CraftTweaker
     runtimeOnly("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.+")
 
-    // Had Enough Item v4.24.0
-    runtimeOnly(fg.deobf(curse("had-enough-items", 557549L, 3957880L)))
+    // Had Enough Item v4.25.0
+    runtimeOnly(rfg.deobf(curse("had-enough-items", 557549L, 4571247L)))
 
-    // Had Enough Characters v1.3.0
-    runtimeOnly(fg.deobf(curse("had-enough-characters", 640802L, 4035773L)))
+    // Just Enough Characters v3.7.2
+    runtimeOnly(rfg.deobf(curse("jecharacters", 250702L, 4692184L)))
+
+    // Had Enough Characters v1.4.0
+    runtimeOnly(rfg.deobf(curse("had-enough-characters", 640802L, 4692307L)))
 
     // InWorldCrafting v1.2.0
-    val inworldcraftingDependency = curse("inworldcrafting", 311938L, 2683267L)
-    compileOnly(fg.deobf(inworldcraftingDependency))
+    compileOnly(rfg.deobf(curse("inworldcrafting", 311938L, 2683267L)))
 
     // Ex Nihilo: Creatio v0.4.7.2
-    val exnihilocreatioDependency = curse("ex-nihilo-creatio", 274456L, 2817545L)
-    compileOnly(fg.deobf(exnihilocreatioDependency))
+    compileOnly(rfg.deobf(curse("ex-nihilo-creatio", 274456L, 2817545L)))
     // Shadowfacts' Forgelin v1.8.4
-    val shadowfactsforgelinDependency = curse("shadowfacts-forgelin", 248453L, 2785465L)
-    runtimeOnly(fg.deobf(shadowfactsforgelinDependency))
+    runtimeOnly(rfg.deobf(curse("shadowfacts-forgelin", 248453L, 2785465L)))
     // Just Enough Items v4.16.+
-    compileOnly(fg.deobf("mezz.jei:jei_1.12.2:4.16.+:api"))
+    compileOnly(rfg.deobf("mezz.jei:jei_1.12.2:4.16.+:api"))
 
     // Thaumic JEI v1.6.0-27
-    val thaumicjeiDependency = curse("thaumic-jei", 285492L, 2705304L)
-    compileOnly(fg.deobf(thaumicjeiDependency))
+    compileOnly(rfg.deobf(curse("thaumic-jei", 285492L, 2705304L)))
     // Thaumcraft v6.1.BETA26
-    val thaumcraftDependency = curse("thaumcraft", 223628L, 2629023L)
-    compileOnly(fg.deobf(thaumcraftDependency))
+    compileOnly(rfg.deobf(curse("thaumcraft", 223628L, 2629023L)))
     // Baubles v1.5.2
-    val baublesDependency = curse("baubles", 227083L, 2518667L)
-    compileOnly(fg.deobf(baublesDependency))
+    compileOnly(rfg.deobf(curse("baubles", 227083L, 2518667L)))
 
-    // Just Enough Resources v0.9.2.60
-    val justenoughresourcesDependency = "curse.maven:just-enough-resources-240630:2728585-deobf-sources"
+    // Just Enough Resources v0.9.3.203
+    val justenoughresourcesDependency = "curse.maven:just-enough-resources-240630:4440935-deobf-sources"
     implementation(justenoughresourcesDependency)
 
     // Block Drops v1.4.0
-    val blockdropsDependency = curse("block-drops", 244181L, 2509046L)
-    compileOnly(fg.deobf(blockdropsDependency))
+    compileOnly(rfg.deobf(curse("block-drops", 244181L, 2509046L)))
 
-    // Advanced Rocketry v2.0.0-13
-    val advancedrocketryDependency = curse("advanced-rocketry", 236542L, 3801020L)
-    compileOnly(fg.deobf(advancedrocketryDependency))
+    // Advanced Rocketry v2.0.0-17
+    val advancedrocketryDependency = curse("advanced-rocketry", 236542L, 4671856L)
+    compileOnly(rfg.deobf(advancedrocketryDependency))
     // LibVulpes v0.4.2-25
     val libvulpesDependency = curse("lib-vulpes", 236541L, 3801015L)
-    compileOnly(fg.deobf(libvulpesDependency))
+    compileOnly(rfg.deobf(libvulpesDependency))
 
     // Industrial Foregoing v1.12.13-237
     // def industrialforegoing_dependency = "curse.maven:industrial-foregoing-266515:2745321-sources-api-debof"
@@ -175,15 +188,15 @@ dependencies {
 
     // Immersive Engineering v0.12-98
     val immersiveengineeringDependency = curse("immersive-engineering", 231951L, 2974106L)
-    compileOnly(fg.deobf(immersiveengineeringDependency))
+    compileOnly(rfg.deobf(immersiveengineeringDependency))
 
     // Industrial Craft v2.8.222
     val industrialcraftDependency = "curse.maven:industrial-craft-242638:3838713-deobf"
     compileOnly(industrialcraftDependency)
 
-    // Controlling v3.0.10
-    val controllingDependency = curse("controlling", 250398L, 3025548L)
-    compileOnly(fg.deobf(controllingDependency))
+    // Controlling v3.0.12.2
+    val controllingDependency = curse("controlling", 250398L, 4428378L)
+    compileOnly(rfg.deobf(controllingDependency))
 
     // FTB Quests v1202.9.0.15
     val ftbquestsDependency = "curse.maven:ftb-quests-289412:3156637-sources"
@@ -195,109 +208,101 @@ dependencies {
     val itemfiltersDependency = "curse.maven:item-filters-309674:3003364-sources"
     implementation(itemfiltersDependency)
 
-    // PackagedAuto v1.0.5.19
-    val packagedautoDependency = curse("packagedauto", 308380L, 3614585L)
-    implementation(fg.deobf(packagedautoDependency))
+    // PackagedAuto v1.0.9.33
+    val packagedautoDependency = curse("packagedauto", 308380L, 4678906L)
+    implementation(rfg.deobf(packagedautoDependency))
 
     // Serene Seasons v1.2.18
     val sereneseasonsDependency = curse("serene-seasons", 291874L, 2799213L)
-    compileOnly(fg.deobf(sereneseasonsDependency))
+    compileOnly(rfg.deobf(sereneseasonsDependency))
 }
 
-fancyGradle {
-    patches {
-        resources
-        coremods
-        asm
-        mergetool
-    }
-}
-
-sourceSets {
-    main {
-        if (Setting.UseMixin) {
-            ext.set("refMap", "mixins.${Constant.ModId}.refmap.json")
+// Adds Access Transformer files to tasks
+if (Setting.UseAccessTransformer) {
+    sourceSets.main.get().resources.files.forEach { file ->
+        if (file.name.endsWith("_at.cfg", true)) {
+            tasks.deobfuscateMergedJarToSrg.get().accessTransformerFiles.from(file)
+            tasks.srgifyBinpatchedJar.get().accessTransformerFiles.from(file)
         }
     }
 }
 
-tasks {
-    if (Setting.BuildDeobfJar) {
-        // Create deobf dev jars
-        register<Jar>("deobfJar") {
-            from(sourceSets.main.get().java)
-            archiveClassifier.set("deobf")
-        }
+tasks.processResources {
+    val properties = buildMap {
+        this["version"] = project.version
+        this["mcversion"] = project.minecraft.mcVersion
     }
 
-    if (Setting.BuildApiJar) {
-        // Create API library jar
-        register<Jar>("apiZip") {
-            from(sourceSets.main.get().java) {
-                include("name/api/**")
-            }
-            from(sourceSets.main.get().output) {
-                include("name/api/**")
-            }
-            archiveClassifier.set("api")
-        }
+    // This will ensure that this task is redone when the versions change
+    inputs.properties(properties)
+
+    // Replace various properties in mcmod.info and pack.mcmeta if applicable
+    filesMatching(listOf("mcmod.info", "pack.mcmeta")) {
+        expand(properties)
     }
 
-    if (Setting.BuildSourceJar) {
-        // Create source jar
-        register<Jar>("sourcesJar") {
-            from(sourceSets.main.get().allJava)
-            archiveClassifier.set("sources")
-        }
+    // Make sure Access Transformer files are in META-INF folder
+    if (Setting.UseAccessTransformer) {
+        rename("(.+_at.cfg)", "META-INF/\$1")
     }
+}
 
-    jar {
-        manifest {
-            val attributeMap = mutableMapOf<String, String>()
+tasks.jar {
+    manifest {
+        val attributeMap = buildMap {
             if (Setting.UseCoremod) {
-                attributeMap["FMLCorePlugin"] = Constant.FMLCorePlugin
+                this["FMLCorePlugin"] = Constant.FMLCorePlugin
                 if (Setting.IncludeMod) {
-                    attributeMap["FMLCorePluginContainsFMLMod"] = true.toString()
-                    attributeMap["ForceLoadAsMod"] = true.toString()
+                    this["FMLCorePluginContainsFMLMod"] = true
+                    this["ForceLoadAsMod"] = project.gradle.startParameter.taskNames[0] == "build"
                 }
             }
-            if (Setting.UseMixin) {
-                attributeMap["TweakClass"] = "org.spongepowered.asm.launch.MixinTweaker"
+            if (Setting.UseAccessTransformer) {
+                this["FMLAT"] = "${Constant.ModId}_at.cfg"
             }
-            attributes(attributeMap)
         }
-
-        finalizedBy("reobfJar")
+        attributes(attributeMap)
     }
+    // Add all embedded dependencies into the jar
+    // from(provider{ configurations.embed.collect {it.isDirectory() ? it : zipTree(it)} })
+}
 
-    processResources {
-        duplicatesStrategy = DuplicatesStrategy.INCLUDE
-        inputs.property("version", project.version)
-        from(sourceSets.main.get().resources.srcDirs) {
-            include("mcmod.info")
-            expand("version" to project.version)
-        }
-        from(sourceSets.main.get().resources.srcDirs) {
-            exclude("mcmod.info")
-        }
+// IDE Settings
+idea {
+    module {
+        isDownloadJavadoc = true
+        isDownloadSources = true
+        inheritOutputDirs = true // Fix resources in IJ-Native runs
     }
-
-    compileKotlin {
-        kotlinOptions {
-            jvmTarget = "1.8"
-            languageVersion = "1.7"
+    project.settings {
+        runConfigurations {
+            val gradles = listOf(
+                Gradle("1. Run Client").apply {
+                    taskNames = listOf("runClient")
+                },
+                Gradle("2. Run Server").apply {
+                    taskNames = listOf("runServer")
+                },
+                Gradle("3. Run Obfuscated Client").apply {
+                    taskNames = listOf("runObfClient")
+                },
+                Gradle("4. Run Obfuscated Server").apply {
+                    taskNames = listOf("runObfServer")
+                }
+            )
+            addAll(gradles)
+        }
+        compiler.javac {
+            afterEvaluate {
+                javacAdditionalOptions = "-encoding utf8"
+                moduleJavacAdditionalOptions = buildMap {
+                    this["${project.name}.main"] = tasks.compileJava.get().options.compilerArgs.joinToString(" ") { '"' + it + '"' }
+                }
+            }
         }
     }
 }
 
-artifacts {
-    if (Setting.BuildDeobfJar) {
-        archives("deobfJar")
-    }
-    if (Setting.BuildApiJar) {
-        archives("apiZip")
-    }
-    if (Setting.BuildSourceJar) {
-        archives("sourcesJar")
-    }
+tasks.processIdeaSettings {
+    dependsOn(tasks.injectTags)
 }
