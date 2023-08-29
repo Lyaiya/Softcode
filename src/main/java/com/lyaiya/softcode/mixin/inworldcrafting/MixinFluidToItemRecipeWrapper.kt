@@ -1,10 +1,11 @@
 package com.lyaiya.softcode.mixin.inworldcrafting
 
-import net.minecraft.client.resources.*
-import org.spongepowered.asm.mixin.*
-import org.spongepowered.asm.mixin.injection.*
-import org.spongepowered.asm.mixin.injection.invoke.arg.*
-import xt9.inworldcrafting.integrations.jei.*
+import net.minecraft.client.resources.I18n
+import org.spongepowered.asm.mixin.Mixin
+import org.spongepowered.asm.mixin.injection.At
+import org.spongepowered.asm.mixin.injection.ModifyArgs
+import org.spongepowered.asm.mixin.injection.invoke.arg.Args
+import xt9.inworldcrafting.integrations.jei.FluidToItemRecipeWrapper
 
 @Mixin(FluidToItemRecipeWrapper::class, remap = false)
 abstract class MixinFluidToItemRecipeWrapper {

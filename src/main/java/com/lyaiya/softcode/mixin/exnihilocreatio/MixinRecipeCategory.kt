@@ -1,19 +1,22 @@
 package com.lyaiya.softcode.mixin.exnihilocreatio
 
-import com.lyaiya.softcode.constant.*
-import com.lyaiya.softcode.util.*
-import exnihilocreatio.compatibility.jei.barrel.compost.*
-import exnihilocreatio.compatibility.jei.barrel.fluiditemtransform.*
-import exnihilocreatio.compatibility.jei.barrel.fluidontop.*
-import exnihilocreatio.compatibility.jei.barrel.fluidtransform.*
-import exnihilocreatio.compatibility.jei.crook.*
-import exnihilocreatio.compatibility.jei.crucible.*
-import exnihilocreatio.compatibility.jei.hammer.*
-import exnihilocreatio.compatibility.jei.sieve.*
-import net.minecraft.client.resources.*
-import org.spongepowered.asm.mixin.*
-import org.spongepowered.asm.mixin.injection.*
-import org.spongepowered.asm.mixin.injection.callback.*
+import com.lyaiya.softcode.constant.ClassConstant
+import com.lyaiya.softcode.constant.ModIdConstant
+import com.lyaiya.softcode.util.createReplacedTranslationKey
+import exnihilocreatio.compatibility.jei.barrel.compost.CompostRecipeCategory
+import exnihilocreatio.compatibility.jei.barrel.fluiditemtransform.FluidItemTransformRecipeCategory
+import exnihilocreatio.compatibility.jei.barrel.fluidontop.FluidOnTopRecipeCategory
+import exnihilocreatio.compatibility.jei.barrel.fluidtransform.FluidTransformRecipeCategory
+import exnihilocreatio.compatibility.jei.crook.CrookRecipeCategory
+import exnihilocreatio.compatibility.jei.crucible.CrucibleHeatSourceRecipeCategory
+import exnihilocreatio.compatibility.jei.crucible.CrucibleRecipeCategory
+import exnihilocreatio.compatibility.jei.hammer.HammerRecipeCategory
+import exnihilocreatio.compatibility.jei.sieve.SieveRecipeCategory
+import net.minecraft.client.resources.I18n
+import org.spongepowered.asm.mixin.Mixin
+import org.spongepowered.asm.mixin.injection.At
+import org.spongepowered.asm.mixin.injection.Inject
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable
 
 @Mixin(
     value = [

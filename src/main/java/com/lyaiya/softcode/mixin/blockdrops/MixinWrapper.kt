@@ -1,11 +1,13 @@
 package com.lyaiya.softcode.mixin.blockdrops
 
-import com.lyaiya.softcode.constant.*
-import com.lyaiya.softcode.util.*
-import mrriegel.blockdrops.*
-import net.minecraft.client.resources.*
-import org.spongepowered.asm.mixin.*
-import org.spongepowered.asm.mixin.injection.*
+import com.lyaiya.softcode.constant.KeyConstant
+import com.lyaiya.softcode.constant.ModIdConstant
+import com.lyaiya.softcode.util.createTranslationKey
+import mrriegel.blockdrops.Wrapper
+import net.minecraft.client.resources.I18n
+import org.spongepowered.asm.mixin.Mixin
+import org.spongepowered.asm.mixin.injection.Constant
+import org.spongepowered.asm.mixin.injection.ModifyConstant
 
 @Mixin(Wrapper::class, remap = false)
 abstract class MixinWrapper {

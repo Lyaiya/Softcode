@@ -1,7 +1,7 @@
 package com.lyaiya.softcode.util
 
-import com.google.common.base.*
-import com.lyaiya.softcode.constant.*
+import com.google.common.base.CaseFormat
+import com.lyaiya.softcode.constant.KeyConstant
 
 fun createTranslationKey(modid: String, keyPrefix: String, vararg keySections: String) = buildString {
     append(keyPrefix)

@@ -1,13 +1,15 @@
 package com.lyaiya.softcode.mixin.exnihilocreatio
 
-import com.lyaiya.softcode.constant.*
-import com.lyaiya.softcode.util.*
-import exnihilocreatio.items.ore.*
-import net.minecraft.client.resources.*
-import org.spongepowered.asm.mixin.*
-import org.spongepowered.asm.mixin.injection.*
-import org.spongepowered.asm.mixin.injection.callback.*
-import java.util.Locale
+import com.lyaiya.softcode.constant.KeyConstant
+import com.lyaiya.softcode.constant.ModIdConstant
+import com.lyaiya.softcode.util.createTranslationKey
+import exnihilocreatio.items.ore.ItemOre
+import net.minecraft.client.resources.I18n
+import org.spongepowered.asm.mixin.Mixin
+import org.spongepowered.asm.mixin.injection.At
+import org.spongepowered.asm.mixin.injection.Inject
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable
+import java.util.*
 
 @Mixin(ItemOre::class, remap = false)
 abstract class MixinItemOre {

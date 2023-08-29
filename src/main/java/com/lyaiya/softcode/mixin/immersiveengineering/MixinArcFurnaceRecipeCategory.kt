@@ -1,16 +1,18 @@
 package com.lyaiya.softcode.mixin.immersiveengineering
 
-import blusunrize.immersiveengineering.common.util.compat.jei.*
-import blusunrize.immersiveengineering.common.util.compat.jei.arcfurnace.*
-import com.google.common.base.*
-import com.lyaiya.softcode.constant.*
-import com.lyaiya.softcode.util.*
-import mezz.jei.api.gui.*
-import mezz.jei.api.recipe.*
-import net.minecraft.client.resources.*
-import org.spongepowered.asm.mixin.*
-import org.spongepowered.asm.mixin.injection.*
-import org.spongepowered.asm.mixin.injection.callback.*
+import blusunrize.immersiveengineering.common.util.compat.jei.IERecipeCategory
+import blusunrize.immersiveengineering.common.util.compat.jei.arcfurnace.ArcFurnaceRecipeCategory
+import com.google.common.base.CaseFormat
+import com.lyaiya.softcode.constant.KeyConstant
+import com.lyaiya.softcode.constant.ModIdConstant
+import com.lyaiya.softcode.util.createTranslationKey
+import mezz.jei.api.gui.IDrawable
+import mezz.jei.api.recipe.IRecipeWrapper
+import net.minecraft.client.resources.I18n
+import org.spongepowered.asm.mixin.Mixin
+import org.spongepowered.asm.mixin.injection.At
+import org.spongepowered.asm.mixin.injection.Inject
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo
 
 @Mixin(ArcFurnaceRecipeCategory::class, remap = false)
 abstract class MixinArcFurnaceRecipeCategory<T, W : IRecipeWrapper>(

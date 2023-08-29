@@ -1,11 +1,15 @@
 package com.lyaiya.softcode.mixin.libvulpes
 
-import com.lyaiya.softcode.constant.*
-import net.minecraft.client.resources.*
-import net.minecraft.item.*
-import org.spongepowered.asm.mixin.*
-import zmaster587.libVulpes.api.material.*
-import zmaster587.libVulpes.items.*
+import com.lyaiya.softcode.constant.KeyConstant
+import com.lyaiya.softcode.constant.ModIdConstant
+import net.minecraft.client.resources.I18n
+import net.minecraft.item.Item
+import net.minecraft.item.ItemStack
+import org.spongepowered.asm.mixin.Mixin
+import org.spongepowered.asm.mixin.Overwrite
+import org.spongepowered.asm.mixin.Shadow
+import zmaster587.libVulpes.api.material.Material
+import zmaster587.libVulpes.items.ItemOreProduct
 
 @Mixin(ItemOreProduct::class, remap = false)
 abstract class MixinItemOreProduct : Item() {

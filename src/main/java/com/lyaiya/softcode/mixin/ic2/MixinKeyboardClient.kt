@@ -3,12 +3,14 @@
 
 package com.lyaiya.softcode.mixin.ic2
 
-import com.lyaiya.softcode.constant.*
-import com.lyaiya.softcode.util.*
-import ic2.core.util.*
-import net.minecraft.client.resources.*
-import org.spongepowered.asm.mixin.*
-import org.spongepowered.asm.mixin.injection.*
+import com.lyaiya.softcode.constant.KeyConstant
+import com.lyaiya.softcode.constant.ModIdConstant
+import com.lyaiya.softcode.util.createTranslationKey
+import ic2.core.util.KeyboardClient
+import net.minecraft.client.resources.I18n
+import org.spongepowered.asm.mixin.Mixin
+import org.spongepowered.asm.mixin.injection.Constant
+import org.spongepowered.asm.mixin.injection.ModifyConstant
 
 @ModifyConstant(
     method = ["<init>"],

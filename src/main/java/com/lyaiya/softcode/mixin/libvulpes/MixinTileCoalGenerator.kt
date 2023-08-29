@@ -1,12 +1,14 @@
 package com.lyaiya.softcode.mixin.libvulpes
 
-import com.lyaiya.softcode.constant.*
-import com.lyaiya.softcode.util.*
-import net.minecraft.client.resources.*
-import org.spongepowered.asm.mixin.*
-import org.spongepowered.asm.mixin.injection.*
-import zmaster587.libVulpes.tile.*
-import zmaster587.libVulpes.tile.energy.*
+import com.lyaiya.softcode.constant.KeyConstant
+import com.lyaiya.softcode.constant.ModIdConstant
+import com.lyaiya.softcode.util.createTranslationKey
+import net.minecraft.client.resources.I18n
+import org.spongepowered.asm.mixin.Mixin
+import org.spongepowered.asm.mixin.injection.At
+import org.spongepowered.asm.mixin.injection.ModifyArg
+import zmaster587.libVulpes.tile.TileInventoriedForgePowerMachine
+import zmaster587.libVulpes.tile.energy.TileCoalGenerator
 
 @Mixin(TileCoalGenerator::class, remap = false)
 abstract class MixinTileCoalGenerator(energy: Int, invSize: Int) : TileInventoriedForgePowerMachine(energy, invSize) {

@@ -1,9 +1,13 @@
 package com.lyaiya.softcode
 
-import com.lyaiya.softcode.constant.*
-import net.minecraftforge.fml.common.*
-import net.minecraftforge.fml.common.event.*
-import org.apache.logging.log4j.*
+import com.lyaiya.softcode.constant.ModIdConstant
+import net.minecraftforge.fml.common.Mod
+import net.minecraftforge.fml.common.event.FMLInitializationEvent
+import net.minecraftforge.fml.common.event.FMLInterModComms
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 @Mod(
     modid = Softcode.MOD_ID,

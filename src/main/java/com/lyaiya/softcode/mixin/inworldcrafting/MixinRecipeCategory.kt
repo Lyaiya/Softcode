@@ -1,11 +1,13 @@
 package com.lyaiya.softcode.mixin.inworldcrafting
 
-import com.lyaiya.softcode.constant.*
-import com.lyaiya.softcode.util.*
-import net.minecraft.client.resources.*
-import org.spongepowered.asm.mixin.*
-import org.spongepowered.asm.mixin.injection.*
-import org.spongepowered.asm.mixin.injection.callback.*
+import com.lyaiya.softcode.constant.ClassConstant
+import com.lyaiya.softcode.constant.ModIdConstant
+import com.lyaiya.softcode.util.createReplacedTranslationKey
+import net.minecraft.client.resources.I18n
+import org.spongepowered.asm.mixin.Mixin
+import org.spongepowered.asm.mixin.injection.At
+import org.spongepowered.asm.mixin.injection.Inject
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable
 import xt9.inworldcrafting.integrations.jei.*
 
 @Mixin(

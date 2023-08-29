@@ -1,14 +1,17 @@
 package com.lyaiya.softcode.mixin.libvulpes
 
-import com.lyaiya.softcode.constant.*
-import com.lyaiya.softcode.util.*
-import net.minecraft.block.*
-import net.minecraft.client.resources.*
-import net.minecraft.item.*
-import org.spongepowered.asm.mixin.*
+import com.lyaiya.softcode.constant.KeyConstant
+import com.lyaiya.softcode.constant.ModIdConstant
+import com.lyaiya.softcode.util.createTranslationKey
+import net.minecraft.block.Block
+import net.minecraft.client.resources.I18n
+import net.minecraft.item.ItemBlock
+import net.minecraft.item.ItemStack
+import org.spongepowered.asm.mixin.Mixin
+import org.spongepowered.asm.mixin.Overwrite
 import zmaster587.libVulpes.block.BlockOre
-import zmaster587.libVulpes.items.*
-import java.util.Locale
+import zmaster587.libVulpes.items.ItemOre
+import java.util.*
 
 @Mixin(ItemOre::class, remap = false)
 abstract class MixinItemOre(block: Block) : ItemBlock(block) {

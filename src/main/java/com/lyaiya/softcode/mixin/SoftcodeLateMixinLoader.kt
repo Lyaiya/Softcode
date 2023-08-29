@@ -1,14 +1,11 @@
 package com.lyaiya.softcode.mixin
 
-import com.lyaiya.softcode.*
-import com.lyaiya.softcode.constant.*
-import net.minecraftforge.fml.common.*
-import zone.rong.mixinbooter.*
+import com.lyaiya.softcode.Softcode
+import com.lyaiya.softcode.constant.ModIdConstant
+import net.minecraftforge.fml.common.Loader
+import zone.rong.mixinbooter.ILateMixinLoader
 
 class SoftcodeLateMixinLoader : ILateMixinLoader {
-    private inline val String.mixinJson
-        get() = "mixins.${Softcode.MOD_ID}.${this}.json"
-
     private val mixinJsons = buildMap {
         putMixinJson(ModIdConstant.IN_WORLD_CRAFTING)
         putMixinJson(ModIdConstant.EX_NIHILO_CREATIO)
@@ -41,6 +38,6 @@ class SoftcodeLateMixinLoader : ILateMixinLoader {
     }
 
     private fun MutableMap<String, String>.putMixinJson(modid: String) {
-        this[modid] = modid.mixinJson
+        this[modid] = "mixins.${Softcode.MOD_ID}.${this}.json"
     }
 }

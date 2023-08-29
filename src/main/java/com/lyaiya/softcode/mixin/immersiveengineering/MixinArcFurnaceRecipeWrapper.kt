@@ -1,11 +1,13 @@
 package com.lyaiya.softcode.mixin.immersiveengineering
 
-import blusunrize.immersiveengineering.common.util.compat.jei.arcfurnace.*
-import com.lyaiya.softcode.constant.*
-import com.lyaiya.softcode.util.*
-import net.minecraft.client.resources.*
-import org.spongepowered.asm.mixin.*
-import org.spongepowered.asm.mixin.injection.*
+import blusunrize.immersiveengineering.common.util.compat.jei.arcfurnace.ArcFurnaceRecipeWrapper
+import com.lyaiya.softcode.constant.KeyConstant
+import com.lyaiya.softcode.constant.ModIdConstant
+import com.lyaiya.softcode.util.createTranslationKey
+import net.minecraft.client.resources.I18n
+import org.spongepowered.asm.mixin.Mixin
+import org.spongepowered.asm.mixin.injection.Constant
+import org.spongepowered.asm.mixin.injection.ModifyConstant
 
 @Mixin(ArcFurnaceRecipeWrapper::class, remap = false)
 abstract class MixinArcFurnaceRecipeWrapper {
