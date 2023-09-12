@@ -214,11 +214,6 @@ dependencies {
         runtimeOnly(Deps.TeslaCoreLib)
         runtimeOnly(Deps.IndustrialForegoing)
     }
-
-    compileOnly(rfg.deobf(Deps.PackagedAuto))
-    if (RuntimeDebug.PackagedAuto) {
-        runtimeOnly(rfg.deobf(Deps.PackagedAuto))
-    }
 }
 
 // Adds Access Transformer files to tasks

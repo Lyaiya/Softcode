@@ -182,8 +182,4 @@ object Deps {
         sourcesFileId = 3438488,
         deobfFileId = 3438489
     )
-
-    // CurseForge: https://www.curseforge.com/minecraft/mc-mods/packagedauto
-    // Version: v1.0.9.33
-    val PackagedAuto = curse("packagedauto", 308380L, 4678906L)
 }
