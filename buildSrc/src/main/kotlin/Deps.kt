@@ -9,34 +9,62 @@ object Deps {
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/forgelin-continuous
     // Version: v1.9.0.0
-    val ForgelinContinuous = curse("forgelin-continuous", 456403L, 4635770L)
+    val ForgelinContinuous = curse(
+        modName = "forgelin-continuous",
+        projectId = 456403,
+        fileId = 4635770
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/crafttweaker
     val CraftTweaker = "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.+"
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/had-enough-items
     // Version: v4.25.0
-    val HadEnoughItems = curse("had-enough-items", 557549L, 4571247L)
+    val HadEnoughItems = curse(
+        modName = "had-enough-items",
+        projectId = 557549,
+        fileId = 4571247
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/just-enough-characters
     // Version: v3.7.2
-    val JustEnoughCharacters = curse("jecharacters", 250702L, 4692184L)
+    val JustEnoughCharacters = curse(
+        modName = "jecharacters",
+        projectId = 250702,
+        fileId = 4692184
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/had-enough-characters
     // Version: v1.4.0
-    val HadEnoughCharacters = curse("had-enough-characters", 640802L, 4692307L)
+    val HadEnoughCharacters = curse(
+        modName = "had-enough-characters",
+        projectId = 640802,
+        fileId = 4692307
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/inworldcrafting
     // Version: v1.2.0
-    val InWorldCrafting = curse("inworldcrafting", 311938L, 2683267L)
+    val InWorldCrafting = curse(
+        modName = "inworldcrafting",
+        projectId = 311938,
+        fileId = 2683267
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/ex-nihilo-creatio
     // Version: v0.4.7.2
-    val ExNihiloCreatio = curse("ex-nihilo-creatio", 274456L, 2817545L)
+    val ExNihiloCreatio = curse(
+        modName = "ex-nihilo-creatio",
+        projectId = 274456,
+        fileId = 2817545
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/shadowfacts-forgelin
     // Version: v1.8.4
-    val ShadowfactsForgelin = curse("shadowfacts-forgelin", 248453L, 2785465L)
+    val ShadowfactsForgelin = curse(
+        modName = "shadowfacts-forgelin",
+        projectId = 248453,
+        fileId = 2785465
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/jei
     // Version: v4.16.+
@@ -44,68 +72,143 @@ object Deps {
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/baubles
     // Version: v1.5.2
-    val Baubles = curse("baubles", 227083L, 2518667L)
+    val Baubles = curse(
+        modName = "baubles",
+        projectId = 227083,
+        fileId = 2518667
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/thaumcraft
     // Version: v6.1.BETA26
-    val Thaumcraft = curse("thaumcraft", 223628L, 2629023L)
+    val Thaumcraft = curse(
+        modName = "thaumcraft",
+        projectId = 223628,
+        fileId = 2629023
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/thaumic-jei
     // Version: v1.6.0-27
-    val ThaumicJEI = curse("thaumic-jei", 285492L, 2705304L)
-    
+    val ThaumicJEI = curse(
+        modName = "thaumic-jei",
+        projectId = 285492,
+        fileId = 2705304
+    )
+
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/immersive-engineering
     // Version: v0.12-98
-    val ImmersiveEngineering = curse("immersive-engineering", 231951L, 2974106L)
+    val ImmersiveEngineering = curse(
+        modName = "immersive-engineering",
+        projectId = 231951,
+        fileId = 2974106
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/block-drops-jei-addon
     // Version: v1.4.0
-    val BlockDrops = curse("block-drops", 244181L, 2509046L)
+    val BlockDrops = curse(
+        modName = "block-drops",
+        projectId = 244181,
+        fileId = 2509046
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/industrial-craft
     // Version: v2.8.222
-    val IndustrialCraft = "curse.maven:industrial-craft-242638:3838713-deobf"
+    val IndustrialCraft = curse(
+        modName = "industrial-craft",
+        projectId = 242638,
+        fileId = 3838713,
+        deobfFileId = 3838714
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/controlling
     // Version: v3.0.12.2
-    val Controlling = curse("controlling", 250398L, 4428378L)
+    val Controlling = curse(
+        modName = "controlling",
+        projectId = 250398,
+        fileId = 4428378
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/advanced-rocketry
     // Version: v2.0.0-17
-    val AdvancedRocketry = curse("advanced-rocketry", 236542L, 4671856L)
+    val AdvancedRocketry = curse(
+        modName = "advanced-rocketry",
+        projectId = 236542,
+        fileId = 4671856
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/libvulpes
     // Version: v0.4.2-25
-    val LibVulpes = curse("lib-vulpes", 236541L, 3801015L)
+    val LibVulpes = curse(
+        modName = "lib-vulpes",
+        projectId = 236541,
+        fileId = 3801015
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/serene-seasons
     // Version: v1.2.18
-    val SereneSeasons = curse("serene-seasons", 291874L, 2799213L)
+    val SereneSeasons = curse(
+        modName = "serene-seasons",
+        projectId = 291874,
+        fileId = 2799213
+    )
 
-    // TODO
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/just-enough-resources-jer
     // Version: v0.9.3.203
-    val JustEnoughResources = "curse.maven:just-enough-resources-240630:4440935-deobf-sources"
+    val JustEnoughResources = curse(
+        modName = "just-enough-resources",
+        projectId = 240630,
+        fileId = 4440935,
+        sourcesFileId = 4440937,
+        deobfFileId = 4440936,
+        apiFileId = 4440938
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/industrial-foregoing
     // Version: v1.12.13-237
-    val IndustrialForegoing = "curse.maven:industrial-foregoing-266515:2745321-sources-api-debof"
+    val IndustrialForegoing = curse(
+        modName = "industrial-foregoing",
+        projectId = 266515,
+        fileId = 2745321,
+        sourcesFileId = 2745322,
+        deobfFileId = 2745324,
+        apiFileId = 2745323
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/tesla-core-lib
     // Version: v1.0.18.28
-    val TeslaCoreLib = "curse.maven:tesla-core-lib-254602:3438487-sources-debof"
+    val TeslaCoreLib = curse(
+        modName = "tesla-core-lib",
+        projectId = 254602,
+        fileId = 3438487,
+        sourcesFileId = 3438488,
+        deobfFileId = 3438489
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/ftb-quests-forge
     // Version: v1202.9.0.15
-    val FTBQuests = "curse.maven:ftb-quests-289412:3156637-sources"
+    val FTBQuests = curse(
+        modName = "ftb-quests",
+        projectId = 289412,
+        fileId = 3156637,
+        sourcesFileId = 3156638
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/ftb-library-legacy-forge
     // Version: v5.4.7.2
-    val FTBLibrary = "curse.maven:ftb-library-237167:2985811-sources"
+    val FTBLibrary = curse(
+        modName = "ftb-library",
+        projectId = 237167,
+        fileId = 2985811,
+        sourcesFileId = 2985812
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/item-filters
     // Version: v1.0.4.2
-    val ItemFilters = "curse.maven:item-filters-309674:3003364-sources"
+    val ItemFilters = curse(
+        modName = "item-filters",
+        projectId = 309674,
+        fileId = 3003364,
+        sourcesFileId = 3003365
+    )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/packagedauto
     // Version: v1.0.9.33

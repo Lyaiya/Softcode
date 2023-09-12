@@ -24,14 +24,14 @@ object RuntimeDebug {
 
     const val SereneSeasons = false
 
-    // TODO
-
     // Need: HadEnoughItems
     const val JustEnoughResources = false
 
+    // TODO
+    
     const val IndustrialForegoing = false
 
     const val FTBQuests = false
 
-    const val PackagedAuto = true
+    const val PackagedAuto = false
 }

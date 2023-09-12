@@ -202,8 +202,6 @@ dependencies {
         runtimeOnly(rfg.deobf(Deps.SereneSeasons))
     }
 
-    // TODO
-
     compileOnly(Deps.JustEnoughResources)
     if (RuntimeDebug.JustEnoughResources) {
         runtimeOnly(Deps.JustEnoughResources)
