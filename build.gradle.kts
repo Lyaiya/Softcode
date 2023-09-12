@@ -1,5 +1,8 @@
-import org.jetbrains.gradle.ext.*
 import org.jetbrains.gradle.ext.Gradle
+import org.jetbrains.gradle.ext.compiler
+import org.jetbrains.gradle.ext.runConfigurations
+import org.jetbrains.gradle.ext.settings
+import kotlin.collections.set
 
 plugins {
     kotlin("jvm") version "1.9.0"
@@ -117,10 +120,10 @@ repositories {
 
 dependencies {
     if (Setting.UseAssetmover) {
-        implementation("com.cleanroommc:assetmover:2.5")
+        implementation(Deps.AssetMover)
     }
     if (Setting.UseMixin) {
-        implementation("zone.rong:mixinbooter:8.3")
+        implementation(Deps.MixinBooter)
         // Change your mixin refmap name here:
         val mixin = modUtils.enableMixins("org.spongepowered:mixin:0.8.3", "mixins.${Constant.ModId}.refmap.json") as String
         api(mixin) {
@@ -133,88 +136,100 @@ dependencies {
             isTransitive = false
         }
     }
-    // Forgelin-Continuous v1.9.0.0
-    runtimeOnly(curse("forgelin-continuous", 456403L, 4635770L))
+    implementation(Deps.ForgelinContinuous)
 
-    // CraftTweaker
-    runtimeOnly("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.+")
+    if (RuntimeDebug.HadEnoughItems) {
+        runtimeOnly(rfg.deobf(Deps.HadEnoughItems))
+        if (RuntimeDebug.JustEnoughCharacters) {
+            runtimeOnly(rfg.deobf(Deps.JustEnoughCharacters))
+            runtimeOnly(rfg.deobf(Deps.HadEnoughCharacters))
+        }
+    }
 
-    // Had Enough Item v4.25.0
-    runtimeOnly(rfg.deobf(curse("had-enough-items", 557549L, 4571247L)))
+    compileOnly(rfg.deobf(Deps.InWorldCrafting))
+    if (RuntimeDebug.InWorldCrafting) {
+        runtimeOnly(Deps.CraftTweaker)
+        runtimeOnly(rfg.deobf(Deps.InWorldCrafting))
+    }
 
-    // Just Enough Characters v3.7.2
-    runtimeOnly(rfg.deobf(curse("jecharacters", 250702L, 4692184L)))
+    compileOnly(rfg.deobf(Deps.JustEnoughItemsApi))
+    compileOnly(rfg.deobf(Deps.ExNihiloCreatio))
+    if (RuntimeDebug.ExNihiloCreatio) {
+        runtimeOnly(rfg.deobf(Deps.ShadowfactsForgelin))
+        runtimeOnly(rfg.deobf(Deps.ExNihiloCreatio))
+    }
 
-    // Had Enough Characters v1.4.0
-    runtimeOnly(rfg.deobf(curse("had-enough-characters", 640802L, 4692307L)))
+    compileOnly(rfg.deobf(Deps.Baubles))
+    compileOnly(rfg.deobf(Deps.Thaumcraft))
+    compileOnly(rfg.deobf(Deps.ThaumicJEI))
+    if (RuntimeDebug.Thaumcraft) {
+        runtimeOnly(rfg.deobf(Deps.Baubles))
+        runtimeOnly(rfg.deobf(Deps.Thaumcraft))
+        if (RuntimeDebug.ThaumicJEI) {
+            runtimeOnly(rfg.deobf(Deps.ThaumicJEI))
+        }
+    }
 
-    // InWorldCrafting v1.2.0
-    compileOnly(rfg.deobf(curse("inworldcrafting", 311938L, 2683267L)))
+    compileOnly(rfg.deobf(Deps.ImmersiveEngineering))
+    if (RuntimeDebug.ImmersiveEngineering) {
+        runtimeOnly(rfg.deobf(Deps.ImmersiveEngineering))
+    }
 
-    // Ex Nihilo: Creatio v0.4.7.2
-    compileOnly(rfg.deobf(curse("ex-nihilo-creatio", 274456L, 2817545L)))
-    // Shadowfacts' Forgelin v1.8.4
-    runtimeOnly(rfg.deobf(curse("shadowfacts-forgelin", 248453L, 2785465L)))
-    // Just Enough Items v4.16.+
-    compileOnly(rfg.deobf("mezz.jei:jei_1.12.2:4.16.+:api"))
+    compileOnly(rfg.deobf(Deps.BlockDrops))
+    if (RuntimeDebug.BlockDrops) {
+        runtimeOnly(Deps.BlockDrops)
+    }
 
-    // Thaumic JEI v1.6.0-27
-    compileOnly(rfg.deobf(curse("thaumic-jei", 285492L, 2705304L)))
-    // Thaumcraft v6.1.BETA26
-    compileOnly(rfg.deobf(curse("thaumcraft", 223628L, 2629023L)))
-    // Baubles v1.5.2
-    compileOnly(rfg.deobf(curse("baubles", 227083L, 2518667L)))
+    compileOnly(Deps.IndustrialCraft)
+    if (RuntimeDebug.IndustrialCraft) {
+        runtimeOnly(Deps.IndustrialCraft)
+    }
 
-    // Just Enough Resources v0.9.3.203
-    val justenoughresourcesDependency = "curse.maven:just-enough-resources-240630:4440935-deobf-sources"
-    implementation(justenoughresourcesDependency)
+    compileOnly(rfg.deobf(Deps.Controlling))
+    if (RuntimeDebug.Controlling) {
+        runtimeOnly(rfg.deobf(Deps.Controlling))
+    }
 
-    // Block Drops v1.4.0
-    compileOnly(rfg.deobf(curse("block-drops", 244181L, 2509046L)))
+    compileOnly(rfg.deobf(Deps.LibVulpes))
+    compileOnly(rfg.deobf(Deps.AdvancedRocketry))
+    if (RuntimeDebug.AdvancedRocketry) {
+        runtimeOnly(rfg.deobf(Deps.LibVulpes))
+        runtimeOnly(rfg.deobf(Deps.AdvancedRocketry))
+    }
 
-    // Advanced Rocketry v2.0.0-17
-    val advancedrocketryDependency = curse("advanced-rocketry", 236542L, 4671856L)
-    compileOnly(rfg.deobf(advancedrocketryDependency))
-    // LibVulpes v0.4.2-25
-    val libvulpesDependency = curse("lib-vulpes", 236541L, 3801015L)
-    compileOnly(rfg.deobf(libvulpesDependency))
+    compileOnly(rfg.deobf(Deps.SereneSeasons))
+    if (RuntimeDebug.SereneSeasons) {
+        runtimeOnly(rfg.deobf(Deps.SereneSeasons))
+    }
 
-    // Industrial Foregoing v1.12.13-237
-    // def industrialforegoing_dependency = "curse.maven:industrial-foregoing-266515:2745321-sources-api-debof"
-    // implementation industrialforegoing_dependency
-    // Tesla Core Lib
-    // def teslacorelib_dependency = "curse.maven:tesla-core-lib-254602:3438487-sources-debof"
-    // implementation teslacorelib_dependency
+    // TODO
 
-    // Immersive Engineering v0.12-98
-    val immersiveengineeringDependency = curse("immersive-engineering", 231951L, 2974106L)
-    compileOnly(rfg.deobf(immersiveengineeringDependency))
+    compileOnly(Deps.JustEnoughResources)
+    if (RuntimeDebug.JustEnoughResources) {
+        runtimeOnly(Deps.JustEnoughResources)
+    }
 
-    // Industrial Craft v2.8.222
-    val industrialcraftDependency = "curse.maven:industrial-craft-242638:3838713-deobf"
-    compileOnly(industrialcraftDependency)
+    compileOnly(Deps.TeslaCoreLib)
+    compileOnly(Deps.IndustrialForegoing)
+    if (RuntimeDebug.IndustrialForegoing) {
+        runtimeOnly(rfg.deobf(Deps.ShadowfactsForgelin))
+        runtimeOnly(Deps.TeslaCoreLib)
+        runtimeOnly(Deps.IndustrialForegoing)
+    }
 
-    // Controlling v3.0.12.2
-    val controllingDependency = curse("controlling", 250398L, 4428378L)
-    compileOnly(rfg.deobf(controllingDependency))
+    compileOnly(Deps.FTBLibrary)
+    compileOnly(Deps.ItemFilters)
+    compileOnly(Deps.FTBQuests)
+    if (RuntimeDebug.FTBQuests) {
+        runtimeOnly(Deps.FTBLibrary)
+        runtimeOnly(Deps.ItemFilters)
+        runtimeOnly(Deps.FTBQuests)
+    }
 
-    // FTB Quests v1202.9.0.15
-    val ftbquestsDependency = "curse.maven:ftb-quests-289412:3156637-sources"
-    implementation(ftbquestsDependency)
-    // FTB Library v5.4.7.2
-    val ftblibraryDependency = "curse.maven:ftb-library-237167:2985811-sources"
-    implementation(ftblibraryDependency)
-    // Item Filters v1.0.4.2
-    val itemfiltersDependency = "curse.maven:item-filters-309674:3003364-sources"
-    implementation(itemfiltersDependency)
-
-    // PackagedAuto v1.0.9.33
-    val packagedautoDependency = curse("packagedauto", 308380L, 4678906L)
-    implementation(rfg.deobf(packagedautoDependency))
-
-    // Serene Seasons v1.2.18
-    val sereneseasonsDependency = curse("serene-seasons", 291874L, 2799213L)
-    compileOnly(rfg.deobf(sereneseasonsDependency))
+    compileOnly(rfg.deobf(Deps.PackagedAuto))
+    if (RuntimeDebug.PackagedAuto) {
+        runtimeOnly(rfg.deobf(Deps.PackagedAuto))
+    }
 }
 
 // Adds Access Transformer files to tasks
@@ -253,8 +268,8 @@ tasks.jar {
             if (Setting.UseCoremod) {
                 this["FMLCorePlugin"] = Constant.FMLCorePlugin
                 if (Setting.IncludeMod) {
-                    this["FMLCorePluginContainsFMLMod"] = true
-                    this["ForceLoadAsMod"] = project.gradle.startParameter.taskNames[0] == "build"
+                    this["FMLCorePluginContainsFMLMod"] = true.toString()
+                    this["ForceLoadAsMod"] = (project.gradle.startParameter.taskNames[0] == "build").toString()
                 }
             }
             if (Setting.UseAccessTransformer) {

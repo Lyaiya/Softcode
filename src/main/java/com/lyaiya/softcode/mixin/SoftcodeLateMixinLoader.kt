@@ -38,6 +38,6 @@ class SoftcodeLateMixinLoader : ILateMixinLoader {
     }
 
     private fun MutableMap<String, String>.putMixinJson(modid: String) {
-        this[modid] = "mixins.${Softcode.MOD_ID}.${this}.json"
+        this[modid] = "mixins.${Softcode.MOD_ID}.${modid}.json"
     }
 }

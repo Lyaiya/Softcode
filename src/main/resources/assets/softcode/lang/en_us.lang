@@ -28,15 +28,15 @@ gui.exnihilocreatio.recipe_category.crucible=Crucible
 gui.exnihilocreatio.recipe_category.hammer=Hammer
 gui.exnihilocreatio.recipe_category.sieve=Sieve
 
+# Thaumcraft
+key.thaumcraft.change_caster_focus=Change Caster Focus
+key.thaumcraft.misc_caster_toggle=Misc Caster Toggle
+
 # Thaumic JEI
 gui.thaumicjei.missing_research=Missing research:
 gui.thaumicjei.vis_cost=Vis Cost
 description.thaumicjei.salis_mundis=To create Salis Mundis, take 3 Vis Crystals of different types and combine them with Redstone Dust by crafting them with a flint and a bowl.
 description.thaumicjei.triple_meat_treat=To create the Triple Meat Treat, take 3 different kinds of meat nuggets (produced by cooking meat in the Infernal Furnace) and mix them with sugar.
-
-# Thaumcraft
-key.thaumcraft.change_caster_focus=Change Caster Focus
-key.thaumcraft.misc_caster_toggle=Misc Caster Toggle
 
 # Immersive Engineering
 gui.immersiveengineering.recipe_category.arc_furnace.recycling=Arc Furnace - Recycling
@@ -49,7 +49,7 @@ gui.blockdrops.min=Min:
 gui.blockdrops.max=Max: 
 gui.blockdrops.too_many_drops=There are too many possible drops. Use left and right key to cycle.
 
-# IC2
+# Industrial Craft
 key.ic2.alt_key=ALT Key
 key.ic2.boost_key=Boost Key
 key.ic2.mode_switch_key=Mode Switch Key

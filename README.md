@@ -7,7 +7,7 @@
 - [Forgelin-Continuous](https://www.curseforge.com/minecraft/mc-mods/forgelin-continuous)
 - [MixinBooter](https://www.curseforge.com/minecraft/mc-mods/mixin-booter)
 
-## 被干掉的模组：
+## 被干掉的模组
 
 - [Ex Nihilo: Creatio](https://www.curseforge.com/minecraft/mc-mods/ex-nihilo-creatio)
 - [InWorldCrafting](https://www.curseforge.com/minecraft/mc-mods/inworldcrafting)
