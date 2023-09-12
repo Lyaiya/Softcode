@@ -207,12 +207,12 @@ dependencies {
         runtimeOnly(Deps.JustEnoughResources)
     }
 
-    compileOnly(Deps.TeslaCoreLib)
-    compileOnly(Deps.IndustrialForegoing)
+    compileOnly(rfg.deobf(Deps.TeslaCoreLib))
+    compileOnly(rfg.deobf(Deps.IndustrialForegoing))
     if (RuntimeDebug.IndustrialForegoing) {
         runtimeOnly(rfg.deobf(Deps.ShadowfactsForgelin))
-        runtimeOnly(Deps.TeslaCoreLib)
-        runtimeOnly(Deps.IndustrialForegoing)
+        runtimeOnly(rfg.deobf(Deps.TeslaCoreLib))
+        runtimeOnly(rfg.deobf(Deps.IndustrialForegoing))
     }
 }
 

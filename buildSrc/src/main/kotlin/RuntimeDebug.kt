@@ -29,5 +29,5 @@ object RuntimeDebug {
 
     // TODO
 
-    const val IndustrialForegoing = false
+    const val IndustrialForegoing = true
 }

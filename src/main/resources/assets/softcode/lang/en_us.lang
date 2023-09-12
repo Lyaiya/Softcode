@@ -108,3 +108,19 @@ color.jeresources.brown=Brown
 color.jeresources.green=Green
 color.jeresources.red=Red
 color.jeresources.black=Black
+
+# Industrial Foregoing
+tooltip.industrialforegoing.range=Range: +
+
+gui.industrialforegoing.recipe_category.bioreactor_accepted_items=Bioreactor accepted items
+gui.industrialforegoing.recipe_category.protein_reactor_accepted_items=Protein reactor accepted items
+gui.industrialforegoing.recipe_category.extractor=Tree Fluid Extractor
+gui.industrialforegoing.recipe_category.fluid_dictionary=Fluid Dictionary Conversion
+gui.industrialforegoing.recipe_category.laser=Laser
+gui.industrialforegoing.recipe_category.machine_produce=Machine Outputs
+gui.industrialforegoing.recipe_category.manual=Industrial Foregoing's Manual
+gui.industrialforegoing.recipe_category.petrified_burn_time=Petrified Generator Burn Time
+gui.industrialforegoing.recipe_category.sludge_refiner=Sludge Refiner
+gui.industrialforegoing.recipe_category.stone_work=Material StoneWork Factory
+
+gui.industrialforegoing.chance=Chance: 

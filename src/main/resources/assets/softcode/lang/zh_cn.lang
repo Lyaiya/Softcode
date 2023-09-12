@@ -108,3 +108,6 @@ color.jeresources.brown=棕色
 color.jeresources.green=绿色
 color.jeresources.red=红色
 color.jeresources.black=黑色
+
+# Industrial Foregoing
+tooltip.industrialforegoing.range=范围：+
