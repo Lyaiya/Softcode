@@ -28,10 +28,8 @@ object RuntimeDebug {
     const val JustEnoughResources = false
 
     // TODO
-    
-    const val IndustrialForegoing = false
 
-    const val FTBQuests = false
+    const val IndustrialForegoing = false
 
     const val PackagedAuto = false
 }

@@ -215,15 +215,6 @@ dependencies {
         runtimeOnly(Deps.IndustrialForegoing)
     }
 
-    compileOnly(Deps.FTBLibrary)
-    compileOnly(Deps.ItemFilters)
-    compileOnly(Deps.FTBQuests)
-    if (RuntimeDebug.FTBQuests) {
-        runtimeOnly(Deps.FTBLibrary)
-        runtimeOnly(Deps.ItemFilters)
-        runtimeOnly(Deps.FTBQuests)
-    }
-
     compileOnly(rfg.deobf(Deps.PackagedAuto))
     if (RuntimeDebug.PackagedAuto) {
         runtimeOnly(rfg.deobf(Deps.PackagedAuto))

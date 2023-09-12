@@ -183,33 +183,6 @@ object Deps {
         deobfFileId = 3438489
     )
 
-    // CurseForge: https://www.curseforge.com/minecraft/mc-mods/ftb-quests-forge
-    // Version: v1202.9.0.15
-    val FTBQuests = curse(
-        modName = "ftb-quests",
-        projectId = 289412,
-        fileId = 3156637,
-        sourcesFileId = 3156638
-    )
-
-    // CurseForge: https://www.curseforge.com/minecraft/mc-mods/ftb-library-legacy-forge
-    // Version: v5.4.7.2
-    val FTBLibrary = curse(
-        modName = "ftb-library",
-        projectId = 237167,
-        fileId = 2985811,
-        sourcesFileId = 2985812
-    )
-
-    // CurseForge: https://www.curseforge.com/minecraft/mc-mods/item-filters
-    // Version: v1.0.4.2
-    val ItemFilters = curse(
-        modName = "item-filters",
-        projectId = 309674,
-        fileId = 3003364,
-        sourcesFileId = 3003365
-    )
-
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/packagedauto
     // Version: v1.0.9.33
     val PackagedAuto = curse("packagedauto", 308380L, 4678906L)
