@@ -24,8 +24,8 @@ public class MixinMobHelper {
         String entityName = entity.getName();
         if (entity instanceof EntitySheep) {
             EntitySheep sheep = (EntitySheep) entity;
-            String colorKey = TranslationKeyKt.createTranslationKey(ModIdConstant.JUST_ENOUGH_RESOURCES, KeyConstant.COLOR, sheep.getFleeceColor().getName());
-            String colorFormatKey = TranslationKeyKt.createTranslationKey(ModIdConstant.JUST_ENOUGH_RESOURCES, KeyConstant.FORMAT, KeyConstant.COLOR);
+            String colorKey = TranslationKeyKt.create(ModIdConstant.JUST_ENOUGH_RESOURCES, KeyConstant.COLOR, sheep.getFleeceColor().getName());
+            String colorFormatKey = TranslationKeyKt.create(ModIdConstant.JUST_ENOUGH_RESOURCES, KeyConstant.FORMAT, KeyConstant.COLOR);
             return I18n.format(colorFormatKey, I18n.format(colorKey), entityName);
         }
         return entityName;
