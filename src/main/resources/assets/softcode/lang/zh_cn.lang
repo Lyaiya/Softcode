@@ -88,3 +88,23 @@ desc.sereneseasons.spring=春季
 desc.sereneseasons.summer=夏季
 desc.sereneseasons.autumn=秋季
 desc.sereneseasons.winter=冬季
+
+# Just Enough Resources
+format.jeresources.color=%1$s%2$s
+
+color.jeresources.white=白色
+color.jeresources.orange=橙色
+color.jeresources.magenta=品红色
+color.jeresources.light_blue=淡蓝色
+color.jeresources.yellow=黄色
+color.jeresources.lime=黄绿色
+color.jeresources.pink=粉红色
+color.jeresources.gray=灰色
+color.jeresources.silver=淡灰色
+color.jeresources.cyan=青色
+color.jeresources.purple=紫色
+color.jeresources.blue=蓝色
+color.jeresources.brown=棕色
+color.jeresources.green=绿色
+color.jeresources.red=红色
+color.jeresources.black=黑色

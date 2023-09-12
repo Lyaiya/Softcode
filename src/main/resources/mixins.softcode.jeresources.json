@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.lyaiya.softcode.mixin.jeresources",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.softcode.refmap.json",
+  "target": "@env(DEFAULT)",
+  "client": [
+    "MixinMobHelper"
+  ],
+  "setSourceFile": true,
+  "minVersion": "0.8"
+}

@@ -18,6 +18,7 @@ class SoftcodeLateMixinLoader : ILateMixinLoader {
         putMixinJson(ModIdConstant.LIB_VULPES)
         putMixinJson(ModIdConstant.ADVANCED_ROCKETRY)
         putMixinJson(ModIdConstant.SERENES_SEASONS)
+        putMixinJson(ModIdConstant.JUST_ENOUGH_RESOURCES)
     }
 
     override fun getMixinConfigs(): List<String> {

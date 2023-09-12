@@ -15,4 +15,5 @@ object ModIdConstant {
     const val LIB_VULPES = "libvulpes"
     const val ADVANCED_ROCKETRY = "advancedrocketry"
     const val SERENES_SEASONS = "sereneseasons"
+    const val JUST_ENOUGH_RESOURCES = "jeresources"
 }

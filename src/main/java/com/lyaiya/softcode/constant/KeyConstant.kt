@@ -9,4 +9,5 @@ object KeyConstant {
     const val RECIPE_CATEGORY = "recipe_category"
     const val TOOLTIP = "tooltip"
     const val FORMAT = "format"
+    const val COLOR = "color"
 }
