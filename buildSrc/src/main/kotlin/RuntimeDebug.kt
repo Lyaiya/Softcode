@@ -27,7 +27,5 @@ object RuntimeDebug {
     // Need: HadEnoughItems
     const val JustEnoughResources = false
 
-    // TODO
-
     const val IndustrialForegoing = false
 }

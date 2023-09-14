@@ -108,3 +108,42 @@ color.jeresources.brown=Brown
 color.jeresources.green=Green
 color.jeresources.red=Red
 color.jeresources.black=Black
+
+# Industrial Foregoing
+tooltip.industrialforegoing.range_addon.range=Range: +
+tooltip.industrialforegoing.meat_feeder.meat= of Meat
+
+gui.industrialforegoing.recipe_category.bioreactor_accepted_items=Bioreactor accepted items
+gui.industrialforegoing.recipe_category.protein_reactor_accepted_items=Protein reactor accepted items
+gui.industrialforegoing.recipe_category.extractor=Tree Fluid Extractor
+gui.industrialforegoing.recipe_category.fluid_dictionary=Fluid Dictionary Conversion
+gui.industrialforegoing.recipe_category.laser=Laser
+gui.industrialforegoing.recipe_category.machine_produce=Machine Outputs
+gui.industrialforegoing.recipe_category.manual=Industrial Foregoing's Manual
+gui.industrialforegoing.recipe_category.petrified_burn_time=Petrified Generator Burn Time
+gui.industrialforegoing.recipe_category.sludge_refiner=Sludge Refiner
+gui.industrialforegoing.recipe_category.stone_work=Material StoneWork Factory
+
+gui.industrialforegoing.sludge_refiner.chance=Chance: 
+gui.industrialforegoing.petrified_burn_time.power=Power: 
+gui.industrialforegoing.reactor.efficiency=Efficiency
+gui.industrialforegoing.reactor.min= Min: %dmb/item
+gui.industrialforegoing.reactor.max= Max: %dmb/item
+
+gui.industrialforegoing.extractor.production=Production: 
+gui.industrialforegoing.extractor.production_rate=Production rate
+gui.industrialforegoing.extractor.average=Average: 
+gui.industrialforegoing.extractor.average_tooltip=Average numbers aren't real numbers
+
+gui.industrialforegoing.open_manual_entry=Open Manual Entry
+
+manual.industrialforegoing.search=Search
+manual.industrialforegoing.go_back=Go back
+manual.industrialforegoing.previous_page=Previous page
+manual.industrialforegoing.next_page=Next page
+manual.industrialforegoing.introduction=Introduction
+manual.industrialforegoing.upgrades=Upgrades
+
+format.industrialforegoing.conveyor=%1$s %2$s
+format.industrialforegoing.laser=%1$s %2$s
+format.industrialforegoing.artifical_dye=%1$s %2$s

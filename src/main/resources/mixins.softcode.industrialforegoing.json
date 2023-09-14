@@ -1,0 +1,28 @@
+{
+  "required": true,
+  "package": "com.lyaiya.softcode.mixin.industrialforegoing",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.softcode.refmap.json",
+  "target": "@env(DEFAULT)",
+  "client": [
+    "MixinCategory",
+    "MixinConveyorItem",
+    "MixinExtractorRecipeCategory",
+    "MixinExtractorRecipeWrapper",
+    "MixinGUIBookBase",
+    "MixinGUIBookMain",
+    "MixinIFManual",
+    "MixinItemArtificalDye",
+    "MixinJEICustomPlugin",
+    "MixinLaserLensItem",
+    "MixinManualWrapper",
+    "MixinMeatFeederItem",
+    "MixinPetrifiedBurnTimeWrapper",
+    "MixinRangeAddonItem",
+    "MixinReactorRecipeWrapper",
+    "MixinRecipeCategory",
+    "MixinSludgeRefinerRecipeWrapper"
+  ],
+  "setSourceFile": true,
+  "minVersion": "0.8"
+}

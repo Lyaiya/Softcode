@@ -115,8 +115,7 @@ object Deps {
     val IndustrialCraft = curse(
         modName = "industrial-craft",
         projectId = 242638,
-        fileId = 3838713,
-        deobfFileId = 3838714
+        fileId = 3838713
     )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/controlling
@@ -156,10 +155,7 @@ object Deps {
     val JustEnoughResources = curse(
         modName = "just-enough-resources",
         projectId = 240630,
-        fileId = 4440935,
-        sourcesFileId = 4440937,
-        deobfFileId = 4440936,
-        apiFileId = 4440938
+        fileId = 4440935
     )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/industrial-foregoing
@@ -167,10 +163,7 @@ object Deps {
     val IndustrialForegoing = curse(
         modName = "industrial-foregoing",
         projectId = 266515,
-        fileId = 2745321,
-        sourcesFileId = 2745322,
-        deobfFileId = 2745324,
-        apiFileId = 2745323
+        fileId = 2745321
     )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/tesla-core-lib
@@ -178,8 +171,6 @@ object Deps {
     val TeslaCoreLib = curse(
         modName = "tesla-core-lib",
         projectId = 254602,
-        fileId = 3438487,
-        sourcesFileId = 3438488,
-        deobfFileId = 3438489
+        fileId = 3438487
     )
 }

@@ -16,4 +16,5 @@ object ModIdConstant {
     const val ADVANCED_ROCKETRY = "advancedrocketry"
     const val SERENES_SEASONS = "sereneseasons"
     const val JUST_ENOUGH_RESOURCES = "jeresources"
+    const val INDUSTRIAL_FOREGOING = "industrialforegoing"
 }

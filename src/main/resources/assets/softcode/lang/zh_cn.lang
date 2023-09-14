@@ -108,3 +108,42 @@ color.jeresources.brown=棕色
 color.jeresources.green=绿色
 color.jeresources.red=红色
 color.jeresources.black=黑色
+
+# Industrial Foregoing
+tooltip.industrialforegoing.range_addon.range=范围：+
+tooltip.industrialforegoing.meat_feeder.meat= 肉汤
+
+gui.industrialforegoing.recipe_category.bioreactor_accepted_items=生物质炉接受物品
+gui.industrialforegoing.recipe_category.protein_reactor_accepted_items=蛋白质反应器接受物品
+gui.industrialforegoing.recipe_category.extractor=树液提取器
+gui.industrialforegoing.recipe_category.fluid_dictionary=流体辞典转换器
+gui.industrialforegoing.recipe_category.laser=镭射
+gui.industrialforegoing.recipe_category.machine_produce=机器产物
+gui.industrialforegoing.recipe_category.manual=工业先锋手册
+gui.industrialforegoing.recipe_category.petrified_burn_time=火力发电机燃烧时间
+gui.industrialforegoing.recipe_category.sludge_refiner=污泥精炼机
+gui.industrialforegoing.recipe_category.stone_work=造石加工机
+
+gui.industrialforegoing.sludge_refiner.chance=概率：
+gui.industrialforegoing.petrified_burn_time.power=能量：
+gui.industrialforegoing.reactor.efficiency=效率
+gui.industrialforegoing.reactor.min= 最小：%dmb/物品
+gui.industrialforegoing.reactor.max= 最大：%dmb/物品
+
+gui.industrialforegoing.extractor.production=产率：
+gui.industrialforegoing.extractor.production_rate=产率
+gui.industrialforegoing.extractor.average=平均：
+gui.industrialforegoing.extractor.average_tooltip=平均数并非真实数
+
+gui.industrialforegoing.open_manual_entry=打开手册条目
+
+manual.industrialforegoing.search=搜索
+manual.industrialforegoing.go_back=返回
+manual.industrialforegoing.previous_page=上一页
+manual.industrialforegoing.next_page=下一页
+manual.industrialforegoing.introduction=简介
+manual.industrialforegoing.upgrades=升级
+
+format.industrialforegoing.conveyor=%1$s%2$s
+format.industrialforegoing.laser=%1$s%2$s
+format.industrialforegoing.artifical_dye=%1$s%2$s
