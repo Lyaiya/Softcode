@@ -20,7 +20,7 @@
 - [LibVulpes](https://www.curseforge.com/minecraft/mc-mods/libvulpes)
 - [Advanced Rocketry](https://www.curseforge.com/minecraft/mc-mods/advanced-rocketry)
 - [Serene Seasons](https://www.curseforge.com/minecraft/mc-mods/serene-seasons)
-- [JustEnoughResources](https://www.curseforge.com/minecraft/mc-mods/just-enough-resources-jer)
+- [Just Enough Resources](https://www.curseforge.com/minecraft/mc-mods/just-enough-resources-jer)
 - [Industrial Foregoing](https://www.curseforge.com/minecraft/mc-mods/industrial-foregoing)
 
 ## 其他
