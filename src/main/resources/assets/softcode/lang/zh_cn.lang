@@ -15,6 +15,8 @@ gui.inworldcrafting.recipe_category.fluid_to_item.consumes_fluid.yes=是
 gui.inworldcrafting.recipe_category.fluid_to_item.consumes_fluid.no=否
 
 # Ex Nihilo Creatio
+format.exnihilocreatio.material=%1$s%2$s
+
 material.exnihilocreatio.iron=铁
 material.exnihilocreatio.gold=金
 
@@ -50,11 +52,11 @@ gui.blockdrops.max=最大：
 gui.blockdrops.too_many_drops=可能的掉落物过多，使用左右键来循环显示。
 
 # Industrial Craft
-key.ic2.alt_key=ALT键
-key.ic2.boost_key=提升键
-key.ic2.mode_switch_key=模式切换键
-key.ic2.side_inventory_key=侧边物品栏键
-key.ic2.hud_expand_key=HUB扩展键
+key.ic2.alt=ALT键
+key.ic2.boost=提升键
+key.ic2.mode_switch=模式切换键
+key.ic2.side_inventory=侧边物品栏键
+key.ic2.hud_expand=HUB扩展键
 
 # Controlling
 key.controlling.default=默认

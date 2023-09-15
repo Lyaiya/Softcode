@@ -15,6 +15,8 @@ gui.inworldcrafting.recipe_category.fluid_to_item.consumes_fluid.yes=Yes
 gui.inworldcrafting.recipe_category.fluid_to_item.consumes_fluid.no=No
 
 # Ex Nihilo Creatio
+format.exnihilocreatio.material=%1$s %2$s
+
 material.exnihilocreatio.iron=Iron
 material.exnihilocreatio.gold=Gold
 
@@ -50,11 +52,11 @@ gui.blockdrops.max=Max:
 gui.blockdrops.too_many_drops=There are too many possible drops. Use left and right key to cycle.
 
 # Industrial Craft
-key.ic2.alt_key=ALT Key
-key.ic2.boost_key=Boost Key
-key.ic2.mode_switch_key=Mode Switch Key
-key.ic2.side_inventory_key=Side Inventory Key
-key.ic2.hud_expand_key=Hub Expand Key
+key.ic2.alt=ALT Key
+key.ic2.boost=Boost Key
+key.ic2.mode_switch=Mode Switch Key
+key.ic2.side_inventory=Side Inventory Key
+key.ic2.hud_expand=Hub Expand Key
 
 # Controlling
 key.controlling.default=Default

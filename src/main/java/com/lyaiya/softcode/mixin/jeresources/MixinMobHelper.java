@@ -12,8 +12,11 @@ import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(value = MobHelper.class, remap = false)
-public class MixinMobHelper {
+@Mixin(
+        value = MobHelper.class,
+        remap = false
+)
+abstract class MixinMobHelper {
     /**
      * @author Lyaiya
      * @reason Color localization
