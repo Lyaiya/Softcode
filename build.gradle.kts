@@ -123,10 +123,7 @@ dependencies {
         implementation(Deps.AssetMover)
     }
     if (Setting.UseMixin) {
-        // implementation(Deps.MixinBooter)
-        // Change your mixin refmap name here:
-        // val mixin = modUtils.enableMixins("org.spongepowered:mixin:0.8.3", "mixins.${Constant.ModId}.refmap.json") as String
-        val mixinBooter = modUtils.enableMixins(Deps.MixinBooter, "mixins.${Constant.ModId}.refmap.json") as String
+        val mixinBooter = modUtils.enableMixins(Deps.MixinBooter, Constant.MixinRefmapName) as String
         api(mixinBooter) {
             isTransitive = false
         }
@@ -228,8 +225,8 @@ if (Setting.UseAccessTransformer) {
 
 tasks.processResources {
     val properties = buildMap {
-        this["version"] = project.version
-        this["mcversion"] = project.minecraft.mcVersion
+        this["version"] = project.version.toString()
+        this["mcversion"] = project.minecraft.mcVersion.get()
     }
 
     // This will ensure that this task is redone when the versions change

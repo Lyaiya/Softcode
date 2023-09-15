@@ -4,4 +4,7 @@ object Constant {
     const val Author = "Lyaiya"
 
     const val FMLCorePlugin = ""
+
+    // Change your mixin refmap name here
+    const val MixinRefmapName = "mixins.$ModId.refmap.json"
 }
