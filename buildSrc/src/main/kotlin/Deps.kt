@@ -4,16 +4,8 @@ object Deps {
     val AssetMover = "com.cleanroommc:assetmover:2.5"
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/mixin-booter
-    // Version: v8.3
-    val MixinBooter = "zone.rong:mixinbooter:8.3"
-
-    // CurseForge: https://www.curseforge.com/minecraft/mc-mods/forgelin-continuous
-    // Version: v1.9.0.0
-    val ForgelinContinuous = curse(
-        modName = "forgelin-continuous",
-        projectId = 456403,
-        fileId = 4635770
-    )
+    // Version: v8.6
+    val MixinBooter = "zone.rong:mixinbooter:8.6"
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/crafttweaker
     val CraftTweaker = "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.+"

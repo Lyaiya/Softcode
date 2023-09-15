@@ -3,7 +3,7 @@ package com.lyaiya.softcode.mixin.industrialforegoing;
 import com.buuz135.industrial.jei.extractor.ExtractorRecipeCategory;
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslationKeyKt;
+import com.lyaiya.softcode.util.TranslateKeyUtil;
 import net.minecraft.client.resources.I18n;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -19,7 +19,8 @@ abstract class MixinExtractorRecipeCategory {
             constant = @Constant(stringValue = "Production rate")
     )
     String modifyConstantDrawInfo0(String constant) {
-        return I18n.format(TranslationKeyKt.create(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.GUI, "extractor", "production_rate"));
+        String key = TranslateKeyUtil.getKey(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.GUI, "extractor", "production_rate");
+        return I18n.format(key);
     }
 
     @ModifyConstant(
@@ -27,6 +28,7 @@ abstract class MixinExtractorRecipeCategory {
             constant = @Constant(stringValue = "Average numbers aren't real numbers")
     )
     String modifyConstantDrawInfo1(String constant) {
-        return I18n.format(TranslationKeyKt.create(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.GUI, "extractor", "average_tooltip"));
+        String key = TranslateKeyUtil.getKey(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.GUI, "extractor", "average_tooltip");
+        return I18n.format(key);
     }
 }

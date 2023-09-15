@@ -2,7 +2,7 @@ package com.lyaiya.softcode.mixin.controlling;
 
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslationKeyKt;
+import com.lyaiya.softcode.util.TranslateKeyUtil;
 import net.minecraft.client.resources.I18n;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -19,7 +19,7 @@ abstract class MixinEnumSortingType {
             constant = @Constant(stringValue = "Default")
     )
     private String modifyConstantDefault(String constant) {
-        String key = TranslationKeyKt.create(ModIdConstant.CONTROLLING, KeyConstant.KEY, "default");
+        String key = TranslateKeyUtil.getKey(ModIdConstant.CONTROLLING, KeyConstant.KEY, "default");
         return I18n.format(key);
     }
 
@@ -28,7 +28,7 @@ abstract class MixinEnumSortingType {
             constant = @Constant(stringValue = "A->Z")
     )
     private String modifyConstantAZ(String constant) {
-        String key = TranslationKeyKt.create(ModIdConstant.CONTROLLING, KeyConstant.KEY, "a_z");
+        String key = TranslateKeyUtil.getKey(ModIdConstant.CONTROLLING, KeyConstant.KEY, "a_z");
         return I18n.format(key);
     }
 
@@ -37,7 +37,7 @@ abstract class MixinEnumSortingType {
             constant = @Constant(stringValue = "Z->A")
     )
     private String modifyConstantZA(String constant) {
-        String key = TranslationKeyKt.create(ModIdConstant.CONTROLLING, KeyConstant.KEY, "z_a");
+        String key = TranslateKeyUtil.getKey(ModIdConstant.CONTROLLING, KeyConstant.KEY, "z_a");
         return I18n.format(key);
     }
 }

@@ -25,7 +25,7 @@ abstract class MixinBurnItemRecipeWrapper {
             index = 0
     )
     private String modifyArgDrawStringWithShadow(String text) {
-        String key = InWorldCraftingKt.getRecipeWrapperKey(getClass()) + ".recipe_time";
+        String key = InWorldCraftingUtil.getRecipeWrapperKey(getClass()) + ".recipe_time";
         return I18n.format(key, recipe.getTicks());
     }
 }

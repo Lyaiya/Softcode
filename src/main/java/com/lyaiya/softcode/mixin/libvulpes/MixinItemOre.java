@@ -2,7 +2,7 @@ package com.lyaiya.softcode.mixin.libvulpes;
 
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslationKeyKt;
+import com.lyaiya.softcode.util.TranslateKeyUtil;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemBlock;
@@ -44,7 +44,7 @@ abstract class MixinItemOre extends ItemBlock {
         } else {
             String forwardStr = I18n.format(String.format("%s.name", forwardSection));
             String backStr = I18n.format(String.format("type.%s.name", backSection));
-            String finalKey = TranslationKeyKt.create(ModIdConstant.LIB_VULPES, KeyConstant.FORMAT, "item_ore");
+            String finalKey = TranslateKeyUtil.getKey(ModIdConstant.LIB_VULPES, KeyConstant.FORMAT, "item_ore");
             return I18n.format(finalKey, forwardStr, backStr);
         }
     }

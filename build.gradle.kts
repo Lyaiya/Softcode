@@ -123,20 +123,20 @@ dependencies {
         implementation(Deps.AssetMover)
     }
     if (Setting.UseMixin) {
-        implementation(Deps.MixinBooter)
+        // implementation(Deps.MixinBooter)
         // Change your mixin refmap name here:
-        val mixin = modUtils.enableMixins("org.spongepowered:mixin:0.8.3", "mixins.${Constant.ModId}.refmap.json") as String
-        api(mixin) {
+        // val mixin = modUtils.enableMixins("org.spongepowered:mixin:0.8.3", "mixins.${Constant.ModId}.refmap.json") as String
+        val mixinBooter = modUtils.enableMixins(Deps.MixinBooter, "mixins.${Constant.ModId}.refmap.json") as String
+        api(mixinBooter) {
+            isTransitive = false
+        }
+        annotationProcessor(mixinBooter) {
             isTransitive = false
         }
         annotationProcessor("org.ow2.asm:asm-debug-all:5.2")
         annotationProcessor("com.google.guava:guava:24.1.1-jre")
         annotationProcessor("com.google.code.gson:gson:2.8.6")
-        annotationProcessor(mixin) {
-            isTransitive = false
-        }
     }
-    implementation(Deps.ForgelinContinuous)
 
     if (RuntimeDebug.HadEnoughItems) {
         runtimeOnly(rfg.deobf(Deps.HadEnoughItems))

@@ -2,7 +2,7 @@ package com.lyaiya.softcode.mixin.jeresources;
 
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslationKeyKt;
+import com.lyaiya.softcode.util.TranslateKeyUtil;
 import jeresources.entry.MobEntry;
 import jeresources.util.MobHelper;
 import net.minecraft.client.resources.I18n;
@@ -27,8 +27,8 @@ abstract class MixinMobHelper {
         String entityName = entity.getName();
         if (entity instanceof EntitySheep) {
             EntitySheep sheep = (EntitySheep) entity;
-            String colorKey = TranslationKeyKt.create(ModIdConstant.JUST_ENOUGH_RESOURCES, KeyConstant.COLOR, sheep.getFleeceColor().getName());
-            String colorFormatKey = TranslationKeyKt.create(ModIdConstant.JUST_ENOUGH_RESOURCES, KeyConstant.FORMAT, KeyConstant.COLOR);
+            String colorKey = TranslateKeyUtil.getKey(ModIdConstant.JUST_ENOUGH_RESOURCES, KeyConstant.COLOR, sheep.getFleeceColor().getName());
+            String colorFormatKey = TranslateKeyUtil.getKey(ModIdConstant.JUST_ENOUGH_RESOURCES, KeyConstant.FORMAT, KeyConstant.COLOR);
             return I18n.format(colorFormatKey, I18n.format(colorKey), entityName);
         }
         return entityName;

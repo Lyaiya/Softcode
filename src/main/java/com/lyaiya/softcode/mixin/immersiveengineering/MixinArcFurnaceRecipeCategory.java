@@ -5,7 +5,7 @@ import blusunrize.immersiveengineering.common.util.compat.jei.arcfurnace.ArcFurn
 import com.google.common.base.CaseFormat;
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslationKeyKt;
+import com.lyaiya.softcode.util.TranslateKeyUtil;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.resources.I18n;
@@ -37,7 +37,7 @@ abstract class MixinArcFurnaceRecipeCategory<T, W extends IRecipeWrapper> extend
             String forwardStr = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, splitStr[0]);
             String backStr = splitStr[1];
 
-            String key = TranslationKeyKt.create(ModIdConstant.IMMERSIVE_ENGINEERING,
+            String key = TranslateKeyUtil.getKey(ModIdConstant.IMMERSIVE_ENGINEERING,
                                                  KeyConstant.GUI,
                                                  KeyConstant.RECIPE_CATEGORY,
                                                  forwardStr,

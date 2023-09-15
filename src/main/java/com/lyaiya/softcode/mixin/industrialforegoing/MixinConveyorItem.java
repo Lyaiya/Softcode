@@ -2,7 +2,7 @@ package com.lyaiya.softcode.mixin.industrialforegoing;
 
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslationKeyKt;
+import com.lyaiya.softcode.util.TranslateKeyUtil;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.EnumDyeColor;
@@ -28,7 +28,7 @@ abstract class MixinConveyorItem extends ItemBlock {
      */
     @Overwrite
     public @NotNull String getItemStackDisplayName(ItemStack stack) {
-        String formatKey = TranslationKeyKt.create(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.FORMAT, "conveyor");
+        String formatKey = TranslateKeyUtil.getKey(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.FORMAT, "conveyor");
         String forward = new TextComponentTranslation("item.fireworksCharge." + EnumDyeColor.byMetadata(stack.getMetadata()).getTranslationKey()
                 .replaceAll("_", "")).getFormattedText();
         String back = super.getItemStackDisplayName(stack);

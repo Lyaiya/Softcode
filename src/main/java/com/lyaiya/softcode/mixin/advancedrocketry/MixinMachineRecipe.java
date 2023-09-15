@@ -2,7 +2,7 @@ package com.lyaiya.softcode.mixin.advancedrocketry;
 
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslationKeyKt;
+import com.lyaiya.softcode.util.TranslateKeyUtil;
 import net.minecraft.client.resources.I18n;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,7 +23,7 @@ abstract class MixinMachineRecipe {
             )
     )
     private String modifyArgPower(String constant) {
-        String key = TranslationKeyKt.create(ModIdConstant.ADVANCED_ROCKETRY, KeyConstant.GUI, "power");
+        String key = TranslateKeyUtil.getKey(ModIdConstant.ADVANCED_ROCKETRY, KeyConstant.GUI, "power");
         return I18n.format(key);
     }
 
@@ -36,7 +36,7 @@ abstract class MixinMachineRecipe {
             )
     )
     private String modifyArgTime(String constant) {
-        String key = TranslationKeyKt.create(ModIdConstant.ADVANCED_ROCKETRY, KeyConstant.GUI, "time");
+        String key = TranslateKeyUtil.getKey(ModIdConstant.ADVANCED_ROCKETRY, KeyConstant.GUI, "time");
         return I18n.format(key);
     }
 }

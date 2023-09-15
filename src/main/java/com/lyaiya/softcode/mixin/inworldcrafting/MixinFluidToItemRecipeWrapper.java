@@ -20,7 +20,7 @@ abstract class MixinFluidToItemRecipeWrapper {
             )
     )
     private void modifyArgsDrawStringWithShadow(Args args) {
-        String key = InWorldCraftingKt.getRecipeWrapperKey(getClass());
+        String key = InWorldCraftingUtil.getRecipeWrapperKey(getClass());
         args.set(0, I18n.format(key + ".consumes_fluid"));
         args.set(1, I18n.format(key + ".consumes_fluid.yes"));
         args.set(2, I18n.format(key + ".consumes_fluid.no"));

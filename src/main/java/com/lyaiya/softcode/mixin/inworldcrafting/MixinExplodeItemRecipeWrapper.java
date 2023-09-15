@@ -25,7 +25,7 @@ abstract class MixinExplodeItemRecipeWrapper {
             index = 0
     )
     private String modifyArgDrawStringWithShadow(String text) {
-        String key = InWorldCraftingKt.getRecipeWrapperKey(getClass()) + ".success_chance";
+        String key = InWorldCraftingUtil.getRecipeWrapperKey(getClass()) + ".success_chance";
         return I18n.format(key, recipe.getSurviveChance());
     }
 }

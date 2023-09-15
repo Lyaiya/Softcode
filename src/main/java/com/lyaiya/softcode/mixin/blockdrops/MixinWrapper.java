@@ -2,7 +2,7 @@ package com.lyaiya.softcode.mixin.blockdrops;
 
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslationKeyKt;
+import com.lyaiya.softcode.util.TranslateKeyUtil;
 import mrriegel.blockdrops.Wrapper;
 import net.minecraft.client.resources.I18n;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,7 +19,7 @@ abstract class MixinWrapper {
             constant = @Constant(stringValue = "Min: ")
     )
     private String modifyConstantMin(String constant) {
-        String key = TranslationKeyKt.create(ModIdConstant.BLOCK_DROPS, KeyConstant.GUI, "min");
+        String key = TranslateKeyUtil.getKey(ModIdConstant.BLOCK_DROPS, KeyConstant.GUI, "min");
         return I18n.format(key);
     }
 
@@ -28,7 +28,7 @@ abstract class MixinWrapper {
             constant = @Constant(stringValue = "  Max: ")
     )
     private String modifyConstantMax(String constant) {
-        String key = TranslationKeyKt.create(ModIdConstant.BLOCK_DROPS, KeyConstant.GUI, "max");
+        String key = TranslateKeyUtil.getKey(ModIdConstant.BLOCK_DROPS, KeyConstant.GUI, "max");
         return I18n.format(key);
     }
 
@@ -45,7 +45,7 @@ abstract class MixinWrapper {
             constant = @Constant(stringValue = "There are too many possible drops. Use left and right key to cycle.")
     )
     private String modifyConstantTooManyDrops(String constant) {
-        String key = TranslationKeyKt.create(ModIdConstant.BLOCK_DROPS, KeyConstant.GUI, "too_many_drops");
+        String key = TranslateKeyUtil.getKey(ModIdConstant.BLOCK_DROPS, KeyConstant.GUI, "too_many_drops");
         return I18n.format(key);
     }
 }
