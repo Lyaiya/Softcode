@@ -5,9 +5,8 @@ import org.jetbrains.gradle.ext.settings
 import kotlin.collections.set
 
 plugins {
-    kotlin("jvm") version "1.9.0"
     id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7"
-    id("com.gtnewhorizons.retrofuturagradle") version "1.3.24"
+    id("com.gtnewhorizons.retrofuturagradle") version "1.3.26"
 }
 
 // Project properties

@@ -1,21 +1,19 @@
 object Deps {
     // GitHub: https://github.com/CleanroomMC/AssetMover
-    // Version: v2.5
     val AssetMover = "com.cleanroommc:assetmover:2.5"
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/mixin-booter
-    // Version: v8.6
-    val MixinBooter = "zone.rong:mixinbooter:8.6"
+    val MixinBooter = "zone.rong:mixinbooter:8.9"
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/crafttweaker
     val CraftTweaker = "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.+"
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/had-enough-items
-    // Version: v4.25.0
+    // Version: v4.25.1
     val HadEnoughItems = curse(
         modName = "had-enough-items",
         projectId = 557549,
-        fileId = 4571247
+        fileId = 4810661
     )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/just-enough-characters
@@ -27,11 +25,11 @@ object Deps {
     )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/had-enough-characters
-    // Version: v1.4.0
+    // Version: v1.4.1
     val HadEnoughCharacters = curse(
         modName = "had-enough-characters",
         projectId = 640802,
-        fileId = 4692307
+        fileId = 4874506
     )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/inworldcrafting
