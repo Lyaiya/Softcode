@@ -12,14 +12,14 @@ plugins {
 // Project properties
 group = Constant.Group
 version = Version.Mod
-base.archivesName.set(Constant.ModId)
+base.archivesName = Constant.ModId
 
 // Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
+        languageVersion = JavaLanguageVersion.of(8)
         // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
-        vendor.set(JvmVendorSpec.AZUL)
+        vendor = JvmVendorSpec.AZUL
     }
     // Generate sources and javadocs jars when building and publishing
     withSourcesJar()
@@ -33,14 +33,14 @@ java {
 
 // Most RFG configuration lives here, see the JavaDoc for com.gtnewhorizons.retrofuturagradle.MinecraftExtension
 minecraft {
-    mcVersion.set("1.12.2")
+    mcVersion = "1.12.2"
 
     // MCP Mappings
-    mcpMappingChannel.set("stable")
-    mcpMappingVersion.set("39")
+    mcpMappingChannel = "stable"
+    mcpMappingVersion = "39"
 
     // Set username here, the UUID will be looked up automatically
-    username.set("Developer")
+    username = "Developer"
 
     // Add any additional tweaker classes here
     // extraTweakClasses.add("org.spongepowered.asm.launch.MixinTweaker")
@@ -60,7 +60,7 @@ minecraft {
     extraRunJvmArguments.addAll(jvmArgs)
 
     // Include and use dependencies' Access Transformer files
-    useDependencyAccessTransformers.set(true)
+    useDependencyAccessTransformers = true
 
     // Add any properties you want to swap out for a dynamic value at build time here
     // Any properties here will be added to a class at build time, the name can be configured below
@@ -71,7 +71,7 @@ minecraft {
 
 // Generates a class named rfg.examplemod.Tags with the mod version in it, you can find it at
 tasks.injectTags {
-    outputClassName.set("${project.group}.${Constant.ModId}.Tags")
+    outputClassName = "${project.group}.${Constant.ModId}.Tags"
 }
 
 // Create a new dependency type for runtime-only dependencies that don't get included in the maven publication
