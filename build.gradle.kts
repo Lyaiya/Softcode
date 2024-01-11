@@ -6,7 +6,7 @@ import kotlin.collections.set
 
 plugins {
     id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7"
-    id("com.gtnewhorizons.retrofuturagradle") version "1.3.26"
+    id("com.gtnewhorizons.retrofuturagradle") version "1.3.27"
 }
 
 // Project properties
@@ -18,7 +18,7 @@ base.archivesName = Constant.ModId
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(8)
-        // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
+        // Azul covers the most platforms for Java 8 toolchains, crucially including macOS arm64
         vendor = JvmVendorSpec.AZUL
     }
     // Generate sources and javadocs jars when building and publishing

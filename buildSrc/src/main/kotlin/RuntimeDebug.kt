@@ -8,12 +8,12 @@ object RuntimeDebug {
 
     const val Thaumcraft = false
 
-    // Need: Thaumcraft, HadEnoughItems
+    // Require: Thaumcraft, HadEnoughItems
     const val ThaumicJEI = false
 
     const val ImmersiveEngineering = false
 
-    // Need: HadEnoughItems
+    // Require: HadEnoughItems
     const val BlockDrops = false
 
     const val IndustrialCraft = false
@@ -24,7 +24,7 @@ object RuntimeDebug {
 
     const val SereneSeasons = false
 
-    // Need: HadEnoughItems
+    // Require: HadEnoughItems
     const val JustEnoughResources = false
 
     const val IndustrialForegoing = false
