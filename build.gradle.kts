@@ -6,7 +6,7 @@ import kotlin.collections.set
 
 plugins {
     id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7"
-    id("com.gtnewhorizons.retrofuturagradle") version "1.3.27"
+    id("com.gtnewhorizons.retrofuturagradle") version "1.3.28"
 }
 
 // Project properties
