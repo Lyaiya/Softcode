@@ -1,9 +1,6 @@
 package com.lyaiya.softcode.constant;
 
 public class ModIdConstant {
-    public static final String FORGELIN_CONTINUOUS = "forgelin_continuous";
-    public static final String MIXIN_BOOTER = "mixinbooter";
-
     public static final String IN_WORLD_CRAFTING = "inworldcrafting";
     public static final String EX_NIHILO_CREATIO = "exnihilocreatio";
     public static final String THAUMCRAFT = "thaumcraft";

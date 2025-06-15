@@ -9,32 +9,30 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod(
-        modid = Softcode.MOD_ID,
+        modid = Tags.MOD_ID,
         dependencies = "required-after:forge@[14.23.5.2847,);required-after:mixinbooter@[8.6,)",
         useMetadata = true
 )
 public class Softcode {
-    public static final String MOD_ID = "softcode";
-
     public static Logger LOGGER = LogManager.getLogger();
 
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event) {
-        LOGGER.info("preInit");
+        LOGGER.debug("preInit");
     }
 
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event) {
-        LOGGER.info("init");
+        LOGGER.debug("init");
     }
 
     @Mod.EventHandler
     public static void imcEvent(FMLInterModComms.IMCEvent event) {
-        LOGGER.info("imcEvent");
+        LOGGER.debug("imcEvent");
     }
 
     @Mod.EventHandler
     public static void postInit(FMLPostInitializationEvent event) {
-        LOGGER.info("postInit");
+        LOGGER.debug("postInit");
     }
 }

@@ -2,7 +2,7 @@ package com.lyaiya.softcode.mixin.libvulpes;
 
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslateKeyUtil;
+import com.lyaiya.softcode.util.Util;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -31,7 +31,7 @@ abstract class MixinModuleLiquidIndicator {
     private Object modifyArgAdd0(Object object) {
         FluidStack fluidStack = this.tile.getTankProperties()[0].getContents();
         assert fluidStack != null;
-        String key = TranslateKeyUtil.getKey(ModIdConstant.LIB_VULPES, KeyConstant.GUI, "module", "liquid_indicator", "not_empty");
+        String key = Util.getKey(ModIdConstant.LIB_VULPES, KeyConstant.GUI, "module", "liquid_indicator", "not_empty");
         return I18n.format(key, fluidStack.getLocalizedName(), fluidStack.amount, this.tile.getTankProperties()[0].getCapacity());
     }
 
@@ -44,7 +44,7 @@ abstract class MixinModuleLiquidIndicator {
             )
     )
     private Object modifyArgAdd1(Object object) {
-        String key = TranslateKeyUtil.getKey(ModIdConstant.LIB_VULPES, KeyConstant.GUI, "module", "liquid_indicator", "empty");
+        String key = Util.getKey(ModIdConstant.LIB_VULPES, KeyConstant.GUI, "module", "liquid_indicator", "empty");
         return I18n.format(key);
     }
 }

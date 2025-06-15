@@ -1,277 +1,193 @@
+import Setting.mixinJson
 import org.jetbrains.gradle.ext.Gradle
 import org.jetbrains.gradle.ext.compiler
 import org.jetbrains.gradle.ext.runConfigurations
 import org.jetbrains.gradle.ext.settings
-import kotlin.collections.set
 
 plugins {
-    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7"
-    id("com.gtnewhorizons.retrofuturagradle") version "1.3.28"
+    alias(libs.plugins.idea.ext)
+    alias(libs.plugins.retrofuturagradle)
+    alias(libs.plugins.cursegradle)
 }
 
-// Project properties
-group = Constant.Group
-version = Version.Mod
-base.archivesName = Constant.ModId
+version = Setting.MOD_VERSION
+group = Setting.ROOT_PACKAGE
 
-// Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
+base {
+    archivesName = Setting.MOD_ID
+}
+
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(8)
-        // Azul covers the most platforms for Java 8 toolchains, crucially including macOS arm64
-        vendor = JvmVendorSpec.AZUL
+        languageVersion.set(JavaLanguageVersion.of(libs.versions.jvm.get()))
+        // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
+        vendor.set(JvmVendorSpec.AZUL)
     }
     // Generate sources and javadocs jars when building and publishing
-    withSourcesJar()
-    // withJavadocJar()
+    if (Setting.GENERATE_SOURCES_JAR) {
+        withSourcesJar()
+    }
+    if (Setting.GENERATE_JAVADOC_JAR) {
+        withJavadocJar()
+    }
 }
 
-// configurations {
-//     embed
-//     implementation.extendsFrom(embed)
-// }
+configurations {
+    val embed = create("embed")
+    implementation.configure {
+        extendsFrom(embed)
+    }
+}
 
-// Most RFG configuration lives here, see the JavaDoc for com.gtnewhorizons.retrofuturagradle.MinecraftExtension
 minecraft {
     mcVersion = "1.12.2"
 
     // MCP Mappings
-    mcpMappingChannel = "stable"
-    mcpMappingVersion = "39"
+    mcpMappingChannel = Setting.MAPPING_CHANNEL
+    mcpMappingVersion = Setting.MAPPING_VERSION
+
+    // Include and use dependencies' Access Transformer files
+    useDependencyAccessTransformers = Setting.USE_DEPENDENCY_AT_FILES
 
     // Set username here, the UUID will be looked up automatically
-    username = "Developer"
+    username = Setting.MINECRAFT_USERNAME
 
     // Add any additional tweaker classes here
     // extraTweakClasses.add("org.spongepowered.asm.launch.MixinTweaker")
+    extraTweakClasses.addAll(Setting.EXTRA_TWEAK_CLASSES)
 
     // Add various JVM arguments here for runtime
-    val jvmArgs = buildList {
-        add("-ea:${project.group}")
-        if (Setting.UseCoremod) {
-            add("-Dfml.coreMods.load=${Constant.FMLCorePlugin}")
-        }
-        if (Setting.UseMixin) {
+    val args = buildList {
+        add("-ea:${group}")
+        if (Setting.USE_MIXINS) {
             add("-Dmixin.hotSwap=true")
             add("-Dmixin.checks.interfaces=true")
             add("-Dmixin.debug.export=true")
         }
+        addAll(Setting.EXTRA_JVM_ARGS)
     }
-    extraRunJvmArguments.addAll(jvmArgs)
-
-    // Include and use dependencies' Access Transformer files
-    useDependencyAccessTransformers = true
+    extraRunJvmArguments.addAll(args)
 
     // Add any properties you want to swap out for a dynamic value at build time here
     // Any properties here will be added to a class at build time, the name can be configured below
-    // Example:
-    injectedTags.put("VERSION", project.version)
-    // injectedTags.put("MOD_ID", Constant.ModId)
+    if (Setting.USE_MIXINS) {
+        injectedTags.put("MOD_VERSION", Setting.MOD_VERSION)
+        injectedTags.put("MOD_ID", Setting.MOD_ID)
+        injectedTags.put("MOD_NAME", Setting.MOD_NAME)
+    }
 }
-
-// Generates a class named rfg.examplemod.Tags with the mod version in it, you can find it at
-tasks.injectTags {
-    outputClassName = "${project.group}.${Constant.ModId}.Tags"
-}
-
-// Create a new dependency type for runtime-only dependencies that don't get included in the maven publication
-// val runtimeOnlyNonPublishable: Configuration by configurations.creating {
-//     description = "Runtime only dependencies that are not published alongside the jar"
-//     isCanBeConsumed = false
-//     isCanBeResolved = false
-// }
-// listOf(configurations.runtimeClasspath, configurations.testRuntimeClasspath).forEach {
-//     it.configure {
-//         extendsFrom(
-//             runtimeOnlyNonPublishable
-//         )
-//     }
-// }
 
 repositories {
     maven {
         name = "CleanroomMC Maven"
         url = uri("https://maven.cleanroommc.com")
     }
-    maven {
-        name = "SpongePowered Maven"
-        url = uri("https://repo.spongepowered.org/maven")
-    }
-    maven {
-        name = "CurseMaven"
-        url = uri("https://cursemaven.com")
-        content {
-            includeGroup("curse.maven")
-        }
-    }
-    maven {
-        name = "BlameJared Maven"
-        url = uri("https://maven.blamejared.com")
-        content {
-            includeGroup("CraftTweaker2")
-        }
-    }
-    maven {
-        name = "ModMaven"
-        url = uri("https://modmaven.dev")
-    }
 }
 
 dependencies {
-    if (Setting.UseAssetmover) {
-        implementation(Deps.AssetMover)
+    if (Setting.USE_ASSET_MOVER) {
+        implementation(libs.assetmover)
     }
-    if (Setting.UseMixin) {
-        val mixinBooter = modUtils.enableMixins(Deps.MixinBooter, Constant.MixinRefmapName) as String
-        api(mixinBooter) {
+
+    if (Setting.USE_MIXINS) {
+        val mixinbooter = libs.mixinbooter
+        modUtils.enableMixins(mixinbooter, Setting.MIXIN_REFMAP)
+        api(mixinbooter) {
             isTransitive = false
         }
-        annotationProcessor(mixinBooter) {
+        annotationProcessor(mixinbooter) {
             isTransitive = false
         }
-        annotationProcessor("org.ow2.asm:asm-debug-all:5.2")
-        annotationProcessor("com.google.guava:guava:24.1.1-jre")
-        annotationProcessor("com.google.code.gson:gson:2.8.6")
-    }
-
-    if (RuntimeDebug.HadEnoughItems) {
-        runtimeOnly(rfg.deobf(Deps.HadEnoughItems))
-        if (RuntimeDebug.JustEnoughCharacters) {
-            runtimeOnly(rfg.deobf(Deps.JustEnoughCharacters))
-            runtimeOnly(rfg.deobf(Deps.HadEnoughCharacters))
-        }
-    }
-
-    compileOnly(rfg.deobf(Deps.InWorldCrafting))
-    if (RuntimeDebug.InWorldCrafting) {
-        runtimeOnly(Deps.CraftTweaker)
-        runtimeOnly(rfg.deobf(Deps.InWorldCrafting))
-    }
-
-    compileOnly(rfg.deobf(Deps.JustEnoughItemsApi))
-    compileOnly(rfg.deobf(Deps.ExNihiloCreatio))
-    if (RuntimeDebug.ExNihiloCreatio) {
-        runtimeOnly(rfg.deobf(Deps.ShadowfactsForgelin))
-        runtimeOnly(rfg.deobf(Deps.ExNihiloCreatio))
-    }
-
-    compileOnly(rfg.deobf(Deps.Baubles))
-    compileOnly(rfg.deobf(Deps.Thaumcraft))
-    compileOnly(rfg.deobf(Deps.ThaumicJEI))
-    if (RuntimeDebug.Thaumcraft) {
-        runtimeOnly(rfg.deobf(Deps.Baubles))
-        runtimeOnly(rfg.deobf(Deps.Thaumcraft))
-        if (RuntimeDebug.ThaumicJEI) {
-            runtimeOnly(rfg.deobf(Deps.ThaumicJEI))
-        }
-    }
-
-    compileOnly(rfg.deobf(Deps.ImmersiveEngineering))
-    if (RuntimeDebug.ImmersiveEngineering) {
-        runtimeOnly(rfg.deobf(Deps.ImmersiveEngineering))
-    }
-
-    compileOnly(rfg.deobf(Deps.BlockDrops))
-    if (RuntimeDebug.BlockDrops) {
-        runtimeOnly(Deps.BlockDrops)
-    }
-
-    compileOnly(Deps.IndustrialCraft)
-    if (RuntimeDebug.IndustrialCraft) {
-        runtimeOnly(Deps.IndustrialCraft)
-    }
-
-    compileOnly(rfg.deobf(Deps.Controlling))
-    if (RuntimeDebug.Controlling) {
-        runtimeOnly(rfg.deobf(Deps.Controlling))
-    }
-
-    compileOnly(rfg.deobf(Deps.LibVulpes))
-    compileOnly(rfg.deobf(Deps.AdvancedRocketry))
-    if (RuntimeDebug.AdvancedRocketry) {
-        runtimeOnly(rfg.deobf(Deps.LibVulpes))
-        runtimeOnly(rfg.deobf(Deps.AdvancedRocketry))
-    }
-
-    compileOnly(rfg.deobf(Deps.SereneSeasons))
-    if (RuntimeDebug.SereneSeasons) {
-        runtimeOnly(rfg.deobf(Deps.SereneSeasons))
-    }
-
-    compileOnly(Deps.JustEnoughResources)
-    if (RuntimeDebug.JustEnoughResources) {
-        runtimeOnly(Deps.JustEnoughResources)
-    }
-
-    compileOnly(rfg.deobf(Deps.TeslaCoreLib))
-    compileOnly(rfg.deobf(Deps.IndustrialForegoing))
-    if (RuntimeDebug.IndustrialForegoing) {
-        runtimeOnly(rfg.deobf(Deps.ShadowfactsForgelin))
-        runtimeOnly(rfg.deobf(Deps.TeslaCoreLib))
-        runtimeOnly(rfg.deobf(Deps.IndustrialForegoing))
+        annotationProcessor(libs.asm.debug.all)
+        annotationProcessor(libs.guava)
+        annotationProcessor(libs.gson)
     }
 }
+
+apply(from = "gradle/scripts/dependencies.gradle")
+
+val resourcesPath: File = sourceSets.main.get().resources.srcDirs.first()
 
 // Adds Access Transformer files to tasks
-if (Setting.UseAccessTransformer) {
-    sourceSets.main.get().resources.files.forEach { file ->
-        if (file.name.endsWith("_at.cfg", true)) {
-            tasks.deobfuscateMergedJarToSrg.get().accessTransformerFiles.from(file)
-            tasks.srgifyBinpatchedJar.get().accessTransformerFiles.from(file)
+if (Setting.USE_ACCESS_TRANSFORMER) {
+    for (location in Setting.ACCESS_TRANSORMER_LOCATIONS) {
+        val fileLocation = file("${resourcesPath}/${location}")
+        if (!fileLocation.exists()) {
+            throw GradleException("Access Transformer file [$fileLocation] does not exist!")
         }
+        tasks.deobfuscateMergedJarToSrg.get().accessTransformerFiles.from(fileLocation)
+        tasks.srgifyBinpatchedJar.get().accessTransformerFiles.from(fileLocation)
     }
 }
 
-tasks.processResources {
+tasks.withType<ProcessResources> {
+    // This will ensure that this task is redone when the versions change
     val properties = buildMap {
-        this["version"] = project.version.toString()
-        this["mcversion"] = project.minecraft.mcVersion.get()
+        this["mod_id"] = Setting.MOD_ID
+        this["mod_name"] = Setting.MOD_NAME
+        this["mod_version"] = Setting.MOD_VERSION
+        this["mod_description"] = Setting.MOD_DESCRIPTION
+        this["mod_authors"] = Setting.MOD_AUTHORS.joinToString(", ")
+        this["mod_credits"] = Setting.MOD_CREDITS
+        this["mod_url"] = Setting.MOD_URL
+        this["mod_update_json"] = Setting.MOD_UPDATE_JSON
+        this["mod_logo_path"] = Setting.MOD_LOGO_PATH
+        this["mixin_refmap"] = Setting.MIXIN_REFMAP
+    }
+    inputs.properties(properties)
+    inputs.property("mixin_configs", Setting.MININ_CONFIGS.joinToString(" "))
+
+    val filterList = buildList {
+        add("mcmod.info")
+        add("pack.mcmeta")
+        addAll(Setting.MININ_CONFIGS.map { mixinJson(it) })
     }
 
-    // This will ensure that this task is redone when the versions change
-    inputs.properties(properties)
-
     // Replace various properties in mcmod.info and pack.mcmeta if applicable
-    filesMatching(listOf("mcmod.info", "pack.mcmeta")) {
+    filesMatching(filterList) {
         expand(properties)
     }
 
-    // Make sure Access Transformer files are in META-INF folder
-    if (Setting.UseAccessTransformer) {
-        rename("(.+_at.cfg)", "META-INF/\$1")
+    if (Setting.USE_ACCESS_TRANSFORMER) {
+        rename("(.+_at.cfg)", "META-INF/$1") // Make sure Access Transformer files are in META-INF folder
     }
 }
 
-tasks.jar {
-    manifest {
-        val attributeMap = buildMap {
-            if (Setting.UseCoremod) {
-                this["FMLCorePlugin"] = Constant.FMLCorePlugin
-                if (Setting.IncludeMod) {
-                    this["FMLCorePluginContainsFMLMod"] = true.toString()
-                    this["ForceLoadAsMod"] = (project.gradle.startParameter.taskNames[0] == "build").toString()
+tasks.withType<Jar> {
+    val attributeMap = buildMap {
+        if (Setting.IS_COREMOD) {
+            this["FMLCorePlugin"] = Setting.COREMOD_PLUGIN_CLASS_NAME
+
+            if (Setting.COREMOD_INCLUDES_MOD) {
+                this["FMLCorePluginContainsFMLMod"] = true.toString()
+
+                when (project.gradle.startParameter.taskNames.first()) {
+                    "build", "prepareObfModsFolder", "runObfClient" -> {
+                        this["ForceLoadAsMod"] = true.toString()
+                    }
                 }
             }
-            if (Setting.UseAccessTransformer) {
-                this["FMLAT"] = "${Constant.ModId}_at.cfg"
-            }
         }
-        attributes(attributeMap)
+        if (Setting.USE_ACCESS_TRANSFORMER) {
+            this["FMLAT"] = Setting.ACCESS_TRANSORMER_LOCATIONS.joinToString(" ")
+        }
     }
+    manifest.attributes(attributeMap)
     // Add all embedded dependencies into the jar
-    // from(provider{ configurations.embed.collect {it.isDirectory() ? it : zipTree(it)} })
+    from(provider {
+        configurations.getByName("embed").map {
+            if (it.isDirectory()) it else zipTree(it)
+        }
+    })
 }
 
-// IDE Settings
 idea {
     module {
-        isDownloadJavadoc = true
-        isDownloadSources = true
-        inheritOutputDirs = true // Fix resources in IJ-Native runs
+        inheritOutputDirs = true
     }
-    project.settings {
-        runConfigurations {
-            val gradles = listOf(
+    project {
+        settings {
+            val list = listOf(
                 Gradle("1. Run Client").apply {
                     taskNames = listOf("runClient")
                 },
@@ -285,19 +201,83 @@ idea {
                     taskNames = listOf("runObfServer")
                 }
             )
-            addAll(gradles)
-        }
-        compiler.javac {
-            afterEvaluate {
-                javacAdditionalOptions = "-encoding utf8"
-                moduleJavacAdditionalOptions = buildMap {
-                    this["${project.name}.main"] = tasks.compileJava.get().options.compilerArgs.joinToString(" ") { '"' + it + '"' }
+            runConfigurations.addAll(list)
+
+            compiler.javac {
+                afterEvaluate {
+                    javacAdditionalOptions = "-encoding utf8"
+                    moduleJavacAdditionalOptions = mutableMapOf(
+                        (project.name + ".main") to tasks.compileJava.get().options.compilerArgs.joinToString(" ") { "\"$it\"" }
+                    )
                 }
             }
         }
     }
 }
 
-tasks.processIdeaSettings {
-    dependsOn(tasks.injectTags)
+tasks.withType<JavaCompile>().configureEach {
+    options.encoding = "UTF-8"
+}
+
+val helpersGroup = "cleanroom helpers"
+
+val generateMixinJsonTask = tasks.register("generateMixinJson") {
+    group = helpersGroup
+
+    val mixinsJsonPath = { text: String -> "${resourcesPath}/${mixinJson(text)}" }
+
+    val missingConfigs = Setting.MININ_CONFIGS.filterNot { file(mixinsJsonPath(it)).exists() }
+
+    onlyIf { Setting.USE_MIXINS && Setting.GENERATE_MIXINS_JSON && !missingConfigs.isEmpty() }
+
+    doLast {
+        for (string in missingConfigs) {
+            val file = file(mixinsJsonPath(string))
+
+            if (!file.createNewFile()) {
+                throw GradleException("File [$file] create error!")
+            }
+            val jsonContent = """
+                |{
+                |  "package": "",
+                |  "required": true,
+                |  "refmap": "${Setting.MIXIN_REFMAP}",
+                |  "target": "@env(DEFAULT)",
+                |  "minVersion": "0.8.5",
+                |  "compatibilityLevel": "JAVA_8",
+                |  "mixins": [],
+                |  "server": [],
+                |  "client": []
+                |}
+            """.trimMargin()
+
+            file.writeText(jsonContent)
+        }
+    }
+}
+
+tasks.injectTags.configure {
+    onlyIf { Setting.USE_TAGS && tags.get().isNotEmpty() }
+    outputClassName = Setting.TAG_CLASS_NAME
+}
+
+tasks.processIdeaSettings.configure {
+    dependsOn(tasks.injectTags.name, generateMixinJsonTask.name)
+}
+
+val prioritizeCoremodsTask = tasks.register("prioritizeCoremods") {
+    group = helpersGroup
+
+    doLast {
+        val regex = Regex("(mixinbooter|configanytime)(-)([0-9])+\\\\.+([0-9])+(.jar)")
+        fileTree("run/obfuscated").forEach {
+            if (it.isFile && regex.find(it.name) != null) {
+                it.renameTo(File(it.parentFile, "!${it.name}"))
+            }
+        }
+    }
+}
+
+tasks.prepareObfModsFolder.configure {
+    finalizedBy(prioritizeCoremodsTask.name)
 }

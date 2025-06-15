@@ -3,7 +3,7 @@ package com.lyaiya.softcode.mixin.immersiveengineering;
 import blusunrize.immersiveengineering.common.util.compat.jei.arcfurnace.ArcFurnaceRecipeWrapper;
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslateKeyUtil;
+import com.lyaiya.softcode.util.Util;
 import net.minecraft.client.resources.I18n;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -19,7 +19,7 @@ abstract class MixinArcFurnaceRecipeWrapper {
             constant = @Constant(stringValue = " IF/t")
     )
     private String modifyConstantUnitPerTick(String constant) {
-        String key = TranslateKeyUtil.getKey(ModIdConstant.IMMERSIVE_ENGINEERING, KeyConstant.GUI, "unit_per_tick");
+        String key = Util.getKey(ModIdConstant.IMMERSIVE_ENGINEERING, KeyConstant.GUI, "unit_per_tick");
         return I18n.format(key);
     }
 
@@ -28,7 +28,7 @@ abstract class MixinArcFurnaceRecipeWrapper {
             constant = @Constant(stringValue = " Seconds")
     )
     private String modifyConstantSeconds(String constant) {
-        String key = TranslateKeyUtil.getKey(ModIdConstant.IMMERSIVE_ENGINEERING, KeyConstant.GUI, "seconds");
+        String key = Util.getKey(ModIdConstant.IMMERSIVE_ENGINEERING, KeyConstant.GUI, "seconds");
         return I18n.format(key);
     }
 }

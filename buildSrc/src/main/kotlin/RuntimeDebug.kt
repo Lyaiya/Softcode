@@ -2,7 +2,7 @@ object RuntimeDebug {
     const val HadEnoughItems = true
     const val JustEnoughCharacters = true
 
-    const val InWorldCrafting = true
+    const val InWorldCrafting = false
 
     const val ExNihiloCreatio = false
 

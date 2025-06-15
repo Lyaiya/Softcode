@@ -2,7 +2,7 @@ package com.lyaiya.softcode.mixin.blockdrops;
 
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslateKeyUtil;
+import com.lyaiya.softcode.util.Util;
 import mrriegel.blockdrops.Category;
 import net.minecraft.client.resources.I18n;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,7 +21,7 @@ abstract class MixinCategory {
             cancellable = true
     )
     private void injectGetTitle(CallbackInfoReturnable<String> cir) {
-        String key = TranslateKeyUtil.getKey(ModIdConstant.BLOCK_DROPS, KeyConstant.GUI, KeyConstant.RECIPE_CATEGORY, "block_drops");
+        String key = Util.getKey(ModIdConstant.BLOCK_DROPS, KeyConstant.GUI, KeyConstant.RECIPE_CATEGORY, "block_drops");
         cir.setReturnValue(I18n.format(key));
     }
 }

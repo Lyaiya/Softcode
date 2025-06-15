@@ -2,12 +2,12 @@ package com.lyaiya.softcode.mixin.libvulpes;
 
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslateKeyUtil;
+import com.lyaiya.softcode.util.Util;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import zmaster587.libVulpes.block.BlockOre;
@@ -31,7 +31,7 @@ abstract class MixinItemOre extends ItemBlock {
      * @reason Kill the space
      */
     @Overwrite
-    public @NotNull String getItemStackDisplayName(@NotNull ItemStack stack) {
+    public @NonNull String getItemStackDisplayName(@NonNull ItemStack stack) {
         BlockOre blockOre = (BlockOre) this.getBlock();
 
         String forwardSection = this.getUnlocalizedNameInefficiently(stack);
@@ -44,7 +44,7 @@ abstract class MixinItemOre extends ItemBlock {
         } else {
             String forwardStr = I18n.format(String.format("%s.name", forwardSection));
             String backStr = I18n.format(String.format("type.%s.name", backSection));
-            String finalKey = TranslateKeyUtil.getKey(ModIdConstant.LIB_VULPES, KeyConstant.FORMAT, "item_ore");
+            String finalKey = Util.getKey(ModIdConstant.LIB_VULPES, KeyConstant.FORMAT, "item_ore");
             return I18n.format(finalKey, forwardStr, backStr);
         }
     }

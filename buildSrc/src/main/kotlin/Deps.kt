@@ -1,19 +1,13 @@
 object Deps {
-    // GitHub: https://github.com/CleanroomMC/AssetMover
-    val AssetMover = "com.cleanroommc:assetmover:2.5"
-
-    // CurseForge: https://www.curseforge.com/minecraft/mc-mods/mixin-booter
-    val MixinBooter = "zone.rong:mixinbooter:8.9"
-
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/crafttweaker
     val CraftTweaker = "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.+"
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/had-enough-items
-    // Version: v4.25.1
+    // Version: v4.28.0
     val HadEnoughItems = curse(
         modName = "had-enough-items",
         projectId = 557549,
-        fileId = 4810661
+        fileId = 6463525
     )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/just-enough-characters
@@ -77,11 +71,11 @@ object Deps {
     )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/thaumic-jei
-    // Version: v1.6.0-27
+    // Version: v1.7.0
     val ThaumicJEI = curse(
         modName = "thaumic-jei",
         projectId = 285492,
-        fileId = 2705304
+        fileId = 5646810
     )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/immersive-engineering
@@ -109,11 +103,11 @@ object Deps {
     )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/controlling
-    // Version: v3.0.12.2
+    // Version: v3.0.12.4
     val Controlling = curse(
         modName = "controlling",
         projectId = 250398,
-        fileId = 4428378
+        fileId = 5408385
     )
 
     // CurseForge: https://www.curseforge.com/minecraft/mc-mods/advanced-rocketry

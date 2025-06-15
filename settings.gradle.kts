@@ -11,12 +11,13 @@ pluginManagement {
         }
         gradlePluginPortal()
         mavenCentral()
+        mavenLocal()
     }
 }
 
 plugins {
     // Automatic toolchain provisioning
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.7.0"
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
-rootProject.name = "Softcode"
+rootProject.name = rootProject.projectDir.getName()

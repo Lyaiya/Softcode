@@ -7,9 +7,9 @@ import com.buuz135.industrial.jei.petrifiedgen.PetrifiedBurnTimeCategory;
 import com.buuz135.industrial.jei.stonework.StoneWorkCategory;
 import com.lyaiya.softcode.constant.ClassConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslateKeyUtil;
+import com.lyaiya.softcode.util.Util;
 import net.minecraft.client.resources.I18n;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -26,8 +26,8 @@ abstract class MixinCategory {
             at = @At("RETURN"),
             cancellable = true
     )
-    private void injectGetTitle(@NotNull CallbackInfoReturnable<String> cir) {
-        String key = TranslateKeyUtil.getReplacedKey(this.getClass(), ModIdConstant.INDUSTRIAL_FOREGOING, "Category", ClassConstant.RECIPE_CATEGORY);
+    private void injectGetTitle(@NonNull CallbackInfoReturnable<String> cir) {
+        String key = Util.getReplacedKey(this.getClass(), ModIdConstant.INDUSTRIAL_FOREGOING, "Category", ClassConstant.RECIPE_CATEGORY);
         cir.setReturnValue(I18n.format(key));
     }
 }

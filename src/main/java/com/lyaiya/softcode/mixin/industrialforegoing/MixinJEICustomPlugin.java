@@ -3,7 +3,7 @@ package com.lyaiya.softcode.mixin.industrialforegoing;
 import com.buuz135.industrial.jei.JEICustomPlugin;
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslateKeyUtil;
+import com.lyaiya.softcode.util.Util;
 import net.minecraft.client.resources.I18n;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -19,10 +19,7 @@ abstract class MixinJEICustomPlugin {
             constant = @Constant(stringValue = "Bioreactor accepted items")
     )
     private String modifyConstantRegisterCategories0(String constant) {
-        String key = TranslateKeyUtil.getKey(ModIdConstant.INDUSTRIAL_FOREGOING,
-                                             KeyConstant.GUI,
-                                             KeyConstant.RECIPE_CATEGORY,
-                                             "bioreactor_accepted_items");
+        String key = Util.getKey(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.GUI, KeyConstant.RECIPE_CATEGORY, "bioreactor_accepted_items");
         return I18n.format(key);
     }
 
@@ -31,10 +28,7 @@ abstract class MixinJEICustomPlugin {
             constant = @Constant(stringValue = "Protein reactor accepted items")
     )
     private String modifyConstantRegisterCategories1(String constant) {
-        String key = TranslateKeyUtil.getKey(ModIdConstant.INDUSTRIAL_FOREGOING,
-                                             KeyConstant.GUI,
-                                             KeyConstant.RECIPE_CATEGORY,
-                                             "protein_reactor_accepted_items");
+        String key = Util.getKey(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.GUI, KeyConstant.RECIPE_CATEGORY, "protein_reactor_accepted_items");
         return I18n.format(key);
     }
 }

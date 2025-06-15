@@ -5,7 +5,7 @@ import com.buuz135.industrial.proxy.BlockRegistry;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslateKeyUtil;
+import com.lyaiya.softcode.util.Util;
 import net.minecraft.client.resources.I18n;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -26,9 +26,9 @@ abstract class MixinReactorRecipeWrapper {
             )
     )
     private List<String> modifyArgsGetTooltipStrings(List<String> stringList) {
-        String efficiencyKey = TranslateKeyUtil.getKey(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.GUI, "reactor", "efficiency");
-        String minKey = TranslateKeyUtil.getKey(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.GUI, "reactor", "min");
-        String maxKey = TranslateKeyUtil.getKey(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.GUI, "reactor", "max");
+        String efficiencyKey = Util.getKey(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.GUI, "reactor", "efficiency");
+        String minKey = Util.getKey(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.GUI, "reactor", "min");
+        String maxKey = Util.getKey(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.GUI, "reactor", "max");
         return Arrays.asList(I18n.format(efficiencyKey),
                              I18n.format(minKey, BlockRegistry.bioReactorBlock.getBaseAmount()),
                              I18n.format(maxKey, BlockRegistry.bioReactorBlock.getBaseAmount() * 2));

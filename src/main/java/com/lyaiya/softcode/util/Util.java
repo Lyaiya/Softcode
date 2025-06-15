@@ -2,11 +2,15 @@ package com.lyaiya.softcode.util;
 
 import com.google.common.base.CaseFormat;
 import com.lyaiya.softcode.constant.KeyConstant;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
-public class TranslateKeyUtil {
-    public static @NotNull String getKey(String modid, String keyPrefix, @NotNull String... keySections) {
+@NullMarked
+public class Util {
+    private Util() {
+    }
+
+    public static String getKey(String modid, String keyPrefix, String... keySections) {
         StringBuilder sb = new StringBuilder();
         sb.append(keyPrefix);
         sb.append(".");
@@ -18,7 +22,7 @@ public class TranslateKeyUtil {
         return sb.toString();
     }
 
-    public static String getReplacedKey(@NotNull Class<?> clazz, String modid, String classSuffix, @Nullable String keySection) {
+    public static String getReplacedKey(Class<?> clazz, String modid, String classSuffix, @Nullable String keySection) {
         String finalKeySection = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, keySection != null ? keySection : classSuffix);
         String replacedString = clazz.getSimpleName().replace(classSuffix, "");
         String lowerUnderscoreString = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, replacedString);

@@ -3,7 +3,7 @@ package com.lyaiya.softcode.mixin.thaumicjei;
 import com.buuz135.thaumicjei.ThaumcraftJEIPlugin;
 import com.lyaiya.softcode.constant.KeyConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslateKeyUtil;
+import com.lyaiya.softcode.util.Util;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
@@ -24,7 +24,7 @@ abstract class MixinThaumcraftJEIPlugin {
             index = 2
     )
     private String[] modifyArgIngredientInfo0(String[] descriptionKeys) {
-        String key = TranslateKeyUtil.getKey(ModIdConstant.THAUMIC_JEI, KeyConstant.DESCRIPTION, "salis_mundis");
+        String key = Util.getKey(ModIdConstant.THAUMIC_JEI, KeyConstant.DESCRIPTION, "salis_mundis");
         return new String[]{key};
     }
 
@@ -38,7 +38,7 @@ abstract class MixinThaumcraftJEIPlugin {
             index = 2
     )
     private String[] modifyArgIngredientInfo1(String[] descriptionKeys) {
-        String key = TranslateKeyUtil.getKey(ModIdConstant.THAUMIC_JEI, KeyConstant.DESCRIPTION, "triple_meat_treat");
+        String key = Util.getKey(ModIdConstant.THAUMIC_JEI, KeyConstant.DESCRIPTION, "triple_meat_treat");
         return new String[]{key};
     }
 }

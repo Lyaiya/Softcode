@@ -1,0 +1,165 @@
+repositories {
+    // Other repositories described by default:
+    // CleanroomMC: https://maven.cleanroommc.com
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "CurseMaven"
+                url = uri("https://cursemaven.com")
+            }
+        }
+        filter {
+            includeGroup("curse.maven")
+        }
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = uri("https://api.modrinth.com/maven")
+            }
+        }
+        filter {
+            includeGroup("maven.modrinth")
+        }
+    }
+
+    maven {
+        name = "CurseMaven"
+        url = uri("https://cursemaven.com")
+        content {
+            includeGroup("curse.maven")
+        }
+    }
+    maven {
+        name = "BlameJared Maven"
+        url = uri("https://maven.blamejared.com")
+        content {
+            includeGroup("CraftTweaker2")
+        }
+    }
+    maven {
+        name = "ModMaven"
+        url = uri("https://modmaven.dev")
+    }
+
+    mavenLocal() // Must be last for caching to work
+}
+
+dependencies {
+    // Include StripLatestForgeRequirements by default for the dev env, saves everyone a hassle
+    runtimeOnly(libs.strip.latest.forge.requirements)
+    // Include OSXNarratorBlocker by default for the dev env, for M1+ Macs
+    runtimeOnly(libs.osxnarratorblocker)
+
+    implementation(libs.jspecify)
+
+    // Example - Dependency descriptor:
+    // 'com.google.code.gson:gson:2.8.6' << group: com.google.code.gson, name:gson, version:2.8.6
+    // 'group:name:version:classifier' where classifier is optional
+
+    // Example - Deobfuscating dependencies:
+    // rfg.deobf('curse.maven:had-enough-items-557549:4543375')
+    // By wrapping a dependency descriptor in rfg.deobf() method call, the dependency is queued for deobfuscation
+    // When deobfuscating, RFG respects the mapping_channel + mapping_version stated in gradle.properties
+
+    // Example - CurseMaven dependencies:
+    // 'curse.maven:had-enough-items-557549:4543375' << had-enough-items = project slug, 557549 = project id, 4543375 = file id
+    // Full documentation: https://cursemaven.com/
+
+    // Example - Modrinth dependencies:
+    // 'maven.modrinth:jei:4.16.1.1000' << jei = project name, 4.16.1.1000 = file version
+    // Full documentation: https://docs.modrinth.com/docs/tutorials/maven/
+
+    // Common dependency types (configuration):
+    // implementation = dependency available at both compile time and runtime
+    // runtimeOnly = runtime dependency
+    // compileOnly = compile time dependency
+    // annotationProcessor = annotation processing dependencies
+    // embed = bundle dependencies into final output artifact (no relocation)
+
+    // Transitive dependencies:
+    // (Dependencies that your dependency depends on)
+    // If you wish to exclude transitive dependencies in the described dependencies
+    // Use a closure as such:
+    // implementation ('com.google.code.gson:gson:2.8.6') {
+    //     transitive = false
+    // }
+
+    if (RuntimeDebug.HadEnoughItems) {
+        runtimeOnly(rfg.deobf(Deps.HadEnoughItems))
+        if (RuntimeDebug.JustEnoughCharacters) {
+            runtimeOnly(rfg.deobf(Deps.JustEnoughCharacters))
+            runtimeOnly(rfg.deobf(Deps.HadEnoughCharacters))
+        }
+    }
+
+    compileOnly(rfg.deobf(Deps.InWorldCrafting))
+    if (RuntimeDebug.InWorldCrafting) {
+        runtimeOnly(Deps.CraftTweaker)
+        runtimeOnly(rfg.deobf(Deps.InWorldCrafting))
+    }
+
+    compileOnly(rfg.deobf(Deps.JustEnoughItemsApi))
+    compileOnly(rfg.deobf(Deps.ExNihiloCreatio))
+    if (RuntimeDebug.ExNihiloCreatio) {
+        runtimeOnly(rfg.deobf(Deps.ShadowfactsForgelin))
+        runtimeOnly(rfg.deobf(Deps.ExNihiloCreatio))
+    }
+
+    compileOnly(rfg.deobf(Deps.Baubles))
+    compileOnly(rfg.deobf(Deps.Thaumcraft))
+    compileOnly(rfg.deobf(Deps.ThaumicJEI))
+    if (RuntimeDebug.Thaumcraft) {
+        runtimeOnly(rfg.deobf(Deps.Baubles))
+        runtimeOnly(rfg.deobf(Deps.Thaumcraft))
+        if (RuntimeDebug.ThaumicJEI) {
+            runtimeOnly(rfg.deobf(Deps.ThaumicJEI))
+        }
+    }
+
+    compileOnly(rfg.deobf(Deps.ImmersiveEngineering))
+    if (RuntimeDebug.ImmersiveEngineering) {
+        runtimeOnly(rfg.deobf(Deps.ImmersiveEngineering))
+    }
+
+    compileOnly(rfg.deobf(Deps.BlockDrops))
+    if (RuntimeDebug.BlockDrops) {
+        runtimeOnly(Deps.BlockDrops)
+    }
+
+    compileOnly(Deps.IndustrialCraft)
+    if (RuntimeDebug.IndustrialCraft) {
+        runtimeOnly(Deps.IndustrialCraft)
+    }
+
+    compileOnly(rfg.deobf(Deps.Controlling))
+    if (RuntimeDebug.Controlling) {
+        runtimeOnly(rfg.deobf(Deps.Controlling))
+    }
+
+    compileOnly(rfg.deobf(Deps.LibVulpes))
+    compileOnly(rfg.deobf(Deps.AdvancedRocketry))
+    if (RuntimeDebug.AdvancedRocketry) {
+        runtimeOnly(rfg.deobf(Deps.LibVulpes))
+        runtimeOnly(rfg.deobf(Deps.AdvancedRocketry))
+    }
+
+    compileOnly(rfg.deobf(Deps.SereneSeasons))
+    if (RuntimeDebug.SereneSeasons) {
+        runtimeOnly(rfg.deobf(Deps.SereneSeasons))
+    }
+
+    compileOnly(Deps.JustEnoughResources)
+    if (RuntimeDebug.JustEnoughResources) {
+        runtimeOnly(Deps.JustEnoughResources)
+    }
+
+    compileOnly(rfg.deobf(Deps.TeslaCoreLib))
+    compileOnly(rfg.deobf(Deps.IndustrialForegoing))
+    if (RuntimeDebug.IndustrialForegoing) {
+        runtimeOnly(rfg.deobf(Deps.ShadowfactsForgelin))
+        runtimeOnly(rfg.deobf(Deps.TeslaCoreLib))
+        runtimeOnly(rfg.deobf(Deps.IndustrialForegoing))
+    }
+}

@@ -2,7 +2,7 @@ package com.lyaiya.softcode.mixin.exnihilocreatio;
 
 import com.lyaiya.softcode.constant.ClassConstant;
 import com.lyaiya.softcode.constant.ModIdConstant;
-import com.lyaiya.softcode.util.TranslateKeyUtil;
+import com.lyaiya.softcode.util.Util;
 import exnihilocreatio.compatibility.jei.barrel.compost.CompostRecipeCategory;
 import exnihilocreatio.compatibility.jei.barrel.fluiditemtransform.FluidItemTransformRecipeCategory;
 import exnihilocreatio.compatibility.jei.barrel.fluidontop.FluidOnTopRecipeCategory;
@@ -31,7 +31,7 @@ abstract class MixinRecipeCategory {
             cancellable = true
     )
     private void injectGetTitle(CallbackInfoReturnable<String> cir) {
-        String key = TranslateKeyUtil.getReplacedKey(this.getClass(), ModIdConstant.EX_NIHILO_CREATIO, ClassConstant.RECIPE_CATEGORY);
+        String key = Util.getReplacedKey(this.getClass(), ModIdConstant.EX_NIHILO_CREATIO, ClassConstant.RECIPE_CATEGORY);
         cir.setReturnValue(I18n.format(key));
     }
 }
