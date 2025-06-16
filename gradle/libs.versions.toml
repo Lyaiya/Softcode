@@ -5,6 +5,7 @@ jvm = "8"
 idea-ext = { id = "org.jetbrains.gradle.plugin.idea-ext", version = "1.1.10" }
 retrofuturagradle = { id = "com.gtnewhorizons.retrofuturagradle", version = "1.4.5" }
 cursegradle = { id = "com.matthewprenger.cursegradle", version = "1.4.0" }
+check = { id = "io.github.joselion.strict-null-check", version = "3.5.0" }
 
 [libraries]
 # GitHub: https://github.com/CleanroomMC/AssetMover

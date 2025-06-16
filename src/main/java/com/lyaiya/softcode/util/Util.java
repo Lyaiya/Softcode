@@ -2,13 +2,10 @@ package com.lyaiya.softcode.util;
 
 import com.google.common.base.CaseFormat;
 import com.lyaiya.softcode.constant.KeyConstant;
-import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
-@NullMarked
 public class Util {
-    private Util() {
-    }
+    private Util() {}
 
     public static String getKey(String modid, String keyPrefix, String... keySections) {
         StringBuilder sb = new StringBuilder();

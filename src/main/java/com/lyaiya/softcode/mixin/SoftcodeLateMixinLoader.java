@@ -3,7 +3,6 @@ package com.lyaiya.softcode.mixin;
 import com.lyaiya.softcode.Tags;
 import com.lyaiya.softcode.constant.ModIdConstant;
 import net.minecraftforge.fml.common.Loader;
-import org.jspecify.annotations.NullMarked;
 import zone.rong.mixinbooter.ILateMixinLoader;
 
 import java.util.ArrayList;
@@ -11,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@NullMarked
 public class SoftcodeLateMixinLoader implements ILateMixinLoader {
     private final Map<String, String> mixinConfigs = new HashMap<>();
 

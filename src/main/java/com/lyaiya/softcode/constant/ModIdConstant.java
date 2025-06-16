@@ -1,6 +1,8 @@
 package com.lyaiya.softcode.constant;
 
 public class ModIdConstant {
+    private ModIdConstant() {}
+
     public static final String IN_WORLD_CRAFTING = "inworldcrafting";
     public static final String EX_NIHILO_CREATIO = "exnihilocreatio";
     public static final String THAUMCRAFT = "thaumcraft";

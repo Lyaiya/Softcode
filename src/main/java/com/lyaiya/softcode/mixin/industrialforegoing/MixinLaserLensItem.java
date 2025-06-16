@@ -9,7 +9,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentTranslation;
-import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
@@ -27,7 +26,7 @@ abstract class MixinLaserLensItem extends IFCustomItem {
      * @reason kill the space
      */
     @Overwrite
-    public @NonNull String getItemStackDisplayName(@NonNull ItemStack stack) {
+    public String getItemStackDisplayName(ItemStack stack) {
         String formatKey = Util.getKey(ModIdConstant.INDUSTRIAL_FOREGOING, KeyConstant.FORMAT, "laser");
         String forward = new TextComponentTranslation("item.fireworksCharge." + EnumDyeColor.byMetadata(stack.getMetadata()).getTranslationKey()
                 .replaceAll("_", "")).getFormattedText();

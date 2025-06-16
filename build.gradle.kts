@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.idea.ext)
     alias(libs.plugins.retrofuturagradle)
     alias(libs.plugins.cursegradle)
+    alias(libs.plugins.check)
 }
 
 version = Setting.MOD_VERSION
@@ -105,6 +106,13 @@ dependencies {
 }
 
 apply(from = "gradle/scripts/dependencies.gradle")
+
+strictNullCheck {
+    packageInfo {
+        imports = listOf("org.jspecify.annotations.NullMarked")
+        annotations = listOf("@NullMarked")
+    }
+}
 
 val resourcesPath: File = sourceSets.main.get().resources.srcDirs.first()
 

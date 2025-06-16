@@ -1,6 +1,8 @@
 package com.lyaiya.softcode.constant;
 
 public class KeyConstant {
+    private KeyConstant() {}
+
     public static final String GUI = "gui";
     public static final String MATERIAL = "material";
     public static final String DESCRIPTION = "description";

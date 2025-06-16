@@ -12,7 +12,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import zmaster587.libVulpes.api.material.Material;
 import zmaster587.libVulpes.items.ItemOreProduct;
 
-import javax.annotation.Nonnull;
 import java.util.HashMap;
 
 @Mixin(
@@ -32,9 +31,8 @@ abstract class MixinItemOreProduct extends Item {
      * @author Lyaiya
      * @reason Kill the space
      */
-    @Nonnull
     @Overwrite
-    public String getItemStackDisplayName(@Nonnull ItemStack stack) {
+    public String getItemStackDisplayName(ItemStack stack) {
         String forwardSection;
         if (this.properties.containsKey(stack.getItemDamage())) {
             Material material = this.properties.get(stack.getItemDamage());

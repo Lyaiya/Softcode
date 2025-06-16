@@ -7,7 +7,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import zmaster587.libVulpes.block.BlockOre;
@@ -31,7 +30,7 @@ abstract class MixinItemOre extends ItemBlock {
      * @reason Kill the space
      */
     @Overwrite
-    public @NonNull String getItemStackDisplayName(@NonNull ItemStack stack) {
+    public String getItemStackDisplayName(ItemStack stack) {
         BlockOre blockOre = (BlockOre) this.getBlock();
 
         String forwardSection = this.getUnlocalizedNameInefficiently(stack);
